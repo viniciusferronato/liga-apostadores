@@ -20671,15 +20671,15 @@
      [
       [
        "1",
-       1.571
+       1.541
       ],
       [
        "X",
-       4.2
+       4.3
       ],
       [
        "2",
-       5.5
+       5.75
       ],
       [
        "+2.5",
@@ -20687,15 +20687,15 @@
       ],
       [
        "-2.5",
-       2.1
+       2.15
       ],
       [
-       "Casa -0.5",
-       1.541
+       "Casa -1.5",
+       2.4
       ],
       [
-       "Fora +0.5",
-       2.35
+       "Fora +1.5",
+       1.513
       ]
      ]
     ],
@@ -20704,15 +20704,15 @@
      [
       [
        "1",
-       1.57
+       1.54
       ],
       [
        "X",
-       4.2
+       4.3
       ],
       [
        "2",
-       5.5
+       5.75
       ]
      ]
     ],
@@ -20750,7 +20750,7 @@
       ],
       [
        "-2.5",
-       2.1
+       2.15
       ],
       [
        "+3.5",
@@ -20780,7 +20780,7 @@
      [
       [
        "Fav. -1.5",
-       2.81
+       2.4
       ],
       [
        "Fav. -1",
@@ -20788,11 +20788,11 @@
       ],
       [
        "Fav. -0.5",
-       1.54
+       1.63
       ],
       [
        "Az. +0.5",
-       2.35
+       2.41
       ],
       [
        "Az. +1",
@@ -20800,7 +20800,7 @@
       ],
       [
        "Az. +1.5",
-       1.49
+       1.51
       ]
      ]
     ],
@@ -20898,15 +20898,15 @@
     ]
    ],
    "real": {
-    "odd_casa": 1.571,
-    "odd_empate": 4.2,
-    "odd_fora": 5.5,
+    "odd_casa": 1.541,
+    "odd_empate": 4.3,
+    "odd_fora": 5.75,
     "linha_gols": 2.5,
     "odd_over": 1.667,
-    "odd_under": 2.1,
-    "handicap_casa": -0.5,
-    "odd_hcp_casa": 1.541,
-    "odd_hcp_fora": 2.35,
+    "odd_under": 2.15,
+    "handicap_casa": -1.5,
+    "odd_hcp_casa": 2.4,
+    "odd_hcp_fora": 1.513,
     "abre_casa": 1.667,
     "abre_fora": 4.6,
     "espn_id": "401841308"
@@ -20956,7 +20956,7 @@
      [
       [
        "1",
-       2.7
+       2.65
       ],
       [
        "X",
@@ -20964,7 +20964,7 @@
       ],
       [
        "2",
-       2.5
+       2.6
       ],
       [
        "+2.5",
@@ -20975,12 +20975,12 @@
        2.0
       ],
       [
-       "Casa +0.5",
-       1.5
+       "Casa -0.5",
+       2.5
       ],
       [
-       "Fora -0.5",
-       2.4
+       "Fora +0.5",
+       1.476
       ]
      ]
     ],
@@ -20989,7 +20989,7 @@
      [
       [
        "1",
-       2.7
+       2.65
       ],
       [
        "X",
@@ -20997,7 +20997,7 @@
       ],
       [
        "2",
-       2.5
+       2.6
       ]
      ]
     ],
@@ -21073,11 +21073,11 @@
       ],
       [
        "Fav. -0.5",
-       2.4
+       2.59
       ],
       [
        "Az. +0.5",
-       1.5
+       1.56
       ],
       [
        "Az. +1",
@@ -21183,15 +21183,15 @@
     ]
    ],
    "real": {
-    "odd_casa": 2.7,
+    "odd_casa": 2.65,
     "odd_empate": 3.4,
-    "odd_fora": 2.5,
+    "odd_fora": 2.6,
     "linha_gols": 2.5,
     "odd_over": 1.769,
     "odd_under": 2,
-    "handicap_casa": 0.5,
-    "odd_hcp_casa": 1.5,
-    "odd_hcp_fora": 2.4,
+    "handicap_casa": -0.5,
+    "odd_hcp_casa": 2.5,
+    "odd_hcp_fora": 1.476,
     "abre_casa": 2.7,
     "abre_fora": 2.45,
     "espn_id": "401841317"
@@ -21542,15 +21542,15 @@
       ],
       [
        "-2.5",
-       2.05
+       2.0
       ],
       [
        "Casa -1.5",
-       2.25
+       2.3
       ],
       [
        "Fora +1.5",
-       1.571
+       1.556
       ]
      ]
     ],
@@ -21605,7 +21605,7 @@
       ],
       [
        "-2.5",
-       2.05
+       2.0
       ],
       [
        "+3.5",
@@ -21635,7 +21635,7 @@
      [
       [
        "Fav. -1.5",
-       2.25
+       2.3
       ],
       [
        "Fav. -1",
@@ -21655,7 +21655,7 @@
       ],
       [
        "Az. +1.5",
-       1.57
+       1.56
       ]
      ]
     ],
@@ -21758,10 +21758,10 @@
     "odd_fora": 7,
     "linha_gols": 2.5,
     "odd_over": 1.8,
-    "odd_under": 2.05,
+    "odd_under": 2,
     "handicap_casa": -1.5,
-    "odd_hcp_casa": 2.25,
-    "odd_hcp_fora": 1.571,
+    "odd_hcp_casa": 2.3,
+    "odd_hcp_fora": 1.556,
     "abre_casa": 1.571,
     "abre_fora": 5.5,
     "espn_id": "401882805"
@@ -22150,11 +22150,11 @@
       ],
       [
        "+4.5",
-       1.909
+       1.833
       ],
       [
        "-4.5",
-       1.87
+       1.952
       ],
       [
        "Casa -3.5",
@@ -22162,7 +22162,7 @@
       ],
       [
        "Fora +3.5",
-       1.625
+       1.645
       ]
      ]
     ],
@@ -22369,11 +22369,11 @@
     "odd_empate": 12,
     "odd_fora": 19,
     "linha_gols": 4.5,
-    "odd_over": 1.909,
-    "odd_under": 1.87,
+    "odd_over": 1.833,
+    "odd_under": 1.952,
     "handicap_casa": -3.5,
     "odd_hcp_casa": 2.15,
-    "odd_hcp_fora": 1.625,
+    "odd_hcp_fora": 1.645,
     "abre_casa": 1.071,
     "abre_fora": 16,
     "espn_id": "401884736"
@@ -22448,7 +22448,7 @@
       ],
       [
        "X",
-       3.75
+       3.8
       ],
       [
        "2",
@@ -22456,15 +22456,15 @@
       ],
       [
        "+3.5",
-       1.87
+       1.8
       ],
       [
        "-3.5",
-       1.909
+       2.0
       ],
       [
        "Casa -0.5",
-       2.3
+       2.25
       ],
       [
        "Fora +0.5",
@@ -22481,7 +22481,7 @@
       ],
       [
        "X",
-       3.75
+       3.8
       ],
       [
        "2",
@@ -22527,11 +22527,11 @@
       ],
       [
        "+3.5",
-       1.87
+       1.8
       ],
       [
        "-3.5",
-       1.91
+       2.0
       ]
      ]
     ],
@@ -22561,7 +22561,7 @@
       ],
       [
        "Fav. -0.5",
-       2.3
+       2.25
       ],
       [
        "Az. +0.5",
@@ -22672,13 +22672,13 @@
    ],
    "real": {
     "odd_casa": 2.35,
-    "odd_empate": 3.75,
+    "odd_empate": 3.8,
     "odd_fora": 2.55,
     "linha_gols": 3.5,
-    "odd_over": 1.87,
-    "odd_under": 1.909,
+    "odd_over": 1.8,
+    "odd_under": 2,
     "handicap_casa": -0.5,
-    "odd_hcp_casa": 2.3,
+    "odd_hcp_casa": 2.25,
     "odd_hcp_fora": 1.556,
     "abre_casa": 2.35,
     "abre_fora": 2.4,
@@ -22733,11 +22733,11 @@
       ],
       [
        "X",
-       3.75
+       3.7
       ],
       [
        "2",
-       3.45
+       3.55
       ],
       [
        "+2.5",
@@ -22766,11 +22766,11 @@
       ],
       [
        "X",
-       3.75
+       3.7
       ],
       [
        "2",
-       3.45
+       3.55
       ]
      ]
     ],
@@ -22957,8 +22957,8 @@
    ],
    "real": {
     "odd_casa": 1.909,
-    "odd_empate": 3.75,
-    "odd_fora": 3.45,
+    "odd_empate": 3.7,
+    "odd_fora": 3.55,
     "linha_gols": 2.5,
     "odd_over": 1.588,
     "odd_under": 2.35,
@@ -129070,7 +129070,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 23.42,
    "estudo": true,
@@ -129092,7 +129092,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 23.42,
    "estudo": true,
@@ -129290,7 +129290,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 23.21,
    "estudo": true,
@@ -129312,7 +129312,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 21.8,
    "estudo": true,
@@ -129400,7 +129400,7 @@
    "market": "Resultado",
    "sel": "Internacional vence",
    "prob": 0.168,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 14.54,
    "estudo": true,
@@ -129422,7 +129422,7 @@
    "market": "Resultado",
    "sel": "Vitória vence",
    "prob": 0.3478,
-   "odd": 2.7,
+   "odd": 2.65,
    "odd_inicial": 2.7,
    "stake": 14.54,
    "estudo": true,
@@ -129488,7 +129488,7 @@
    "market": "Resultado",
    "sel": "Real Salt Lake vence",
    "prob": 0.2698,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 14.54,
    "estudo": true,
@@ -129532,7 +129532,7 @@
    "market": "Resultado",
    "sel": "Vitória vence",
    "prob": 0.3478,
-   "odd": 2.7,
+   "odd": 2.65,
    "odd_inicial": 2.7,
    "stake": 18.89,
    "estudo": true,
@@ -129598,7 +129598,7 @@
    "market": "Resultado",
    "sel": "Real Salt Lake vence",
    "prob": 0.2698,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 18.89,
    "estudo": true,
@@ -129642,7 +129642,7 @@
    "market": "Resultado",
    "sel": "Internacional vence",
    "prob": 0.168,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 15.65,
    "estudo": true,
@@ -129752,7 +129752,7 @@
    "market": "Resultado",
    "sel": "Empate",
    "prob": 0.2453,
-   "odd": 3.75,
+   "odd": 3.8,
    "odd_inicial": 3.75,
    "stake": 18.92,
    "estudo": true,
@@ -129840,7 +129840,7 @@
    "market": "Resultado",
    "sel": "Empate",
    "prob": 0.2453,
-   "odd": 3.75,
+   "odd": 3.8,
    "odd_inicial": 3.75,
    "stake": 19.01,
    "estudo": true,
@@ -129928,7 +129928,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 13.4,
    "estudo": true,
@@ -129950,7 +129950,7 @@
    "market": "Resultado",
    "sel": "Vitória vence",
    "prob": 0.3478,
-   "odd": 2.7,
+   "odd": 2.65,
    "odd_inicial": 2.7,
    "stake": 13.4,
    "estudo": true,
@@ -130104,7 +130104,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 18.8,
    "estudo": true,
@@ -130258,7 +130258,7 @@
    "market": "Resultado",
    "sel": "Internacional vence",
    "prob": 0.168,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 20.63,
    "estudo": true,
@@ -130280,7 +130280,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 20.63,
    "estudo": true,
@@ -130346,7 +130346,7 @@
    "market": "Resultado",
    "sel": "Real Salt Lake vence",
    "prob": 0.2698,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 20.63,
    "estudo": true,
@@ -130434,7 +130434,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 24.47,
    "estudo": true,
@@ -130456,7 +130456,7 @@
    "market": "Resultado",
    "sel": "Internacional vence",
    "prob": 0.168,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 20.06,
    "estudo": true,
@@ -130522,7 +130522,7 @@
    "market": "Resultado",
    "sel": "Real Salt Lake vence",
    "prob": 0.2698,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 20.06,
    "estudo": true,
@@ -131917,7 +131917,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 19.75,
    "estudo": true,
@@ -132078,7 +132078,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 19.75,
    "estudo": true,
@@ -132469,7 +132469,7 @@
    "market": "Total de gols",
    "sel": "Mais de 3.5",
    "prob": 0.3415,
-   "odd": 1.87,
+   "odd": 1.8,
    "odd_inicial": 1.87,
    "stake": 18.14,
    "estudo": true,
@@ -132653,7 +132653,7 @@
    "market": "Total de gols",
    "sel": "Mais de 4.5",
    "prob": 0.2182,
-   "odd": 1.91,
+   "odd": 1.83,
    "odd_inicial": 1.91,
    "stake": 18.89,
    "estudo": true,
@@ -132791,11 +132791,11 @@
    "market": "Total de gols",
    "sel": "Menos de 3.5",
    "prob": 0.6585,
-   "odd": 1.91,
+   "odd": 2.0,
    "odd_inicial": 1.91,
    "stake": 22.21,
    "estudo": true,
-   "z": -1.0,
+   "z": 0.85,
    "grade": null,
    "pts": null,
    "fonte": "DraftKings"
@@ -133021,7 +133021,7 @@
    "market": "Total de gols",
    "sel": "Menos de 4.5",
    "prob": 0.7818,
-   "odd": 1.87,
+   "odd": 1.95,
    "odd_inicial": 1.87,
    "stake": 19.14,
    "estudo": true,
@@ -133090,7 +133090,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 22.64,
    "estudo": true,
@@ -133251,7 +133251,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 22.64,
    "estudo": true,
@@ -133527,11 +133527,11 @@
    "market": "Total de gols",
    "sel": "Menos de 3.5",
    "prob": 0.6585,
-   "odd": 1.91,
+   "odd": 2.0,
    "odd_inicial": 1.91,
    "stake": 22.34,
    "estudo": true,
-   "z": -1.0,
+   "z": 0.85,
    "grade": null,
    "pts": null,
    "fonte": "DraftKings"
@@ -134378,7 +134378,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 21.21,
    "estudo": true,
@@ -136456,14 +136456,14 @@
    "market": "Handicap asiático",
    "sel": "Internacional +0.5",
    "prob": 0.4002,
-   "odd": 2.35,
+   "odd": 2.41,
    "odd_inicial": 2.35,
    "stake": 14.38,
    "estudo": true,
    "z": -0.85,
    "grade": null,
    "pts": null,
-   "fonte": "DraftKings"
+   "fonte": null
   },
   {
    "id": "garou|espn-401841317",
@@ -136479,14 +136479,14 @@
    "market": "Handicap asiático",
    "sel": "Vitória +0.5",
    "prob": 0.6278,
-   "odd": 1.5,
+   "odd": 1.56,
    "odd_inicial": 1.5,
    "stake": 14.38,
    "estudo": true,
    "z": 0.77,
    "grade": null,
    "pts": null,
-   "fonte": "DraftKings"
+   "fonte": null
   },
   {
    "id": "garou|espn-401841309",
@@ -136824,14 +136824,14 @@
    "market": "Handicap asiático",
    "sel": "Internacional +1.5",
    "prob": 0.6576,
-   "odd": 1.49,
+   "odd": 1.51,
    "odd_inicial": 1.49,
    "stake": 17.98,
    "estudo": true,
-   "z": 0.51,
+   "z": -1.15,
    "grade": null,
    "pts": null,
-   "fonte": null
+   "fonte": "DraftKings"
   },
   {
    "id": "king|espn-401841317",
@@ -136985,7 +136985,7 @@
    "market": "Handicap asiático",
    "sel": "Espanyol +1.5",
    "prob": 0.6123,
-   "odd": 1.57,
+   "odd": 1.56,
    "odd_inicial": 1.57,
    "stake": 17.98,
    "estudo": true,
@@ -144803,7 +144803,7 @@
    "market": "Resultado",
    "sel": "Empate",
    "prob": 0.2322,
-   "odd": 4.2,
+   "odd": 4.3,
    "odd_inicial": 4.2,
    "stake": 15.02,
    "estudo": true,
@@ -145193,7 +145193,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 20.0,
    "estudo": false,
@@ -145353,7 +145353,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 20.0,
    "estudo": false,
@@ -145535,7 +145535,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 10,
    "estudo": true,
@@ -145557,7 +145557,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 10,
    "estudo": true,
@@ -145711,7 +145711,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 179.57,
    "estudo": true,
@@ -145733,7 +145733,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 179.57,
    "estudo": true,
@@ -146423,7 +146423,7 @@
    "market": "Resultado",
    "sel": "Internacional vence",
    "prob": 0.168,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 12.39,
    "estudo": true,
@@ -146512,7 +146512,7 @@
    "market": "Handicap asiático",
    "sel": "FC Cologne +3.5",
    "prob": 0.7336,
-   "odd": 1.62,
+   "odd": 1.65,
    "odd_inicial": 1.62,
    "stake": 19.37,
    "estudo": true,
@@ -146535,7 +146535,7 @@
    "market": "Handicap asiático",
    "sel": "Espanyol +1.5",
    "prob": 0.6123,
-   "odd": 1.57,
+   "odd": 1.56,
    "odd_inicial": 1.57,
    "stake": 19.37,
    "estudo": true,
@@ -146558,14 +146558,14 @@
    "market": "Handicap asiático",
    "sel": "Vasco da Gama -0.5",
    "prob": 0.5998,
-   "odd": 1.54,
+   "odd": 1.63,
    "odd_inicial": 1.54,
    "stake": 18.08,
    "estudo": true,
    "z": null,
    "grade": null,
    "pts": null,
-   "fonte": "DraftKings"
+   "fonte": null
   },
   {
    "id": "rony|espn-401841309",
@@ -146604,7 +146604,7 @@
    "market": "Handicap asiático",
    "sel": "Orlando City SC -0.5",
    "prob": 0.3884,
-   "odd": 2.3,
+   "odd": 2.25,
    "odd_inicial": 2.3,
    "stake": 18.08,
    "estudo": true,
@@ -146696,7 +146696,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 22.48,
    "estudo": true,
@@ -146764,7 +146764,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 19.64,
    "estudo": true,
@@ -146854,7 +146854,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 21.62,
    "estudo": true,
@@ -147102,7 +147102,7 @@
    "market": "Resultado",
    "sel": "Empate",
    "prob": 0.2322,
-   "odd": 4.2,
+   "odd": 4.3,
    "odd_inicial": 4.2,
    "stake": 14.03,
    "estudo": true,
@@ -147168,7 +147168,7 @@
    "market": "Resultado",
    "sel": "Empate",
    "prob": 0.2453,
-   "odd": 3.75,
+   "odd": 3.8,
    "odd_inicial": 3.75,
    "stake": 14.03,
    "estudo": true,
@@ -147190,7 +147190,7 @@
    "market": "Resultado",
    "sel": "Real Salt Lake vence",
    "prob": 0.2698,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 14.03,
    "estudo": true,
@@ -149131,7 +149131,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 10.16,
    "estudo": true,
@@ -149504,7 +149504,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 9.94,
    "estudo": true,
@@ -149650,7 +149650,7 @@
    "market": "Resultado",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.3722,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 10.0,
    "estudo": true,
@@ -149691,7 +149691,7 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 10.0,
    "estudo": true,
@@ -149733,7 +149733,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 10.0,
    "estudo": true,
@@ -150025,7 +150025,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 24.24,
    "estudo": true,
@@ -150048,7 +150048,7 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 24.24,
    "estudo": true,
@@ -150071,12 +150071,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 9.81,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_kiki|espn-401841308|b",
@@ -150113,12 +150114,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 9.81,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_kiki|espn-401882805|b",
@@ -150155,12 +150157,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_gohan|espn-401841308|b",
@@ -150175,12 +150178,13 @@
    "market": "Resultado",
    "sel": "Vasco da Gama vence",
    "prob": 0.5998,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_tony|espn-401841308|a",
@@ -150196,12 +150200,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 10.18,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_tony|espn-401841308|b",
@@ -150238,12 +150243,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 10.18,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_tony|espn-401882805|b",
@@ -150280,12 +150286,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 9.98,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_daisy|espn-401841308|b",
@@ -150323,12 +150330,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 9.98,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_daisy|espn-401882805|b",
@@ -150366,12 +150374,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 9.81,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_rem|espn-401841308|b",
@@ -150410,12 +150419,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 9.81,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_rem|espn-401882805|b",
@@ -150454,12 +150464,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 9.98,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_mario|espn-401841308|b",
@@ -150497,12 +150508,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 9.98,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_tsubasa_mario|espn-401882805|b",
@@ -150560,12 +150572,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.1,
+   "odd": 2.15,
    "odd_inicial": 2.1,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsubasa|espn-401882805|a",
@@ -150601,12 +150614,13 @@
    "market": "Total de gols",
    "sel": "Menos de 2.5",
    "prob": 0.5311,
-   "odd": 2.05,
+   "odd": 2.0,
    "odd_inicial": 2.05,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_dumbledore|espn-401933555|a",
@@ -150647,7 +150661,8 @@
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tony|espn-401841308|a",
@@ -150764,12 +150779,13 @@
    "market": "Vencedor",
    "sel": "Internacional vence",
    "prob": 0.172,
-   "odd": 5.5,
+   "odd": 5.75,
    "odd_inicial": 5.5,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401841317|a",
@@ -150804,12 +150820,13 @@
    "market": "Vencedor",
    "sel": "Red Bull Bragantino vence",
    "prob": 0.376,
-   "odd": 2.5,
+   "odd": 2.6,
    "odd_inicial": 2.5,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401841309|a",
@@ -150849,7 +150866,8 @@
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401933535|a",
@@ -150889,7 +150907,8 @@
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401933555|a",
@@ -150924,12 +150943,13 @@
    "market": "Vencedor",
    "sel": "Real Salt Lake vence",
    "prob": 0.268,
-   "odd": 3.45,
+   "odd": 3.55,
    "odd_inicial": 3.45,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401884736|a",
@@ -150969,7 +150989,8 @@
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401876395|a",
@@ -151009,7 +151030,8 @@
    "stake": 10.0,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401882805|a",
@@ -151046,6 +151068,155 @@
    "prob": 0.137,
    "odd": 7.0,
    "odd_inicial": 7.0,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "hermione|espn-401841308",
+   "bettor": "hermione",
+   "game": "espn-401841308",
+   "day": "2026-11-19",
+   "kickoff": "2026-11-19T22:30:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 1.5
+   },
+   "market": "Handicap asiático",
+   "sel": "Internacional +1.5",
+   "prob": 0.6576,
+   "odd": 1.51,
+   "odd_inicial": 1.51,
+   "stake": 19.37,
+   "estudo": true,
+   "z": -1.15,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401841308|a",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401841308",
+   "day": "2026-11-19",
+   "kickoff": "2026-11-19T22:30:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 0.5",
+   "prob": 0.02,
+   "odd": 46.57,
+   "odd_inicial": 46.57,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401841308|b",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401841308",
+   "day": "2026-11-19",
+   "kickoff": "2026-11-19T22:30:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401882805|a",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401882805",
+   "day": "2026-11-20",
+   "kickoff": "2026-11-20T20:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 0.5",
+   "prob": 0.7254,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401882805|b",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401882805",
+   "day": "2026-11-20",
+   "kickoff": "2026-11-20T20:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.0,
+   "odd_inicial": 2.0,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_hansolo|espn-401841317|a",
+   "bettor": "fus_neo_hansolo",
+   "game": "espn-401841317",
+   "day": "2026-11-19",
+   "kickoff": "2026-11-19T22:30:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 0.5",
+   "prob": 0.02,
+   "odd": 46.57,
+   "odd_inicial": 46.57,
+   "stake": 10.0,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_hansolo|espn-401841317|b",
+   "bettor": "fus_neo_hansolo",
+   "game": "espn-401841317",
+   "day": "2026-11-19",
+   "kickoff": "2026-11-19T22:30:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Red Bull Bragantino vence",
+   "prob": 0.3722,
+   "odd": 2.6,
+   "odd_inicial": 2.6,
    "stake": 10.0,
    "estudo": true,
    "grade": null,
@@ -151220,6 +151391,28 @@
    "a": "smith",
    "b": "tsukishima",
    "regra": "Só entra nos jogos em que Agente Smith e Tsukishima apostariam ao mesmo tempo, e faz as duas apostas com R$ 10 cada."
+  },
+  {
+   "id": "fus_neo_tsubasa",
+   "nome": "Neora",
+   "origem": "Fusão de Neo e Tsubasa Ozora",
+   "estrategia": "Gol no 1º tempo + 50/50 pagando 2+",
+   "mercado": "Fusão",
+   "stake": "half",
+   "a": "neo",
+   "b": "tsubasa",
+   "regra": "Só entra nos jogos em que Neo e Tsubasa Ozora apostariam ao mesmo tempo, e faz as duas apostas com R$ 10 cada."
+  },
+  {
+   "id": "fus_neo_hansolo",
+   "nome": "Nelo",
+   "origem": "Fusão de Neo e Han Solo",
+   "estrategia": "Gol no 1º tempo + Visitante favorito",
+   "mercado": "Fusão",
+   "stake": "half",
+   "a": "neo",
+   "b": "hansolo",
+   "regra": "Só entra nos jogos em que Neo e Han Solo apostariam ao mesmo tempo, e faz as duas apostas com R$ 10 cada."
   }
  ]
 }

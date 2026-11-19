@@ -10,7 +10,7 @@ def sh(*a):
         print(r.stderr); raise SystemExit(f"falhou: {' '.join(a)}")
 def dump(n, o): json.dump(o, open(os.path.join(HERE, n), "w"), ensure_ascii=False)
 def main():
-    completo = datetime.datetime.now(ZoneInfo("Europe/Dublin")).hour == 12 or os.environ.get("COMPLETO") == "1"
+    completo = True  # roda uma vez por dia (meia-noite): sempre a atualização completa
     req = urllib.request.Request(URL, data=json.dumps({"completo": completo}).encode(), method="POST",
         headers={"apikey": KEY, "Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
     feed = json.load(urllib.request.urlopen(req, timeout=60))

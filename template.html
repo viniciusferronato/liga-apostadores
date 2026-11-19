@@ -1,0 +1,650 @@
+<title>Liga dos Apostadores</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: placar de estádio no topo, abas (ranking / jogos / apostadores), tabelas densas como boletim de apostas */
+:root{
+  --bg:#f2f3ee; --panel:#ffffff; --ink:#18201b; --muted:#5f6b63; --line:#d9ddd3;
+  --pitch:#1f5a3d; --pitch-soft:#e3eee6; --amber:#b9781a; --amber-soft:#f6ecd9;
+  --win:#1f7a46; --win-soft:#dcefe2; --loss:#b13a2c; --loss-soft:#f5dfdb; --push:#6b7280;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121814; --panel:#1a221d; --ink:#e6ebe5; --muted:#98a49b; --line:#2c3730;
+  --pitch:#5fbf8a; --pitch-soft:#203328; --amber:#e3a94a; --amber-soft:#33291a;
+  --win:#5fcf8e; --win-soft:#1d3426; --loss:#ef7f70; --loss-soft:#3a2220; --push:#9aa3ad; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121814; --panel:#1a221d; --ink:#e6ebe5; --muted:#98a49b; --line:#2c3730;
+  --pitch:#5fbf8a; --pitch-soft:#203328; --amber:#e3a94a; --amber-soft:#33291a;
+  --win:#5fcf8e; --win-soft:#1d3426; --loss:#ef7f70; --loss-soft:#3a2220; --push:#9aa3ad; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+header .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,7vw,52px);line-height:1;margin:6px 0 6px;letter-spacing:.01em;text-wrap:balance}
+.lede{color:var(--muted);max-width:62ch;margin:0}
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:18px 0}
+.board div{background:var(--panel);padding:12px 14px}
+.board b{display:block;font-family:var(--display);font-size:30px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.board span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+@media (max-width:560px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+nav{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
+nav a{font-family:var(--display);font-size:19px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:8px 12px;border-bottom:3px solid transparent;white-space:nowrap}
+nav a[aria-current="page"]{color:var(--pitch);border-color:var(--pitch)}
+nav a:focus-visible,button:focus-visible,select:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:10px;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:600}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:13px}
+.pos{font-family:var(--display);font-size:22px;font-weight:600;color:var(--muted);width:36px}
+tr.top .pos{color:var(--amber)}
+.who{font-weight:600}
+.src{font-size:12px;color:var(--muted)}
+.strat{font-size:13px}
+tr.bettor{cursor:pointer}
+tr.bettor:hover td{background:var(--pitch-soft)}
+tr.detail td{background:var(--bg);padding:10px 12px}
+.chip{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.chip.w{background:var(--win-soft);color:var(--win)} .chip.l{background:var(--loss-soft);color:var(--loss)}
+.chip.p{background:var(--amber-soft);color:var(--amber)} .chip.v{background:var(--line);color:var(--push)}
+.pts-pos{color:var(--win)} .pts-neg{color:var(--loss)}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.game{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.game .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:10px 0 8px}
+.match .t{font-family:var(--display);font-size:21px;font-weight:600;line-height:1.05}
+.match .t.a{text-align:right}
+.score{font-family:var(--display);font-size:30px;font-weight:700;padding:0 6px;font-variant-numeric:tabular-nums}
+.score.pend{color:var(--muted);font-size:18px}
+.probs{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--line)}
+.probs i{display:block}
+.legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+.xg{font-size:12px;color:var(--muted);margin:8px 0 10px}
+details summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--pitch)}
+.plist{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px;max-height:340px;overflow:auto}
+.plist li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center;font-size:13px;padding:4px 0;border-bottom:1px dashed var(--line)}
+.plist li .m{color:var(--muted);font-size:12px}
+.odd{font-family:var(--mono);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.card h3{font-family:var(--display);font-size:22px;margin:0;font-weight:600}
+.card .tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--pitch);margin:6px 0 4px}
+.card p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+select{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink)}
+.odds{display:grid;gap:8px;margin:8px 0 4px}
+.odds .grp{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px}
+.odds .row{display:flex;flex-wrap:wrap;gap:4px}
+.odds .o{display:flex;gap:6px;align-items:baseline;border:1px solid var(--line);border-radius:6px;padding:3px 7px;font-size:12px;background:var(--bg)}
+.odds .o b{font-family:var(--mono);font-weight:600;font-size:12px;color:var(--pitch)}
+.days{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.days button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.days button[aria-pressed="true"]{background:var(--pitch);border-color:var(--pitch);color:var(--panel)}
+.bank{font-family:var(--mono);font-size:13px;font-weight:600}
+.sync{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:14px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:13px}
+.sync .dot{width:8px;height:8px;border-radius:50%;background:var(--win);flex:none}
+.sync .dot.old{background:var(--amber)}
+.sync b{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.sync .sp{flex:1 1 auto}
+.sync button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--pitch);background:var(--pitch);color:var(--panel);border-radius:8px;padding:7px 12px;cursor:pointer}
+.sync button:disabled{opacity:.55;cursor:default}
+.sync .msg{flex-basis:100%;color:var(--muted);font-size:12px}
+.st{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:4px;margin-top:3px}
+.st.on{background:var(--win-soft);color:var(--win)} .st.off{background:var(--amber-soft);color:var(--amber)} .st.ctl{background:var(--line);color:var(--push)}
+.chip.e{background:transparent;border:1px dashed var(--line);color:var(--muted);font-weight:400}
+.diary{font-size:13px;margin:0 0 6px;max-width:75ch}
+.diary b{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--pitch);margin-right:4px}
+.segs{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0}
+.segs span{font-size:11px;border:1px solid var(--win);color:var(--win);border-radius:999px;padding:1px 7px}
+tr.detail td>*{max-width:calc(100vw - 58px)}
+@media (max-width:560px){#v-historico th:nth-child(3),#v-historico td:nth-child(3),#v-historico th:nth-child(5),#v-historico td:nth-child(5){display:none}}
+.hint{font-size:13px;color:var(--muted);margin:0 0 12px;max-width:75ch}
+.bar{display:inline-block;height:6px;border-radius:3px;vertical-align:middle;margin-left:6px}
+.tsum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.tsum div{background:var(--panel);padding:10px 12px}
+.tsum b{display:block;font-family:var(--display);font-size:24px;font-weight:600;line-height:1.05;font-variant-numeric:tabular-nums}
+.tsum span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tlist{display:grid;gap:12px}
+.tcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.thead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 14px;align-items:start}
+.trank{font-family:var(--display);font-size:40px;font-weight:700;line-height:.9;color:var(--muted);min-width:34px}
+.tcard.gold .trank{color:var(--amber)}
+.tcard h3{font-family:var(--display);font-size:24px;font-weight:600;margin:0;line-height:1.05}
+.tnums{text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.tnums b{display:block;font-family:var(--display);font-size:24px;font-weight:600;color:var(--win)}
+.tnums b.neg{color:var(--loss)}
+.tstats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:10px 0 2px}
+.tstats b{color:var(--ink);font-family:var(--mono);font-weight:600}
+.texp{font-size:14px;margin:10px 0 4px;max-width:75ch}
+.texp b,.twhy b{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--pitch);margin-right:4px}
+.twhy{font-size:13px;color:var(--muted);margin:6px 0 0;max-width:75ch}
+.tbets{margin-top:12px;border-top:1px solid var(--line)}
+.tbet{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.tbet:last-child{border-bottom:0}
+.tbet .g{font-weight:600}
+.tbet .k{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.tbet .r{text-align:right;font-family:var(--mono);font-size:12px;white-space:nowrap}
+.tbet .r b{display:block;font-size:13px;color:var(--amber)}
+.tnone{font-size:13px;color:var(--muted);padding:8px 0 0}
+.iday{font-family:var(--display);font-size:20px;font-weight:600;margin:16px 0 8px;text-transform:capitalize}
+.icard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.icard.f3{border-left-color:var(--win)} .icard.f2{border-left-color:var(--amber)}
+.icard .k{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.icard .g{font-weight:600;font-size:15px;margin-top:2px}
+.icard .bet{font-family:var(--display);font-size:22px;font-weight:600;line-height:1.1;margin:4px 0 2px;color:var(--pitch)}
+.icard .who{font-size:12px;color:var(--muted);font-weight:400;margin-top:4px}
+.icard .r{text-align:right;font-family:var(--mono);font-size:12px;white-space:nowrap}
+.icard .r b{display:block;font-family:var(--display);font-size:24px;font-weight:600;color:var(--ink)}
+.icard .warn{grid-column:1/-1;font-size:12px;color:var(--amber)}
+.dots{letter-spacing:2px;font-size:13px}
+@media (max-width:560px){.icard{grid-template-columns:minmax(0,1fr)}.icard .r{text-align:left;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}.icard .r b{display:inline}}
+.tdone{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+.tdone summary{font-size:13px}
+.tdone .tbet .r .chip{margin-bottom:2px}
+@media (max-width:560px){.thead{grid-template-columns:auto minmax(0,1fr)}.tnums{grid-column:1/-1;text-align:left;display:flex;gap:12px;align-items:baseline}.tnums b{display:inline}.tsum b{font-size:18px}.tsum div{padding:8px 10px}}
+.sh{font-family:var(--display);font-size:26px;font-weight:600;margin:0 0 6px}
+.st-t td:nth-child(2){font-size:13px;max-width:34ch}
+.st-t .v{font-family:var(--mono);font-size:12px;white-space:nowrap}
+.st-t .lic{font-size:12px;color:var(--muted);margin-top:4px;max-width:46ch}
+.smx{display:none}
+.lessons{margin-top:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.lessons h3{font-family:var(--display);font-size:20px;margin:0 0 6px;font-weight:600}
+.lessons ul{margin:0;padding-left:18px;font-size:14px;display:grid;gap:6px;max-width:80ch}
+.tod{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.tod.bad{color:var(--loss)}
+@media (max-width:560px){.st-t th:nth-child(2),.st-t td:nth-child(2){display:none}.st-t td,.st-t th{padding:8px 6px}.st-t td:first-child .src{display:none}.st-t .who{font-size:13px}.st-t td.num .src{display:none}.st-t td.num{font-size:11px}.lgx{display:none}.smx{display:inline!important}.st-t th .src{display:none}}
+.sarr{color:var(--pitch);font-size:11px}
+.note{font-size:12px;color:var(--muted);margin-top:18px;max-width:75ch}
+.note b{color:var(--ink)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow" id="stamp">Fantasy de estratégias de aposta</div>
+  <h1>Liga dos Apostadores</h1>
+  <p class="lede">Cada personagem segue uma única estratégia em jogos reais e começa com R$ 1.000 fictícios. No fim da semana a banca de cada um mostra qual método funciona.</p>
+  <div class="sync" role="status">
+    <span class="dot" id="sdot"></span>
+    <span>Atualizado <b id="slast">–</b></span>
+    <span>Próxima <b id="snext">–</b></span>
+    <span class="sp"></span>
+    <button type="button" id="sbtn">Atualizar agora</button>
+    <span class="msg" id="smsg" hidden></span>
+  </div>
+</header>
+<section class="board" id="board"></section>
+<nav>
+  <a href="#insights" data-v="insights">Insights</a>
+  <a href="#ranking" data-v="ranking">Ranking</a>
+  <a href="#top10" data-v="top10">Top 10</a>
+  <a href="#jogos" data-v="jogos">Jogos</a>
+  <a href="#apostadores" data-v="apostadores">Apostadores</a>
+  <a href="#historico" data-v="historico">Histórico</a>
+  <a href="#estudio" data-v="estudio">Estúdio</a>
+</nav>
+<main>
+  <section id="v-insights" hidden>
+    <p class="hint">O que uma pessoa sem estudo faria copiando os <b>10 melhores personagens</b> pela nota justa (aba Top 10): as apostas deles para os próximos jogos, juntas num lugar só. Para cada uma: o que apostar, a <b>odd mínima</b> para ainda valer a pena, quantos dos melhores concordam e quanto colocar numa banca pequena (1% a 3% por aposta, nunca mais). É treino de leitura, não recomendação: a amostra ao vivo ainda é pequena e aposta sempre tem risco.</p>
+    <div class="filters"><label for="ibank" class="src">Minha banca de treino</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="ibase" class="src">Base dos 10 melhores</label><select id="ibase"><option value="temporada" selected>Temporada atual</option><option value="dia">Hoje</option><option value="geral">Todos os tempos</option><option value="positivos">Todos com nota positiva</option></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="">Todas as apostas</option><option value="fortes">Só sinais fortes</option></select></div>
+    <div class="tsum" id="isum"></div>
+    <div id="ilist"></div>
+  </section>
+  <section id="v-ranking" hidden>
+    <div class="filters"><label for="fmk" class="src">Mercado</label><select id="fmk"></select><label for="flg" class="src">Liga</label><select id="flg"></select><label for="fper" class="src">Período</label><select id="fper"><option value="">Geral (desde o início)</option><option value="hoje">Hoje</option><option value="ontem">Ontem</option><option value="7d">Últimos 7 dias</option></select></div>
+    <div class="scroll"><table><thead><tr>
+      <th>#</th><th>Apostador</th><th>Estratégia</th><th class="num">Apostas</th><th class="num">Acertos</th><th class="num">Taxa</th><th class="num">Banca</th><th class="num">Lucro</th><th class="num">ROI</th>
+    </tr></thead><tbody id="rank"></tbody></table></div>
+    <p class="src" style="margin-top:8px">Toque num apostador para ver os palpites dele.</p>
+  </section>
+  <section id="v-top10" hidden>
+    <p class="hint">Os 10 melhores pela <b>nota por aposta</b>: quanto cada estratégia lucra a cada aposta do mesmo tamanho, juntando o teste em temporadas que ela nunca viu com os resultados ao vivo. Assim quem aposta 10% da banca não leva vantagem sobre quem aposta 1%. Os personagens de gestão de banca ficam de fora porque repetem a estratégia de outro. Em cada cartão aparecem as apostas com dinheiro para jogos que ainda não começaram e, logo abaixo, as que já terminaram, com placar e resultado. <b>Odd mínima</b>: a menor odd em que a aposta ainda vale, pelo lucro histórico do personagem naquela liga e faixa de odd. Se a casa baixar a odd abaixo dela, a vantagem acaba.</p>
+    <div class="days" id="tviews"><button type="button" data-v="temporada" aria-pressed="true">Temporada atual</button><button type="button" data-v="dia" aria-pressed="false">Hoje</button><button type="button" data-v="geral" aria-pressed="false">Todos os tempos</button></div>
+    <div class="tsum" id="tsum"></div>
+    <div class="tlist" id="tlist"></div>
+    <p class="src" style="margin-top:10px">Amostra ao vivo ainda pequena: um fim de semana bom não prova uma estratégia. Por isso cada cartão mostra também o teste em temporadas que o personagem nunca viu.</p>
+  </section>
+  <section id="v-jogos" hidden><div class="days" id="days"></div><div class="games" id="games"></div></section>
+  <section id="v-apostadores" hidden><div class="cards" id="cards"></div></section>
+  <section id="v-historico" hidden>
+    <p class="hint">Cada estratégia rodou em cerca de 9.400 jogos de Premier League, La Liga, Serie A, Bundesliga e Ligue 1 (2021 a 2026), com odds calibradas pela frequência real. Os personagens aprenderam só com 2021 a 2025 e foram testados em 2025 a 2027, temporadas que nunca viram. A coluna <b>Aprendendo</b> mostra o ROI quando eles apostam apenas nas ligas e faixas de odd onde provaram lucro.</p>
+    <div class="filters"><label for="hord" class="src">Ordenar por</label><select id="hord"><option value="com">Aprendendo (teste)</option><option value="sem">Sem aprender (teste)</option><option value="roi">ROI 5 temporadas</option></select></div>
+    <div class="scroll"><table><thead><tr>
+      <th>#</th><th>Apostador</th><th class="num">Apostas</th><th class="num">ROI 2021–27</th><th class="num">Banca simulada</th><th class="num">Teste sem aprender</th><th class="num">Teste aprendendo</th>
+    </tr></thead><tbody id="hist"></tbody></table></div>
+    <p class="src" style="margin-top:8px">* Mercado sem odd real nem calibrada (preço de modelo): o lucro pode ser erro de preço, por isso esses personagens só estudam ao vivo. Banca simulada: R$ 1.000 apostando R$ 20 por palpite em todas as temporadas.</p>
+  </section>
+  <section id="v-estudio" hidden>
+    <h2 class="sh">Tênis · primeiro estudo</h2>
+    <p class="hint">17 personagens novos rodaram em 68 mil partidas da ATP e da WTA (2013 a 2026), com a odd real da Bet365 e o preço justo da Pinnacle. Cada um testou de 4 a 8 versões da própria regra (é o "não deu com 50%, tenta 55%"), escolheu a melhor olhando só 2014–2021 e foi julgado em 2022–2026, anos que não viu. Apostar em todos os jogos perde 7,4%; só sobrevive quem tem vantagem de verdade.</p>
+    <div class="scroll"><table class="st-t"><thead><tr>
+      <th>Personagem</th><th>Regra</th><th class="num"><span class="lgx">Versão inicial</span><span class="smx">Antes</span><div class="src">treino → teste</div></th><th class="num"><span class="lgx">Depois de estudar</span><span class="smx">Depois</span><div class="src">treino → teste</div></th>
+    </tr></thead><tbody id="tenis"></tbody></table></div>
+    <p class="src" style="margin-top:8px">Treino = 2014–2021. Teste = 2022–2026, anos que ele não viu. Lucro por aposta de mesmo tamanho. Ao vivo ainda não há odd real de tênis grátis, então esses personagens só estudam até ligarmos uma fonte de odds.</p>
+    <div class="lessons">
+      <h3>O que o estudo ensinou</h3>
+      <ul>
+        <li><b>A ideia do LoL deu +15% no teste, mas está sob suspeita.</b> O "50%" vem do fechamento da Pinnacle; se a odd da Bet365 no arquivo é de antes, a Natsu está vendo o futuro. O teste do futebol (abaixo) indica que é isso.</li>
+        <li><b>Odd boa no azarão é armadilha.</b> Quando a Bet365 paga mais que o justo no azarão, apostar perde de 9% a 23%. No favorito, ganha de 10% a 25%.</li>
+        <li><b>Estudar ajuda quando há motivo.</b> Natsu, Kikumaru, Oishi e Ryoma melhoraram ao estudar. Kaido e Momoshiro pioraram: acharam a versão que encaixava no passado, não a que entende o jogo.</li>
+        <li><b>Modelo próprio não bate o mercado sozinho.</b> Ei-chan e Inui, que confiam só no nosso Elo, perdem. A vantagem está em achar a casa que errou o preço.</li>
+      </ul>
+    </div>
+    <h2 class="sh" style="margin-top:28px">Futebol · 12 ligas</h2>
+    <p class="hint">13 personagens novos em cerca de 65 mil jogos (2017 a 2026): Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Championship, Eredivisie, Portugal, Brasileirão, Argentina, México e MLS. Mercados com odd real: resultado e mais/menos 2,5 gols, pela Bet365 e pela Pinnacle. Apostar em tudo perde de 5% (Championship) a 13% (Portugal). Treino até junho de 2022, teste depois.</p>
+    <div class="scroll"><table class="st-t"><thead><tr>
+      <th>Personagem</th><th>Regra</th><th class="num"><span class="lgx">Versão inicial</span><span class="smx">Antes</span><div class="src">treino → teste</div></th><th class="num"><span class="lgx">Depois de estudar</span><span class="smx">Depois</span><div class="src">treino → teste</div></th>
+    </tr></thead><tbody id="fut"></tbody></table></div>
+    <div class="lessons">
+      <h3>O que o futebol ensinou</h3>
+      <ul>
+        <li><b>O lucro está em pegar a odd antes do mercado corrigir.</b> O Rin, que pega a odd de dias antes quando ela já supera o fechamento, ganharia 6% a 16%. Ninguém sabe o fechamento na hora; o trabalho dos personagens é prever para onde a odd vai.</li>
+        <li><b>Comparar casas no mesmo instante não dá vantagem.</b> Isagi e Bachira, que olham Bet365 e Pinnacle no fechamento, perdem no teste.</li>
+        <li><b>Odd alta sem valor é armadilha.</b> Acima de 3 perde 10%; acima de 7 perde 33%. As casas cobram mais margem nas zebras.</li>
+        <li><b>Diferença entre ligas é quase toda sorte.</b> O Kidou foi de +29% para −23% na Bundesliga e de −16% para +23% no Brasileirão. Por isso o aprendizado exige centenas de jogos antes de confiar numa liga.</li>
+        <li><b>Estudar demais engana.</b> O Nagi escolheu a régua com +22% em poucos jogos e afundou. Régua boa precisa de amostra grande.</li>
+      </ul>
+    </div>
+    <h2 class="sh" style="margin-top:28px">NBA e NFL</h2>
+    <p class="hint">21 personagens de Slam Dunk, Kuroko no Basket e Eyeshield 21 em cerca de 8.300 jogos da NBA (2019–20 a 2025–26) e 2.230 da NFL (2018 a 2025), com odds de fechamento de até 20 casas americanas (DraftKings, Caesars, MGM, Bet365, Unibet…). Mercados: vitória, handicap e total de pontos. Apostar em tudo perde de 3% a 6%. Treino: NBA até 2022–23, NFL até 2022; teste depois. O "preço justo" é o consenso das casas.</p>
+    <h3 class="sh" style="font-size:20px">NBA</h3>
+    <div class="scroll"><table class="st-t"><thead><tr><th>Personagem</th><th>Regra</th><th class="num"><span class="lgx">Versão inicial</span><span class="smx">Antes</span><div class="src">treino → teste</div></th><th class="num"><span class="lgx">Depois de estudar</span><span class="smx">Depois</span><div class="src">treino → teste</div></th></tr></thead><tbody id="nba"></tbody></table></div>
+    <h3 class="sh" style="font-size:20px;margin-top:16px">NFL</h3>
+    <div class="scroll"><table class="st-t"><thead><tr><th>Personagem</th><th>Regra</th><th class="num"><span class="lgx">Versão inicial</span><span class="smx">Antes</span><div class="src">treino → teste</div></th><th class="num"><span class="lgx">Depois de estudar</span><span class="smx">Depois</span><div class="src">treino → teste</div></th></tr></thead><tbody id="nfl"></tbody></table></div>
+    <div class="lessons">
+      <h3>O que NBA e NFL ensinaram</h3>
+      <ul>
+        <li><b>Procurar a melhor odd é a única vantagem que se repetiu.</b> O Miyagi, que pega a melhor odd entre 10 a 20 casas, ficou positivo no treino (+6,4%) e no teste (+1,6%). No futebol o Kidou empatou. Quanto mais casas, melhor.</li>
+        <li><b>Seguir o dinheiro perde bem menos que ir contra.</b> Kuroko, que segue o movimento da linha, perde 0,6% a 2%; Kagami, que vai contra, perde 7% a 8%. O mesmo recado do Rin no futebol: a linha anda na direção certa.</li>
+        <li><b>Azarão de odd alta é o pior negócio também nos EUA.</b> O Sakuragi perde 10% a 17% no teste.</li>
+        <li><b>NFL tem jogos de menos.</b> São 285 por temporada; resultados de +20% ou +30% em 30 a 100 jogos (Sena, Kakei) são sorte. Por isso nada da NFL passou no filtro.</li>
+      </ul>
+    </div>
+    <p class="src" style="margin-top:10px">CS e LoL ainda sem fonte grátis de odds.</p>
+  </section>
+</main>
+<p class="note"><b>Banca:</b> todos começam com R$ 1.000. A aposta padrão é R$ 20; o grupo "Gestão de banca" testa outros tamanhos (1%, 5%, 10% da banca, Martingale, Fibonacci). Acertou, recebe stake × (odd − 1). Errou, perde a stake. Devolvida vale 0. <b>Odds:</b> o resultado 1X2 usa as probabilidades do Sportradar, as mesmas que aparecem nos mercados Kalshi e Polymarket. Escanteios, cartões, ambas marcam, gols de cada time e mercados de 1º tempo usam a frequência real de cada evento em cerca de 9.400 jogos (2021 a 2026), por liga e pela força do favorito, com 7% de margem. O resto sai de um modelo de Poisson com 6% de margem. Quando a DraftKings oferece o mesmo mercado (resultado, linha principal de gols ou handicap), vale a odd real dela, marcada com DK. <b>Homer</b> e <b>Patrick</b> apostam ao acaso e servem de régua. <b>Aprendizado:</b> cada personagem só arrisca dinheiro numa liga e faixa de odd onde o histórico mais os resultados ao vivo mostram lucro com evidência (pelo menos 40 jogos e lucro acima do que a sorte explicaria). Quanto mais forte a evidência, maior a aposta: R$ 10, R$ 20 ou R$ 40, nunca mais que 5% da banca. No resto, registra o palpite como <b>estudo</b>, sem dinheiro, e continua aprendendo. A cada jogo apurado, a evidência é refeita: quem passa a perder, para; quem começa a acertar, volta.</p>
+</div>
+
+<script>
+const DATA=/*DATA*/null;
+DATA.board.forEach(b=>{const h=b.hist;if(h&&!Array.isArray(h))b.hist=[h.n,h.roi,h.banca,h.val_sem,h.val_com,h.val_n]}); // aceita o resumo do backtest como lista ou objeto
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const games=Object.fromEntries(DATA.games.map(g=>[g.id,g]));
+const byB=Object.fromEntries(DATA.board.map(b=>[b.id,b]));
+const LG={la_liga:"La Liga",serie_a:"Serie A",ligue_1:"Ligue 1",mls:"MLS",bundesliga:"Bundesliga",epl:"Premier League",brasileirao:"Brasileirão",primeira:"Portugal",eredivisie:"Eredivisie",champions_league:"Champions League",nba:"NBA 🏀",nhl:"NHL 🏒",nfl:"NFL 🏈"};
+const brl=n=>"R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const sgn=n=>(n>0?"+":n<0?"−":"")+brl(Math.abs(n)).replace("R$ ","R$ ");
+const dayLbl=d=>{const [y,m,dd]=d.split("-");return new Date(Date.UTC(+y,+m-1,+dd,12)).toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",timeZone:"UTC"})};
+function chip(p){
+  if(p.estudo&&p.grade==null)return '<span class="chip e">estudo</span>';
+  if(p.estudo)return `<span class="chip e">estudo ${p.void?"–":p.grade>0?"✓":p.grade<0?"✗":"="}</span>`;
+  if(p.grade==null)return `<span class="chip p">${brl(p.stake)}</span>`;
+  if(p.void)return '<span class="chip v">anulada</span>';
+  if(p.grade>0)return `<span class="chip w">${p.grade<1?"½ ":""}${sgn(p.pts)}</span>`;
+  if(p.grade<0)return `<span class="chip l">${p.grade>-1?"½ ":""}${sgn(p.pts)}</span>`;
+  return '<span class="chip v">devolvida</span>';
+}
+function kick(iso){return new Date(iso).toLocaleString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}
+function gname(p){if(!p.game)return p.market;const g=games[p.game];return `${g.home_name} x ${g.away_name}`}
+function pickLi(p,who){return `<li><div>${esc(who)}<div class="m">${esc(p.game?p.market+": "+p.sel:p.sel)}</div></div><span class="odd">@${p.odd.toFixed(2)}${p.fonte==="DraftKings"?" DK":""}</span>${chip(p)}</li>`}
+
+// resumo
+const settled=DATA.picks.filter(p=>p.grade!=null&&!p.void).length;
+$("#stamp").textContent="Fim de semana "+DATA.days.map(dayLbl).join(" e ")+" · horário de Dublin";
+const ranked=[...DATA.board].sort((a,b)=>(b.banca-a.banca)||((b.taxa??-1)-(a.taxa??-1))||a.nome.localeCompare(b.nome));
+const leader=settled?ranked[0]:null;
+$("#board").innerHTML=[
+  [DATA.board.length,"apostadores"],[DATA.games.length,"jogos"],[DATA.board.filter(b=>b.status==="falido").length,"faliram"],
+  leader?[leader.nome,"líder · "+brl(leader.banca)]:[settled+" apurados","aguardando jogos"]
+].map(([v,l])=>`<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
+
+// ranking
+const mks=[...new Set(DATA.board.map(b=>b.mercado))].sort();
+$("#fmk").innerHTML='<option value="">Todos</option>'+mks.map(m=>`<option>${esc(m)}</option>`).join("");
+let open=null;
+const lgs=[...new Set(DATA.games.map(g=>g.league))];
+$("#flg").innerHTML='<option value="">Todas</option>'+lgs.map(l=>`<option value="${l}">${esc(LG[l]||l)}</option>`).join("");
+const dayD=iso=>new Date(iso).toLocaleDateString("sv-SE",{timeZone:"Europe/Dublin"});
+function inPer(p,per){
+  if(!per)return true;
+  const hoje=dayD(new Date().toISOString()), d=dayD(p.kickoff);
+  if(per==="hoje")return d===hoje;
+  if(per==="ontem")return d===dayD(new Date(Date.now()-864e5).toISOString());
+  return new Date(p.kickoff).getTime()>=Date.now()-7*864e5;
+}
+function statsFor(b,lg,per){
+  if(!lg&&!per)return b;
+  const ps=DATA.picks.filter(p=>p.bettor===b.id&&p.game&&(!lg||games[p.game].league===lg)&&inPer(p,per)&&p.stake>0);
+  const done=ps.filter(p=>p.grade!=null&&!p.void),w=done.filter(p=>p.grade>0).length,l=done.filter(p=>p.grade<0).length;
+  const lucro=done.reduce((s,p)=>s+p.pts,0),st=done.reduce((s,p)=>s+p.stake,0);
+  return {...b,apostas:ps.length,pendentes:ps.filter(p=>p.grade==null).length,apuradas:done.length,acertos:w,erros:l,
+    taxa:w+l?Math.round(w/(w+l)*100):null,lucro:Math.round(lucro*100)/100,banca:per?b.banca:DATA.banca+lucro,
+    emjogo:ps.filter(p=>p.grade==null).reduce((s,p)=>s+p.stake,0),roi:st?Math.round(lucro/st*1000)/10:null};
+}
+function rankRows(){
+  const f=$("#fmk").value, lg=$("#flg").value, per=$("#fper").value;
+  const base=DATA.board.map(b=>statsFor(b,lg,per)).filter(b=>!(lg||per)||b.apostas);
+  const order=[...base].sort((a,b)=>(per?(b.lucro-a.lucro):(b.banca-a.banca))||((b.taxa??-1)-(a.taxa??-1))||a.nome.localeCompare(b.nome));
+  const rows=order.filter(b=>!f||b.mercado===f);
+  if(!rows.length){$("#rank").innerHTML='<tr><td colspan="9" class="src" style="padding:16px">Nenhuma aposta com dinheiro nesse período. Sem jogos dos personagens nesse dia (pausa de seleções no futebol).</td></tr>';return}
+  $("#rank").innerHTML=rows.map((b,i)=>{
+    const pos=order.indexOf(b)+1;
+    const head=`<tr class="bettor ${pos<=3&&settled?"top":""}" data-id="${b.id}" tabindex="0">
+      <td class="pos">${pos}</td>
+      <td><div class="who">${esc(b.nome)}</div><div class="src">${esc(b.origem)}</div>${stTag(b)}</td>
+      <td><div class="strat">${esc(b.estrategia)}</div><div class="src">${esc(b.mercado)}</div></td>
+      <td class="num">${b.apostas}${b.pendentes?`<div class="src">${b.pendentes} pend.</div>`:""}</td>
+      <td class="num">${b.acertos}–${b.erros}</td>
+      <td class="num">${b.taxa==null?"–":b.taxa+"%"}</td>
+      <td class="num bank">${brl(b.banca)}${b.emjogo?`<div class="src">${brl(b.emjogo)} em jogo</div>`:""}</td>
+      <td class="num ${b.lucro>0?"pts-pos":b.lucro<0?"pts-neg":""}">${b.apuradas?sgn(b.lucro):"–"}</td>
+      <td class="num">${b.roi==null?"–":(b.roi>0?"+":"")+b.roi+"%"}</td></tr>`;
+    if(open!==b.id)return head;
+    const ps=DATA.picks.filter(p=>p.bettor===b.id&&(!lg||(p.game&&games[p.game].league===lg))&&(!per||inPer(p,per))).sort((a,c)=>(a.kickoff||"").localeCompare(c.kickoff||""));
+    return head+`<tr class="detail"><td colspan="9"><p class="diary"><b>Diário</b>${esc(b.diario)}</p>${segs(b)}<div class="src" style="margin-bottom:6px">${esc(b.regra)}</div>
+      <ul class="plist">${ps.map(p=>pickLi(p,gname(p))).join("")||"<li>Nenhum jogo encaixou na regra ainda.</li>"}</ul></td></tr>`;
+  }).join("");
+}
+function stTag(b){return b.status==="apostando"?'<span class="st on">confiante</span>':b.status==="controle"?'<span class="st ctl">régua</span>':b.status==="falido"?'<span class="st off" style="background:#7f1d1d;color:#fff">☠ faliu</span>':'<span class="st off">testando 2%</span>'}
+function segs(b){return b.ativos&&b.ativos.length?`<div class="segs">${b.ativos.map(a=>`<span>${esc(a)}</span>`).join("")}</div>`:""}
+function toggle(tr){open=open===tr.dataset.id?null:tr.dataset.id;rankRows()}
+$("#rank").addEventListener("click",e=>{const tr=e.target.closest("tr.bettor");if(tr)toggle(tr)});
+$("#rank").addEventListener("keydown",e=>{if(e.key==="Enter"){const tr=e.target.closest("tr.bettor");if(tr)toggle(tr)}});
+$("#fmk").addEventListener("change",rankRows);
+$("#flg").addEventListener("change",rankRows);$("#fper").addEventListener("change",rankRows);
+rankRows();
+
+// jogos
+const SEASON="2026-08-01";
+const dublinDay=iso=>new Date(iso).toLocaleDateString("sv-SE",{timeZone:"Europe/Dublin"});
+const HOJE=()=>dublinDay(new Date().toISOString());
+const CUT=dublinDay(new Date(Date.now()-6*864e5));
+const diasVisiveis=()=>DATA.days.filter(d=>d>=CUT);
+let TV="temporada", IV="temporada";
+function inView(p,v){return v==="geral"||(v==="temporada"?(p.kickoff||"")>=SEASON:dublinDay(p.kickoff)===HOJE())}
+function viewStats(b,v){
+  const ps=DATA.picks.filter(p=>p.bettor===b.id&&p.stake>0&&inView(p,v)), done=ps.filter(p=>p.grade!=null&&!p.void);
+  const u=done.reduce((s,p)=>s+unit(p),0), lucro=done.reduce((s,p)=>s+(p.pts||0),0);
+  return {n:ps.length,done:done.length,nota:done.length?u/done.length*100:null,lucro:Math.round(lucro*100)/100};
+}
+function topView(v){
+  if(v==="geral")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome)).slice(0,10);
+  if(v==="positivos")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).filter(b=>b.N.nota>0).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome));
+  const need=v==="temporada"?5:0;
+  return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&!b.sem_preco).map(b=>{const s=viewStats(b,v);return {...b,hist:null,_v:s,N:{nota:s.nota,ln:s.done,vivo:s.nota,ganho:null,hn:0,H:0}}})
+    .filter(b=>b._v.n>0&&b._v.done>=need).sort((a,b)=>((b.N.nota??-1e9)-(a.N.nota??-1e9))||a.nome.localeCompare(b.nome)).slice(0,10);
+}
+let day=diasVisiveis().find(d=>DATA.games.some(g=>g.day===d&&g.status!=="final"))||diasVisiveis().slice(-1)[0];
+function dayBtns(){$("#days").innerHTML=diasVisiveis().map(d=>`<button type="button" data-d="${d}" aria-pressed="${d===day}">${dayLbl(d)} · ${DATA.games.filter(g=>g.day===d).length} jogos</button>`).join("")}
+$("#days").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;day=b.dataset.d;dayBtns();drawGames()});
+function drawGames(){
+  const gs=DATA.games.filter(g=>g.day===day).sort((a,b)=>a.kickoff.localeCompare(b.kickoff));
+  $("#games").innerHTML=gs.map(g=>{
+    const r=g.result, w=g.w, n=DATA.picks.filter(p=>p.game===g.id).length, fin=r&&g.status==="final";
+    const sc=fin?`<span class="score">${r.fh} – ${r.fa}</span>`:`<span class="score pend">vs</span>`;
+    const extra=fin?`Intervalo ${r.hh??"?"}–${r.ha??"?"} · Escanteios ${r.ch!=null?r.ch+r.ca:"?"} · Cartões ${r.cards??"?"}${r.stats?` · Posse ${r.stats.home.ball_possession??"?"}%–${r.stats.away.ball_possession??"?"}% · Chutes ${r.stats.home.shots_total??"?"}–${r.stats.away.shots_total??"?"} (no alvo ${r.stats.home.shots_on_target??"?"}–${r.stats.away.shots_on_target??"?"})`:""}`:`Modelo: ${g.model.lh} x ${g.model.la} gols esperados · ${g.model.esc} escanteios · ${g.model.cart} cartões`;
+    const odds=(g.odds||[]).map(([grp,items])=>`<div><div class="grp">${esc(grp)}</div><div class="row">${items.map(([l,o])=>`<span class="o">${esc(l)} <b>${o.toFixed(2)}</b></span>`).join("")}</div></div>`).join("");
+    return `<article class="game"><div class="meta"><span>${LG[g.league]||g.league}</span><span>${kick(g.kickoff)}</span></div>
+     <div class="match"><span class="t">${esc(g.home_name)}</span>${sc}<span class="t a">${esc(g.away_name)}</span></div>
+     <div class="probs" aria-label="Probabilidades"><i style="width:${w.home}%;background:var(--pitch)"></i><i style="width:${w.draw}%;background:var(--muted)"></i><i style="width:${w.away}%;background:var(--amber)"></i></div>
+     <div class="legend"><span>Casa ${w.home}%</span><span>Empate ${w.draw}%</span><span>Fora ${w.away}%</span></div>
+     <div class="xg">${extra}</div>
+     <details><summary>Odds do jogo</summary><div class="odds">${odds}</div></details>
+     <details data-g="${g.id}"><summary>${n} palpites neste jogo</summary><ul class="plist"></ul></details>
+    </article>`}).join("");
+}
+$("#games").addEventListener("toggle",e=>{const d=e.target;if(!d.dataset||!d.dataset.g||!d.open)return;const ul=d.querySelector("ul");if(ul.childElementCount)return;
+  ul.innerHTML=DATA.picks.filter(p=>p.game===d.dataset.g).map(p=>pickLi(p,byB[p.bettor].nome)).join("")},true);
+dayBtns();drawGames();
+
+// apostadores
+$("#cards").innerHTML=DATA.board.map(b=>`<div class="card"><h3>${esc(b.nome)}</h3><div class="src">${esc(b.origem)}</div>${stTag(b)}<div class="tag">${esc(b.estrategia)} · ${esc(b.mercado)}</div><p>${esc(b.regra)}</p><p class="diary" style="margin-top:8px"><b>Diário</b>${esc(b.diario)}</p>${segs(b)}</div>`).join("");
+
+// histórico
+const pc=v=>v==null?"–":(v>0?"+":v<0?"−":"")+Math.abs(v).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+"%";
+const cls=v=>v==null?"":v>0?"pts-pos":v<0?"pts-neg":"";
+function drawHist(){
+  const k=$("#hord").value, idx={com:4,sem:3,roi:1}[k];
+  const rows=DATA.board.filter(b=>b.hist).sort((a,b)=>((b.hist[idx]??-999)-(a.hist[idx]??-999))||(b.hist[1]-a.hist[1]));
+  $("#hist").innerHTML=rows.map((b,i)=>{const h=b.hist;return `<tr>
+    <td class="pos">${i+1}</td>
+    <td><div class="who">${esc(b.nome)}${b.sem_preco?" *":""}</div><div class="src">${esc(b.estrategia)}</div></td>
+    <td class="num">${h[0].toLocaleString("pt-BR")}</td>
+    <td class="num ${cls(h[1])}">${pc(h[1])}</td>
+    <td class="num">${h[2]>0?brl(h[2]):'<span class="pts-neg">quebrou</span>'}</td>
+    <td class="num ${cls(h[3])}">${pc(h[3])}</td>
+    <td class="num ${cls(h[4])}">${h[4]==null?'<span class="src">não achou onde apostar</span>':pc(h[4])+`<div class="src">${h[5]} apostas</div>`}</td></tr>`}).join("");
+}
+$("#hord").addEventListener("change",drawHist);drawHist();
+
+// top 10: os que mais lucraram ao vivo, entre os que já provaram onde apostar; só apostas com dinheiro em jogos futuros
+const EXPL={
+ goku:"Aposta na vitória de quem tem mais chance. Favorito ganha a maioria dos jogos, mas a odd costuma pagar pouco; o lucro só aparece onde as casas subestimam os grandes, como os favoritaços da La Liga.",
+ donald:"Mesma leitura do Goku (vitória do favorito), mas aposta 10% da banca atual em cada jogo. Cresce rápido quando acerta e encolhe rápido quando erra: é o teste de gestão agressiva.",
+ patinhas:"Mesma leitura do Goku (vitória do favorito), apostando só R$ 10. Lucra menos, mas aguenta qualquer sequência ruim.",
+ vegeta:"Só entra quando o favorito tem 65% ou mais de chance. Odd baixa, acerto alto; vive de favoritos muito claros na La Liga.",
+ piccolo:"Favorito com 55% ou mais. Meio-termo entre o Goku e o Vegeta.",
+ hansolo:"Visitante favorito. O público tende a superestimar o fator casa, então o time grande jogando fora às vezes paga mais do que deveria. Funcionou na Serie A, Bundesliga e La Liga.",
+ apollo:"Mandante favorito. Junta força do time com vantagem de jogar em casa; lucra nos favoritos fortes da La Liga.",
+ rocky:"Mandante em todo jogo. Sozinho perde dinheiro, mas aprendeu que na La Liga, com mandante muito favorito, a conta fecha.",
+ indiana:"Visitante em todo jogo. No geral perde, mas na Serie A o visitante forte tem pago acima do justo, e é só lá que ele arrisca.",
+ sherlock:"Olha os pontos por jogo na temporada e aposta em quem pontua mais, se a diferença passar de 0,4. Às vezes a tabela enxerga algo que a odd ainda não refletiu.",
+ gus:"Aposta no melhor colocado quando a distância na tabela passa de 12 posições. Na Serie A, esses jogos de topo contra fundo pagam um pouco acima do risco real.",
+ historia:"Menos de 3,5 cartões. Aprendeu que na Serie A os jogos com favorito claro e odd alta para poucos cartões rendem.",
+ lisa:"Favorito vence ou empata (dupla chance). Acerta muito e paga pouco; só vale nas ligas e faixas de odd em que o histórico mostrou sobra.",
+ mickey:"Dupla chance do favorito com stake Fibonacci: depois de cada erro sobe a aposta pela sequência 1, 1, 2, 3, 5…, ao acertar volta duas casas.",
+ maggie:"Mandante vence ou empata. Sobra lucro só quando a odd é bem baixa, em La Liga e Serie A.",
+ yoda:"Empate anula no favorito: ganha se o favorito vencer, devolve o dinheiro se empatar. Protege contra o resultado que mais derruba quem aposta em favorito.",
+ simba:"Empate anula no mandante que está na metade de cima da tabela. Funciona melhor na Bundesliga.",
+ obiwan:"Empate anula no visitante. Só arrisca onde o visitante historicamente paga bem: Serie A e Bundesliga.",
+ erwin:"Mandante cobra mais escanteios que o visitante. Quem joga em casa ataca mais e força mais escanteios, e as casas nem sempre cobram isso direito.",
+ daisy:"Visitante marca 2 gols ou mais. Encontrou valor em La Liga e Serie A, onde visitantes fortes marcam mais do que o preço sugere.",
+ sasha:"Menos de 4,5 cartões quando o favorito tem 70% ou mais: jogo resolvido cedo tem menos disputa e menos cartão.",
+ jean:"Menos de 4,5 cartões. Na Serie A os cartões caíram nas últimas temporadas e o preço demorou a acompanhar.",
+ lupin:"Pista que ele achou no histórico: os cartões caíram na Serie A. Aposta em menos de 4,5 cartões em todo jogo do campeonato italiano.",
+ videl:"Olha os cartões dos últimos 5 jogos dos dois times. Se somam 3,5 ou menos por jogo, aposta em menos de 3,5 cartões: times disciplinados seguem disciplinados.",
+ chichi:"O contrário da Videl: times que somam 5+ cartões por jogo nos últimos 5, aposta em mais de 4,5 cartões.",
+ tenshinhan:"Soma os escanteios a favor e contra dos dois times nos últimos 5 jogos. Se a conta der 11+, aposta em mais de 9,5; se der 8,5 ou menos, em menos de 9,5.",
+ kuririn:"Os dois times somam 10+ chutes no alvo por jogo nos últimos 5: aposta em mais de 2,5 gols.",
+ zenitsu:"Mais de 3,5 gols quando o modelo espera jogo aberto (2,9 gols ou mais). É o mais forte do histórico, sobretudo na Bundesliga e na Ligue 1.",
+ hinata:"Empate só em jogo muito parelho. Empates pagam 3 a 4 vezes o valor; na La Liga e na Serie A eles saem mais do que as casas cobram.",
+ shikamaru:"Empate em jogos equilibrados. Igual à Hinata, com filtro um pouco mais largo.",
+ tsunade:"Empate quando os dois times estão no meio da tabela e o jogo é parelho: times sem nada urgente em jogo aceitam o ponto.",
+ kurama:"Segue o dinheiro grande: quando a odd de um time cai 8% ou mais entre a abertura e o fechamento, aposta nele.",
+ estranho:"Caça valor comparando a odd da casa com a probabilidade de referência; aposta quando a casa paga 3% ou mais acima do justo.",
+ wanda:"Valor no over/under comparando várias casas. Ao vivo fica parada enquanto não temos odds de várias casas.",
+ satan:"Time embalado (2,2+ pontos por jogo nos últimos 5) contra time em crise (1,0 ou menos): vitória do embalado.",
+ frieza:"Regressão à média: favorito em fase ruim costuma ficar barato demais, então aposta nele.",
+ jack:"Múltipla do dia com todos os favoritos de 70% ou mais.",
+};
+const TENIS=[["nanjiro", "Nanjiro Echizen", "Prince of Tennis", "Favorito ou jogo 50/50 em que a Bet365 paga acima do preço justo da Pinnacle", "margem mínima", ".02", 13.2, 9.6, 186, ".02", 13.2, 9.6, 186, "Lucrou em 11 de 13 anos. Mas ⚠ suspeito: a odd da Pinnacle no arquivo é a de fechamento, e a da Bet365 pode ser de antes. No futebol, comparando as duas no mesmo momento, a vantagem some."], ["natsu", "Natsu Takasaki", "Baby Steps", "Jogo 50/50 (45% a 55%) com odd da Bet365 a partir de", "odd mínima", "2.10", 1.6, 2.7, 1070, "2.15", 7.6, 15.0, 211, "A ideia do LoL: 50/50 pagando mais que 2. Estudando, subiu a régua para 2,15 e o lucro triplicou. ⚠ Mesmo alerta do Nanjiro: pode estar usando o preço de fechamento sem saber, e some em 2026, quando falta a Pinnacle."], ["kikumaru", "Eiji Kikumaru", "Prince of Tennis", "Azarão na grama, com chance a partir de", "chance mínima", ".30", -7.2, -2.2, 1624, ".40", -1.0, 0.3, 797, "Grama tem saque forte e mais zebra. Só o azarão quase 50/50 empata."], ["oishi", "Shuichiro Oishi", "Prince of Tennis", "Favorito no saibro, com chance a partir de", "chance mínima", ".65", -3.2, -1.9, 2879, ".80", -1.0, -0.3, 886, "No saibro o favorito confirma mais. Quase empata quando ele é muito favorito."], ["ryoma", "Ryoma Echizen", "Prince of Tennis", "Favorito do mercado, com chance a partir de", "chance mínima", ".50", -5.3, -4.6, 21394, ".85", -0.9, -1.2, 1782, "Favoritaço perde menos que favorito comum: a casa cobra mais margem dos azarões."], ["tezuka", "Kunimitsu Tezuka", "Prince of Tennis", "Favorito em jogo melhor de 5 sets (Grand Slam masculino), a partir de", "chance mínima", ".70", -0.3, -1.9, 1172, ".70", -0.3, -1.9, 1172, "Em 5 sets o melhor jogador quase sempre vence, mas o mercado já sabe disso."], ["fuji", "Syusuke Fuji", "Prince of Tennis", "Azarão moderado, faixa de 15 pontos a partir de", "chance mínima", ".30", -6.6, -5.0, 10371, ".35", -4.4, -2.7, 10360, "Quanto mais perto de 50%, menos perde."], ["inui", "Sadaharu Inui", "Prince of Tennis", "Só olha o Elo (força calculada por piso), a partir de", "chance mínima", ".60", -4.7, -5.9, 14839, ".80", -2.8, -3.6, 3933, "Nosso Elo sozinho não bate o mercado."], ["atobe", "Keigo Atobe", "Prince of Tennis", "Favorito em semifinal e final, a partir de", "chance mínima", ".60", -4.6, -4.8, 1016, ".70", -3.3, -3.4, 481, "Fase final não muda nada."], ["yukimura", "Seiichi Yukimura", "Prince of Tennis", "Embalado: jogou muito nos últimos 14 dias contra quem jogou pouco, a partir de", "jogos", "4", -2.4, -3.9, 3555, "6", -1.3, -4.7, 697, "Ritmo de jogo não é vantagem que o mercado esqueça."], ["kawamura", "Takashi Kawamura", "Prince of Tennis", "Adversário cansado: jogou mais nos últimos 14 dias, diferença a partir de", "jogos", "3", -7.8, -6.4, 1862, "2", -7.7, -5.1, 3990, "Cansaço também já está no preço. Ele e o Yukimura discordam e os dois perdem."], ["momoshiro", "Takeshi Momoshiro", "Prince of Tennis", "Contra quem volta de pausa longa, dias parado a partir de", "dias", "60", -3.2, -5.8, 1296, "120", -0.3, -6.8, 535, "Treino bom e teste ruim: aprendeu o passado, não o tênis."], ["kaido", "Kaoru Kaidoh", "Prince of Tennis", "Especialista de piso: Elo do piso bem acima do geral, a partir de", "pontos de Elo", "100", -9.2, -5.9, 5543, "250", -6.1, -9.9, 742, "Estudar piorou: régua alta demais pega pouca amostra."], ["sanada", "Genichiro Sanada", "Prince of Tennis", "Azarão na 1ª rodada de torneio pequeno, a partir de", "chance mínima", ".30", -4.2, -9.0, 2168, ".35", -3.1, -9.4, 1757, "Zebra de 1ª rodada já é bem cobrada."], ["hiromi", "Hiromi Oka", "Ace wo Nerae!", "Ranking melhor que o do rival, mas azarão nas odds, diferença a partir de", "posições", "10", -10.3, -8.6, 3216, "1", -9.1, -7.7, 4346, "O ranking atrasa; a odd está certa."], ["eichan", "Ei-chan Maruo", "Baby Steps", "Quando o Elo vê mais chance que o mercado, diferença a partir de", "pontos", "5", -9.8, -10.2, 12483, "8", -9.7, -10.3, 8381, "Discordar do mercado com um modelo mais fraco que ele é caro."], ["kirihara", "Akaya Kirihara", "Prince of Tennis", "Zebra longa, chance abaixo de", "chance máxima", ".20", -23.8, -27.5, 3277, ".25", -20.7, -21.7, 5354, "Pior estratégia do tênis: a casa cobra caro nas zebras."]];
+const NBA=[["miyagi", "Ryota Miyagi", "Slam Dunk", "NBA · vitória com a melhor odd entre todas as casas, acima do justo do consenso", "margem mínima", ".02", 3.8, -4.8, 338, ".03", 6.4, 1.6, 249, "Único positivo nos dois períodos: procurar a melhor odd entre 10 a 20 casas americanas paga mais que o preço justo. Exige conta em várias casas."], ["murasakibara", "Murasakibara", "Kuroko no Basket", "NBA · mandante favoritaço cobrindo handicap de, no mínimo", "pontos", "10", -7.8, -2.2, 917, "13", -4.0, 2.7, 401, "Positivo só no teste. Pouca evidência."], ["kuroko", "Tetsuya Kuroko", "Kuroko no Basket", "NBA · segue o movimento do handicap da abertura ao fechamento, de no mínimo", "pontos", "1", null, -2.1, 2744, "1", null, -2.1, 2744, "Só há odd de abertura nas temporadas recentes, então ele não tem treino e não pôde estudar. Seguir o dinheiro perde pouco (com 2+ pontos de movimento, −0,6%); o Kagami, que vai contra, perde 7% a 8%."], ["rukawa", "Kaede Rukawa", "Slam Dunk", "NBA · favorito na vitória, com chance a partir de", "chance mínima", ".70", -6.3, -0.3, 535, ".85", -2.8, -3.3, 124, "Favorito perde pouco, mas não vira."], ["aomine", "Daiki Aomine", "Kuroko no Basket", "NBA · segue o movimento da linha de pontos, de no mínimo", "pontos", "1", null, -4.0, 3370, "1", null, -4.0, 3370, "Mesma lição do Kuroko, no total de pontos (com 3+ pontos de movimento, −1,8%)."], ["midorima", "Shintaro Midorima", "Kuroko no Basket", "NBA · menos pontos quando a linha passa de", "pontos", "235", -1.1, -6.8, 913, "235", -1.1, -6.8, 913, "Linha alta não é exagero do mercado."], ["akashi", "Seijuro Akashi", "Kuroko no Basket", "NBA · azarão recebendo handicap de, no mínimo", "pontos", "10", -1.1, -6.9, 917, "10", -1.1, -6.9, 917, "Azarão com muitos pontos de vantagem não compensa."], ["kise", "Ryota Kise", "Kuroko no Basket", "NBA · a ideia do LoL: jogo 50/50 com odd a partir de", "odd mínima", "2.00", -8.5, 1.6, 112, "1.95", -5.8, -4.4, 158, "Negativo no treino, positivo só no teste com poucos jogos: não dá para confiar."], ["kagami", "Taiga Kagami", "Kuroko no Basket", "NBA · vai contra o movimento do handicap, de no mínimo", "pontos", "1", null, -7.0, 2744, "1", null, -7.0, 2744, "Ir contra o dinheiro que move a linha é o pior caminho."], ["akagi", "Takenori Akagi", "Slam Dunk", "NBA · mandante azarão, com chance a partir de", "chance mínima", ".40", -11.3, -1.2, 178, ".20", -4.9, -19.4, 409, "Estudar piorou muito."], ["sakuragi", "Hanamichi Sakuragi", "Slam Dunk", "NBA · azarão na vitória, chance abaixo de", "chance máxima", ".30", 3.0, -17.1, 535, ".30", 3.0, -17.1, 535, "Odds altas de azarão: o pior do basquete no teste."], ["mitsui", "Hisashi Mitsui", "Slam Dunk", "NBA · odd de 2+ na DraftKings com valor pelo consenso", "odd mínima", "2.00", -17.5, 11.6, 60, "1.80", -16.0, 13.8, 62, "Treino muito negativo, teste positivo com 60 jogos: resultado instável."]];
+const NFL=[["unsui", "Unsui Kongo", "Eyeshield 21", "NFL · azarão recebendo handicap de, no mínimo", "pontos", "7", -2.0, 0.3, 211, "3", 3.0, -5.6, 611, "O estudo escolheu 3 pontos e piorou; a versão de 7 empatou."], ["kurita", "Ryokan Kurita", "Eyeshield 21", "NFL · menos pontos quando a linha passa de", "pontos", "47", -0.1, -5.1, 230, "44", -0.1, -6.3, 452, "Empatou no treino, perdeu no teste."], ["monta", "Taro Raimon (Monta)", "Eyeshield 21", "NFL · favorito na vitória, a partir de", "chance mínima", ".70", -0.6, -8.0, 82, ".70", -0.6, -8.0, 82, "Poucos jogos por temporada na NFL: a amostra é pequena."], ["hiruma", "Yoichi Hiruma", "Eyeshield 21", "NFL · handicap exatamente nos números-chave (3 e 7 pontos)", "pontos", "3", 7.4, -6.9, 67, "3", 7.4, -6.9, 67, "Os números-chave já são bem cobrados."], ["shin", "Seijuro Shin", "Eyeshield 21", "NFL · segue o movimento do handicap, de no mínimo", "pontos", "1", null, -4.2, 454, "1", null, -4.2, 454, "Na NFL seguir o movimento não ajudou."], ["agon", "Agon Kongo", "Eyeshield 21", "NFL · vai contra o movimento do handicap", "pontos", "1", null, -5.0, 454, "1", null, -5.0, 454, "Também perde."], ["sena", "Sena Kobayakawa", "Eyeshield 21", "NFL · azarão na vitória, chance abaixo de", "chance máxima", ".30", -18.1, 7.4, 82, ".20", -0.9, 29.8, 30, "+30% em 30 jogos é sorte, não estratégia."], ["kakei", "Shun Kakei", "Eyeshield 21", "NFL · melhor odd entre as casas, acima do justo", "margem mínima", ".02", -24.0, 8.5, 55, ".00", -8.2, 19.9, 105, "Na NFL há menos casas por jogo nas temporadas antigas; resultado instável."], ["yamato", "Takeru Yamato", "Eyeshield 21", "NFL · odd de 2+ na DraftKings com valor pelo consenso", "odd mínima", "2.00", -53.3, -21.2, 20, "2.00", -53.3, -21.2, 20, "Quando só a DraftKings paga mais que todas as outras, ela costuma saber de algo."]];
+const FUT=[["rin", "Rin Itoshi", "Blue Lock", "Pega a odd da Bet365 de dias antes quando ela já está acima do preço justo de fechamento da Pinnacle", "margem mínima", ".03", 8.4, 5.6, 4803, ".08", 20.6, 15.8, 1451, "Vidente: usa o preço de fechamento, que ninguém conhece na hora de apostar. Não é estratégia, é a régua: mostra quanto vale pegar a odd antes do mercado corrigir."], ["wakabayashi", "Genzo Wakabayashi", "Captain Tsubasa", "Favorito com chance a partir de", "chance mínima", ".60", -1.8, -1.2, 3485, ".60", -1.8, -1.2, 3485, "Favorito forte perde pouco; acima de 70% ficou positivo no teste (+1,1% a +1,7%), mas negativo no treino."], ["kidou", "Yuto Kidou", "Inazuma Eleven", "Pega a melhor odd entre todas as casas quando ela passa do justo da Pinnacle", "margem mínima", ".02", 2.5, 0.3, 13246, ".08", 7.2, 0.5, 2137, "Procurar a melhor odd do mercado já apaga quase toda a margem da casa: fica no zero a zero."], ["gouenji", "Shuuya Gouenji", "Inazuma Eleven", "Over 2,5 quando o mercado dá chance a partir de", "chance mínima", ".55", -4.2, -2.1, 3607, ".55", -4.2, -2.1, 3607, "Over muito provável perde menos que over comum."], ["bachira", "Meguru Bachira", "Blue Lock", "Favorito em que a Bet365 paga acima do justo da Pinnacle no fechamento", "margem mínima", ".02", 5.7, -14.8, 79, ".00", 5.9, -2.9, 209, "O mesmo achado do tênis, testado no fechamento das duas casas ao mesmo tempo: não se sustenta."], ["endou", "Mamoru Endou", "Inazuma Eleven", "Under 2,5 quando o mercado dá chance a partir de", "chance mínima", ".50", -3.9, -3.3, 4777, ".45", -3.7, -4.8, 6621, "Under já vem bem cobrado."], ["chigiri", "Hyoma Chigiri", "Blue Lock", "Visitante azarão, com chance a partir de", "chance mínima", ".30", -5.6, -4.1, 5261, ".40", -3.3, -4.2, 1764, "Quanto mais perto de 50%, menos perde, mas não vira."], ["hyuga", "Kojiro Hyuga", "Captain Tsubasa", "Odd alta e com valor pela Pinnacle, a partir de", "odd mínima", "3", 1.2, -3.1, 1273, "2", 1.7, -4.2, 1534, "Positivo no treino, negativo no teste: odd alta com valor aparente não segurou."], ["misaki", "Taro Misaki", "Captain Tsubasa", "Mandante com chance entre o valor e +15 pontos", "chance mínima", ".40", -2.4, -4.8, 5696, ".40", -2.4, -4.8, 5696, "Fator casa já está no preço."], ["tsubasa", "Tsubasa Ozora", "Captain Tsubasa", "A ideia do LoL nos gols: over/under 50/50 com odd a partir de", "odd mínima", "2.00", -6.1, -7.7, 2824, "1.90", -5.5, -5.0, 4928, "No futebol, o 50/50 pagando 2 é raro e quando aparece a casa sabe o que faz."], ["isagi", "Yoichi Isagi", "Blue Lock", "Qualquer lado em que a Bet365 paga acima do justo da Pinnacle no fechamento", "margem mínima", ".03", 5.1, -11.5, 564, ".08", 14.1, -13.0, 169, "Ótimo no treino, péssimo no teste: diferença entre casas no mesmo momento não é vantagem."], ["nagi", "Seishiro Nagi", "Blue Lock", "Empate em que a Bet365 paga acima do justo da Pinnacle", "margem mínima", ".03", 0.7, -0.4, 107, ".08", 22.3, -28.2, 13, "Exemplo de estudo errado: escolheu a régua com +22% em só 213 jogos e afundou. A versão mais simples (qualquer empate com valor) deu +8% em 606."], ["ishizaki", "Ryo Ishizaki", "Captain Tsubasa", "Qualquer odd a partir de, sem olhar valor", "odd mínima", "3", -8.9, -9.9, 30069, "2", -7.8, -8.7, 50081, "Odd alta sem valor é o pior negócio: acima de 5 perde 21%, acima de 7 perde 33%."]];
+function fmtP(u,v){return u.startsWith("chance")?Math.round(+v*100)+"%":u==="margem mínima"?"+"+Math.round(+v*100)+"%":u==="odd mínima"?(+v).toFixed(2).replace(".",","):v+" "+(String(v)==="1"&&u.endsWith("s")?u.replace(/s$/,""):u)}
+function drawStudy(sel,rows){
+  $(sel).innerHTML=rows.map(t=>{const [id,nome,orig,regra,u,p0,a0,b0,n0,p1,a1,b1,n1,lic]=t;
+    return `<tr><td><div class="who">${esc(nome)}</div><div class="src">${esc(orig)}</div></td><td>${esc(regra)}<div class="lic">${esc(lic)}</div></td>
+    <td class="num"><div class="v">${esc(fmtP(u,p0))}</div>${a0==null?'<span class="src">sem treino</span>':`<span class="${cls(a0)}">${pc(a0)}</span>`} → <b class="${cls(b0)}">${pc(b0)}</b><div class="src">${n0.toLocaleString("pt-BR")} no teste</div></td>
+    <td class="num"><div class="v">${esc(fmtP(u,p1))}</div>${a1==null?'<span class="src">sem treino</span>':`<span class="${cls(a1)}">${pc(a1)}</span>`} → <b class="${cls(b1)}">${pc(b1)}</b><div class="src">${n1.toLocaleString("pt-BR")} no teste</div></td></tr>`}).join("");
+}
+drawStudy("#tenis",TENIS);drawStudy("#fut",FUT);drawStudy("#nba",NBA);drawStudy("#nfl",NFL);
+// nota justa: lucro por aposta de mesmo tamanho (1 unidade), juntando o teste histórico e o ao vivo
+const BANDL=o=>o<1.5?"odd até 1,50":o<2?"odd 1,50–2,00":o<3?"odd 2,00–3,00":o<5?"odd 3,00–5,00":"odd 5,00+";
+function segRoi(b){const m={};for(const x of (b.diario||"").matchAll(/([A-Za-zÀ-ú' ]+?) com (odd [^(]+?) \(([+-]?\d+(?:\.\d+)?)% em/g))m[x[1].trim()+"|"+x[2].trim()]=+x[3]/100;return m}
+function oddMin(b,p){if(!p.game)return null;const g=games[p.game],r=segRoi(b)[(LG[g.league]||g.league)+"|"+BANDL(p.odd)];return r==null?null:p.odd/(1+r)}
+function unit(p){return p.grade>0?(p.odd-1)*p.grade:p.grade}
+function notaDe(b){
+  const ps=DATA.picks.filter(p=>p.bettor===b.id&&p.grade!=null&&!p.void);
+  const real=ps.filter(p=>p.stake>0), all=ps;
+  const lu=real.reduce((s,p)=>s+unit(p),0), ln=real.length;
+  const au=all.reduce((s,p)=>s+unit(p),0), an=all.length;
+  const h=b.hist, H=h?(h[4]??h[3]):0, hn=h?(h[4]!=null?(h[5]||0):Math.round(h[0]*.35)):0, K=60;
+  return {nota:(lu+H/100*hn-0.03*K)/(ln+hn+K)*100, hn, vivo:ln?lu/ln*100:null, ln, todos:an?au/an*100:null, an, ganho:(ln&&an)?lu/ln*100-au/an*100:null, H};
+}
+function doneBlock(b){
+  const ds=DATA.picks.filter(p=>p.bettor===b.id&&p.stake>0&&p.grade!=null&&inView(p,TV)).sort((a,c)=>(c.kickoff||"").localeCompare(a.kickoff||""));
+  if(!ds.length)return '<p class="tnone">Nenhuma aposta com dinheiro terminou ainda.</p>';
+  const w=ds.filter(p=>p.grade>0).length,l=ds.filter(p=>p.grade<0).length,lu=ds.reduce((s,p)=>s+(p.pts||0),0);
+  return `<details class="tdone"><summary>Apostas finalizadas · ${w} certas, ${l} erradas · <span class="${lu>0?"pts-pos":lu<0?"pts-neg":""}">${sgn(Math.round(lu*100)/100)}</span></summary>
+   <div class="tbets">${ds.map(p=>{const g=p.game?games[p.game]:null,r=g&&g.result;
+    const placar=r&&r.fh!=null?` · ${r.fh}–${r.fa}`:"";
+    return `<div class="tbet"><div><div class="k">${kick(p.kickoff)}${g?" · "+esc(LG[g.league]||g.league):""}${placar}</div><div class="g">${esc(gname(p))}</div><div>${esc(p.game?p.market+": "+p.sel:p.sel)}</div></div>
+     <div class="r">${chip(p)}<div class="src">${brl(p.stake)} @${p.odd.toFixed(2)}</div></div></div>`}).join("")}</div></details>`;
+}
+function drawTop(){
+  const now=Date.now();
+  const top=topView(TV);
+  const fut=b=>DATA.picks.filter(p=>p.bettor===b.id&&p.stake>0&&p.grade==null&&inView(p,TV)&&new Date(p.kickoff).getTime()>now).sort((a,c)=>a.kickoff.localeCompare(c.kickoff));
+  const all=top.flatMap(fut);
+  $("#tsum").innerHTML=[[all.length,"apostas agendadas"],[brl(all.reduce((s,p)=>s+p.stake,0)),"em jogo"],[brl(all.reduce((s,p)=>s+p.stake*p.odd,0)),"retorno se todas acertarem"]]
+    .map(([v,l])=>`<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
+  $("#tlist").innerHTML=top.map((b,i)=>{
+    const ps=fut(b), h=b.hist;
+    const bets=ps.length?`<div class="tbets">${ps.map(p=>{const g=p.game?games[p.game]:null;
+      return `<div class="tbet"><div><div class="k">${kick(p.kickoff)}${g?" · "+esc(LG[g.league]||g.league):""}</div><div class="g">${esc(gname(p))}</div><div>${esc(p.game?p.market+": "+p.sel:p.sel)}</div></div>
+      <div class="r"><b>${brl(p.stake)}</b>@${p.odd.toFixed(2)}${p.fonte==="DraftKings"?" DK":""}<div class="src">volta ${brl(p.stake*p.odd)}</div>${(m=>m?`<div class="tod">mínima ${m.toFixed(2)}</div>`:"")(oddMin(b,p))}</div></div>`}).join("")}</div>`
+      :`<p class="tnone">Nenhuma aposta agendada agora. Ele só entra quando um jogo cai numa das faixas em que confia; os próximos jogos chegam na rodada automática.</p>`;
+    return `<article class="tcard ${i<3?"gold":""}"><div class="thead"><span class="trank">${i+1}</span>
+      <div><h3>${esc(b.nome)}</h3><div class="src">${esc(b.origem)} · ${esc(b.estrategia)} · ${esc(b.mercado)}</div></div>
+      <div class="tnums"><b class="${b.N.nota<0?"neg":""}">${b.N.nota==null?"–":pc(Math.round(b.N.nota*10)/10)}</b>nota por aposta</div></div>
+      <div class="tstats">${TV==="geral"?`<span>Banca <b>${brl(b.banca)}</b> (${b.apuradas?sgn(b.lucro):"–"})</span>`:`<span>Lucro no período <b>${sgn(b._v.lucro)}</b> em ${b._v.n} apostas</span>`}${TV==="geral"?`<span>Ao vivo <b>${b.acertos}–${b.erros}</b>${b.N.ln?`, <b>${pc(Math.round(b.N.vivo*10)/10)}</b> por aposta`:""}</span>`:""}${b.clv_n?`<span title="Odd escolhida contra a odd de fechamento: positivo = pegou preço melhor que o mercado">CLV <b>${pc(b.clv)}</b> em ${b.clv_n} palpites</span>`:""}${b.N.ganho!=null?`<span>Aprender rendeu <b class="${cls(b.N.ganho)}">${pc(Math.round(b.N.ganho*10)/10)}</b> vs apostar em tudo</span>`:""}
+        ${h?`<span>Teste em temporadas novas <b>${pc(h[4]??h[3])}</b> em ~${b.N.hn.toLocaleString("pt-BR")} apostas${h[4]==null?" (sem filtro)":""}</span>`:""}</div>
+      <p class="texp"><b>Estratégia</b>${esc(EXPL[b.id]||b.regra)}</p>
+      <p class="twhy"><b>Por que confia</b>${esc(b.diario)}</p>${segs(b)}
+      ${bets}${doneBlock(b)}</article>`}).join("")||'<p class="tnone">Ninguém está apostando com dinheiro ainda.</p>';
+}
+$("#tviews").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;TV=b.dataset.v;document.querySelectorAll("#tviews button").forEach(x=>x.setAttribute("aria-pressed",x===b));drawTop()});
+drawTop();
+
+
+// insights: as próximas apostas dos 10 melhores, juntas por jogo e seleção
+function topTen(){return topView(IV)}
+function drawInsights(){
+  const now=Date.now(), bank=+$("#ibank").value, top=topTen(), M=new Map();
+  for(const b of top){
+    for(const p of DATA.picks){
+      if(p.bettor!==b.id||!(p.stake>0)||p.grade!=null||new Date(p.kickoff).getTime()<=now)continue;
+      const key=(p.game||p.id)+"|"+p.market+"|"+p.sel;
+      const x=M.get(key)||{p,who:[],mins:[],odds:[]};
+      x.who.push(b);x.odds.push(p.odd);const m=oddMin(b,p);if(m)x.mins.push(m);M.set(key,x);
+    }
+  }
+  // independência: personagens que historicamente escolhem quase sempre a mesma coisa contam como uma estratégia só
+  const KS=new Map();
+  const keys=id=>{if(!KS.has(id))KS.set(id,new Set(DATA.picks.filter(p=>p.bettor===id&&p.game).map(p=>p.game+"|"+p.market+"|"+p.sel)));return KS.get(id)};
+  const igual=(a,b)=>{const A=keys(a.id),B=keys(b.id),m=Math.min(A.size,B.size);if(!m)return false;let c=0;for(const k of A)if(B.has(k))c++;return c/m>0.6};
+  const grupos=who=>{const g=[];for(const b of who){const h=g.find(x=>x.some(o=>igual(o,b)));h?h.push(b):g.push([b])}return g.length};
+  let items=[...M.values()].map(x=>{
+    const nota=x.who.reduce((s,b)=>s+Math.max(0,b.N.nota??0),0)/x.who.length, n=x.who.length, ind=grupos(x.who);
+    const forca=ind>=3?3:ind>=2?2:1, pct=forca;
+    const odd=Math.max(...x.odds), min=x.mins.length?Math.max(...x.mins):null;
+    const rivais=new Set(DATA.picks.filter(q=>q.game&&q.game===x.p.game&&q.stake>0&&q.grade==null&&top.some(b=>b.id===q.bettor)&&!(q.market===x.p.market&&q.sel===x.p.sel)).map(q=>q.market+": "+q.sel));
+    const forte=ind>=3&&nota>0&&(min==null||odd>=min)&&new Date(x.p.kickoff).getTime()-now>=3*36e5;
+    return {...x,nota,n,ind,forte,forca,pct,odd,min,rivais:[...rivais]};
+  }).sort((a,c)=>a.p.kickoff.localeCompare(c.p.kickoff)||c.forca-a.forca);
+  const soFortes=$("#iforte").value==="fortes"; if(soFortes)items=items.filter(i=>i.forte);
+  const tot=items.reduce((s,i)=>s+bank*i.pct/100,0), fortes=items.filter(i=>i.forte).length;
+  $("#isum").innerHTML=[[items.length,"apostas sugeridas"],[fortes,"sinais fortes"],[brl(tot),"total na banca de "+brl(bank)]].map(([v,l])=>`<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
+  // já jogados: as apostas dos 10 melhores apuradas nos últimos 4 dias
+  const M2=new Map(), corte=now-4*864e5;
+  for(const b of top)for(const p of DATA.picks){
+    if(p.bettor!==b.id||!(p.stake>0)||p.grade==null||p.void||new Date(p.kickoff).getTime()<corte)continue;
+    const key=(p.game||p.id)+"|"+p.market+"|"+p.sel, x=M2.get(key)||{p,who:[],pct:0,ret:0};
+    x.who.push(b);M2.set(key,x);
+  }
+  const past=[...M2.values()].sort((a,c)=>c.p.kickoff.localeCompare(a.p.kickoff));
+  const pastHtml=past.length?`<div class="iday">Já jogados (últimos 4 dias)</div>`+past.map(x=>{
+    const f=x.who.length>=2?2:1, st=Math.max(1,Math.round(bank*f)/100), lucro=x.p.grade>0?st*(x.p.odd-1):-st;
+    return `<article class="icard"><div><div class="k">${kick(x.p.kickoff)}${x.p.game&&games[x.p.game]?" · "+esc(LG[games[x.p.game].league]||games[x.p.game].league):""}</div>
+      <div class="g">${esc(gname(x.p))}</div><div class="bet">${esc(x.p.game?x.p.market+": "+x.p.sel:x.p.sel)}</div>
+      <div class="who">${x.who.map(b=>esc(b.nome)).join(", ")}</div></div>
+      <div class="r">${chip(x.p)}<b class="${lucro>0?"pts-pos":"pts-neg"}">${sgn(Math.round(lucro*100)/100)}</b>${f}% da banca @${x.p.odd.toFixed(2)}</div></article>`}).join("")+`<p class="src">Resultado se você tivesse copiado, na sua banca de treino.</p>`:"";
+  window._pastHtml=pastHtml;
+  if(!items.length){$("#ilist").innerHTML=(soFortes?'<p class="tnone">Nenhum sinal forte agora: é preciso 3 estratégias independentes de acordo, odd acima da mínima e 3 horas de antecedência. Sem sinal forte, o certo é não apostar.</p>':'')+'<p class="tnone">Os melhores não têm apostas com dinheiro marcadas agora. Não há jogo futuro onde eles apostem (pausa de seleções no futebol; NBA/NHL/NFL só entram quando eles ganham nota).</p>'+pastHtml;return}
+  let day="";
+  $("#ilist").innerHTML=items.map(i=>{
+    const g=i.p.game?games[i.p.game]:null, d=new Date(i.p.kickoff).toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",timeZone:"Europe/Dublin"});
+    const head=d!==day?`<div class="iday">${esc(d)}</div>`:""; day=d;
+    const stake=Math.max(1,Math.round(bank*i.pct)/100);
+    return head+`<article class="icard f${i.forca}"><div>
+      <div class="k">${new Date(i.p.kickoff).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}${g?" · "+esc(LG[g.league]||g.league):""}</div>
+      <div class="g">${esc(gname(i.p))}</div>
+      <div class="bet">${esc(i.p.game?i.p.market+": "+i.p.sel:i.p.sel)}</div>
+      <div class="who"><span class="dots">${"●".repeat(i.forca)+"○".repeat(3-i.forca)}</span> ${i.forte?"<b>SINAL FORTE</b> · ":""}${i.n>1?i.n+" apoiam":"1 apoia"} (${i.ind} ${i.ind>1?"estratégias independentes":"estratégia independente"}): ${i.who.map(b=>esc(b.nome)+" ("+pc(Math.round(b.N.nota*10)/10)+")").join(", ")}</div>
+    </div>
+    <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd agora ${i.odd.toFixed(2)}${i.p.fonte==="DraftKings"?" DK":""}</div>${i.min?`<div class="tod">pegue a partir de ${i.min.toFixed(2)}</div>`:""}</div>
+    ${i.rivais.length?`<div class="warn">Neste jogo os melhores também apostam em: ${esc(i.rivais.join("; "))}. Confira se as apostas combinam antes de entrar nas duas.</div>`:""}
+    ${i.min&&i.odd<i.min?`<div class="warn">A odd está abaixo da mínima: pelo histórico, não vale a pena agora.</div>`:""}
+    </article>`}).join("")+`<p class="src" style="margin-top:8px">Força: ●●● quando 3 ou mais estratégias independentes concordam, ●●○ quando são 2, ●○○ quando é uma só. Personagens que historicamente escolhem quase sempre a mesma coisa contam como uma estratégia. Sinal forte: 3 independentes, nota média positiva, odd acima da mínima e pelo menos 3 horas até o jogo. Tamanho: 1%, 2% ou 3% da banca conforme a força, como os personagens fazem. Odd mínima: abaixo dela o histórico do personagem naquela liga e faixa de odd deixa de dar lucro.</p>`+pastHtml;
+}
+$("#ibank").addEventListener("change",drawInsights);$("#ibase").addEventListener("change",()=>{IV=$("#ibase").value;drawInsights()});$("#iforte").addEventListener("change",drawInsights);drawInsights();
+
+// setas para ordenar qualquer tabela (clique no título da coluna); a ordem escolhida se mantém quando a tabela é redesenhada
+(function(){
+  const num=t=>{const s=(t||"").replace(/R\$|%|\s/g,"").replace(/\./g,"").replace(",",".").replace("−","-").match(/-?\d+(\.\d+)?/);return s?parseFloat(s[0]):null};
+  function sortBody(tb){
+    const st=tb._sort;if(!st)return;tb._busy=true;
+    const rows=[...tb.children],groups=[];
+    for(const r of rows){if(r.classList.contains("detail")&&groups.length)groups[groups.length-1].push(r);else groups.push([r])}
+    groups.sort((a,b)=>{const x=a[0].children[st.i]?.innerText,y=b[0].children[st.i]?.innerText,nx=num(x),ny=num(y);
+      const c=(nx!=null&&ny!=null)?nx-ny:(x||"").localeCompare(y||"","pt");return st.dir*c});
+    for(const g of groups)for(const r of g)tb.appendChild(r);
+    if(tb._obs)tb._obs.takeRecords();tb._busy=false;
+  }
+  for(const tbl of document.querySelectorAll("table")){
+    const tb=tbl.tBodies[0];if(!tb)continue;
+    tbl.querySelectorAll("thead th").forEach((th,i)=>{
+      th.style.cursor="pointer";th.title="Ordenar";const ar=document.createElement("span");ar.className="sarr";ar.textContent=" ↕";th.appendChild(ar);
+      th.addEventListener("click",()=>{const d=tb._sort&&tb._sort.i===i?-tb._sort.dir:-1;tb._sort={i,dir:d};
+        tbl.querySelectorAll(".sarr").forEach(a=>a.textContent=" ↕");ar.textContent=d<0?" ↓":" ↑";sortBody(tb)});
+    });
+    tb._obs=new MutationObserver(()=>{if(!tb._busy)sortBody(tb)});tb._obs.observe(tb,{childList:true});
+  }
+})();
+function show(){const v=(location.hash||"#insights").slice(1);const ok=["insights","ranking","top10","jogos","apostadores","historico","estudio"].includes(v)?v:"insights";
+  for(const s of ["insights","ranking","top10","jogos","apostadores","historico","estudio"])$("#v-"+s).hidden=s!==ok;
+  document.querySelectorAll("nav a").forEach(a=>a.dataset.v===ok?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));}
+window.addEventListener("hashchange",show);show();
+
+// relógio de atualização
+(function(){
+  const TRIG="trig_017AYUz3rzTkdtVwkX8gWVbP", HOURS=[0,1,2,3,4,12,13,14,15,16,17,18,19,20,21,22,23], MIN=7;
+  const gen=DATA.gerado_em?new Date(DATA.gerado_em):null;
+  const dub=d=>{const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Dublin",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(d).map(x=>[x.type,x.value]));return {h:+p.hour,m:+p.minute}};
+  const hm=d=>d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"});
+  function nextRun(now){let t=new Date(now);t.setSeconds(0,0);for(let i=0;i<60*31;i++){t=new Date(t.getTime()+60000);const p=dub(t);if(p.m===MIN&&HOURS.includes(p.h))return t}return null}
+  function ago(ms){const m=Math.floor(ms/60000);if(m<1)return "agora";if(m<60)return "há "+m+" min";const h=Math.floor(m/60);return "há "+h+"h"+String(m%60).padStart(2,"0")}
+  function tick(){const now=Date.now();
+    if(gen){$("#slast").textContent=hm(gen)+" ("+ago(now-gen)+")";$("#sdot").classList.toggle("old",now-gen>75*60000)}
+    const n=nextRun(now);if(n){const s=Math.max(0,Math.round((n-now)/1000));$("#snext").textContent=hm(n)+" · em "+(s>=3600?Math.floor(s/3600)+"h ":"")+String(Math.floor(s%3600/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}}
+  tick();setInterval(tick,1000);
+  const btn=$("#sbtn"),msg=$("#smsg");let mcp=null;
+  const say=t=>{msg.textContent=t;msg.hidden=!t};
+  let until=0;try{until=+localStorage.getItem("liga_upd_until")||0}catch(e){}
+  if(until>Date.now()){btn.disabled=true;say("Atualização pedida há pouco. A página se atualiza sozinha quando terminar.")}
+  btn.addEventListener("click",async()=>{
+    if(!mcp){location.reload();return}
+    btn.disabled=true;say("Pedindo a atualização…");
+    try{
+      await mcp.callTool("Claude Code Remote","fire_trigger",{trigger_id:TRIG},{cache:false});
+      try{localStorage.setItem("liga_upd_until",String(Date.now()+10*60000))}catch(e){}
+      say("Atualização iniciada. Leva alguns minutos; a página se atualiza sozinha quando terminar.");
+    }catch(err){
+      const c=err&&err.code;btn.disabled=false;
+      if(c==="server_not_connected")say("Para atualizar daqui, adicione o conector Claude Code Remote em Configurações → Conectores no claude.ai.");
+      else if(c==="needs_reauth")say("Reconecte o Claude Code Remote em Configurações → Conectores no claude.ai e tente de novo.");
+      else if(c==="approval_required"||c==="consent_required")say("A atualização precisa da sua permissão. Toque em Atualizar agora e permita quando o claude.ai pedir.");
+      else if(c==="not_in_manifest"||c==="blocked_by_policy"){say("Atualizar por aqui não está disponível nesta conta. A atualização automática continua de hora em hora.");btn.textContent="Recarregar página";mcp=null}
+      else if(c==="tool_error")say("A tarefa agendada recusou o pedido: "+(err.message||"erro desconhecido"));
+      else if(c==="server_unavailable"||c==="upstream_error")say("Não deu para confirmar se a atualização começou. Espere alguns minutos antes de tentar de novo.");
+      else say("Não foi possível pedir a atualização agora. A automática continua de hora em hora.");
+    }
+  });
+  (window.claude&&window.claude.use?window.claude.use("mcp"):Promise.resolve(null)).then(m=>{mcp=m;if(!m)btn.textContent="Recarregar página"}).catch(()=>{btn.textContent="Recarregar página"});
+})();
+</script>

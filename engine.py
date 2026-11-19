@@ -761,7 +761,7 @@ def diario(st, bid):
     ao_vivo = sum(x["n"] - x["hn"] for x in T.values())
     if not at:
         quase = sorted(((k, x) for k, x in T.items() if x["n"] >= 20), key=lambda kx: -kx[1]["post"])[:1]
-        msg = "Nenhuma faixa dele deu lucro com evidência suficiente. Está em modo estudo: registra palpites sem dinheiro até encontrar onde vale."
+        msg = "Nenhuma faixa dele deu lucro com evidência suficiente. Está em modo teste: aposta 2% da banca atual dele, com dinheiro fictício, até encontrar onde vale."
         if quase:
             (lgk, b), x = quase[0]
             msg += f" A mais perto de virar: {LG_NOME.get(lgk, lgk)}, {BANDS[b]} ({x['roi']*100:+.1f}% em {x['n']} jogos)."

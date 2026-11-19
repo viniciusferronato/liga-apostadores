@@ -265,7 +265,7 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
     <p class="src" style="margin-top:10px">CS e LoL ainda sem fonte grátis de odds.</p>
   </section>
 </main>
-<p class="note"><b>Banca:</b> todos começam com R$ 1.000. A aposta padrão é R$ 20; o grupo "Gestão de banca" testa outros tamanhos (1%, 5%, 10% da banca, Martingale, Fibonacci). Acertou, recebe stake × (odd − 1). Errou, perde a stake. Devolvida vale 0. <b>Odds:</b> o resultado 1X2 usa as probabilidades do Sportradar, as mesmas que aparecem nos mercados Kalshi e Polymarket. Escanteios, cartões, ambas marcam, gols de cada time e mercados de 1º tempo usam a frequência real de cada evento em cerca de 9.400 jogos (2021 a 2026), por liga e pela força do favorito, com 7% de margem. O resto sai de um modelo de Poisson com 6% de margem. Quando a DraftKings oferece o mesmo mercado (resultado, linha principal de gols ou handicap), vale a odd real dela, marcada com DK. <b>Homer</b> e <b>Patrick</b> apostam ao acaso e servem de régua. <b>Aprendizado:</b> cada personagem só arrisca dinheiro numa liga e faixa de odd onde o histórico mais os resultados ao vivo mostram lucro com evidência (pelo menos 40 jogos e lucro acima do que a sorte explicaria). Quanto mais forte a evidência, maior a aposta: R$ 10, R$ 20 ou R$ 40, nunca mais que 5% da banca. No resto, registra o palpite como <b>estudo</b>, sem dinheiro, e continua aprendendo. A cada jogo apurado, a evidência é refeita: quem passa a perder, para; quem começa a acertar, volta.</p>
+<p class="note"><b>Banca:</b> todos começam com R$ 1.000. A aposta padrão é R$ 20; o grupo "Gestão de banca" testa outros tamanhos (1%, 5%, 10% da banca, Martingale, Fibonacci). Acertou, recebe stake × (odd − 1). Errou, perde a stake. Devolvida vale 0. <b>Odds:</b> o resultado 1X2 usa as probabilidades do Sportradar, as mesmas que aparecem nos mercados Kalshi e Polymarket. Escanteios, cartões, ambas marcam, gols de cada time e mercados de 1º tempo usam a frequência real de cada evento em cerca de 9.400 jogos (2021 a 2026), por liga e pela força do favorito, com 7% de margem. O resto sai de um modelo de Poisson com 6% de margem. Quando a DraftKings oferece o mesmo mercado (resultado, linha principal de gols ou handicap), vale a odd real dela, marcada com DK. <b>Homer</b> e <b>Patrick</b> apostam ao acaso e servem de régua. <b>Aprendizado:</b> cada personagem só arrisca dinheiro numa liga e faixa de odd onde o histórico mais os resultados ao vivo mostram lucro com evidência (pelo menos 40 jogos e lucro acima do que a sorte explicaria). Quanto mais forte a evidência, maior a aposta: R$ 10, R$ 20 ou R$ 40, nunca mais que 5% da banca. No resto, o palpite vai como <b>teste</b>: aposta 2% da banca atual do personagem, com dinheiro fictício, e a banca sobe ou desce com cada resultado. Esse dinheiro entra no ranking. A cada jogo apurado, a evidência é refeita: quem passa a perder, para; quem começa a acertar, volta.</p>
 </div>
 
 <script>
@@ -280,8 +280,8 @@ const brl=n=>"R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFrac
 const sgn=n=>(n>0?"+":n<0?"−":"")+brl(Math.abs(n)).replace("R$ ","R$ ");
 const dayLbl=d=>{const [y,m,dd]=d.split("-");return new Date(Date.UTC(+y,+m-1,+dd,12)).toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",timeZone:"UTC"})};
 function chip(p){
-  if(p.estudo&&p.grade==null)return '<span class="chip e">estudo</span>';
-  if(p.estudo)return `<span class="chip e">estudo ${p.void?"–":p.grade>0?"✓":p.grade<0?"✗":"="}</span>`;
+  if(p.estudo&&p.grade==null)return '<span class="chip e">teste</span>';
+  if(p.estudo)return `<span class="chip e">teste ${p.void?"–":p.grade>0?"✓":p.grade<0?"✗":"="}</span>`;
   if(p.grade==null)return `<span class="chip p">${brl(p.stake)}</span>`;
   if(p.void)return '<span class="chip v">anulada</span>';
   if(p.grade>0)return `<span class="chip w">${p.grade<1?"½ ":""}${sgn(p.pts)}</span>`;

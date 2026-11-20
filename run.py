@@ -30,7 +30,7 @@ def main():
     if novos: dump("jogos_novos.json", novos); sh("add-games", "jogos_novos.json")
     dump("supa_odds.json", feed["odds"]); sh("attach-odds", "supa_odds.json")
     dump("closing.json", feed["fech"]); sh("clv", "closing.json")
-    if completo: sh("auto-fuse")
+    if completo: sh("evolve")
     sh("fill"); sh("reprice"); sh("render")
     os.makedirs(os.path.join(HERE, "docs"), exist_ok=True)
     shutil.copy(os.path.join(HERE, "index.html"), os.path.join(HERE, "docs", "index.html"))

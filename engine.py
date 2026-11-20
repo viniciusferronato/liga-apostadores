@@ -929,7 +929,7 @@ def fill(now_iso):
                                 "grade": None, "pts": None})
             have.add(pid); added += 1
     for f in st.get("fusions", []):
-        if falido(st, f["id"]): continue
+        if f.get("tipo") == "conselho" or f.get("aposentado") or falido(st, f["id"]): continue
         for g in open_games:
             if sport_of(g) != "futebol": continue
             pa, pb = f"{f['id']}|{g['id']}|a", f"{f['id']}|{g['id']}|b"
@@ -966,6 +966,7 @@ def fill(now_iso):
                                 "legs": [{"game": g["id"], "spec": s} for g, s in legs], "market": f"Múltipla ({len(legs)} jogos)",
                                 "sel": sel, "prob": round(p, 4), "odd": round(min(odd, 500), 2), "odd_inicial": round(min(odd, 500), 2), "stake": stake, "estudo": not ativo, "grade": None, "pts": None})
             have.add(pid); added += 1
+    added += fill_conselhos(st, open_games, have)
     save(st); print(added, "palpites novos;", len(st["picks"]), "no total")
 
 def settle(path):
@@ -1179,6 +1180,141 @@ def _hist(h):
         return [h.get("n"), h.get("roi"), h.get("banca"), h.get("val_sem"), h.get("val_com"), h.get("val_n")]
     return h
 
+# ---------- laboratório: avalia, aposenta, funde e cria personagens novos sozinho a cada rodada ----------
+NOMES_NOVOS = ["Professor X", "Nick Fury", "Mestre Splinter", "Optimus Prime", "Mufasa", "Rafiki", "Senhor Miyagi", "Mestre Shifu",
+               "Geralt de Rívia", "Yennefer", "Ciri", "Kratos", "Lara Croft", "Cloud Strife", "Tifa", "Edward Elric", "Alphonse Elric",
+               "Roy Mustang", "Senku", "Kurisu Makise", "Okabe Rintaro", "Anya Forger", "Loid Forger", "Yor Forger", "Frieren", "Fern",
+               "Himmel", "Rimuru", "Gintoki", "Vash", "Major Kusanagi", "Chrollo", "Ezio Auditore", "Mestre Chefe", "Atreus", "Sephiroth"]
+COMPLETO_N = 60   # apostas ao vivo para julgar um personagem do laboratório
+
+def _unit(p): return (p["odd"] - 1) * p["grade"] if p["grade"] > 0 else p["grade"]
+
+def nota_justa(st, bid, before=None, _cache={}):
+    """Lucro por aposta de mesmo tamanho, puxado para −3% até ter amostra (histórico de 5 temporadas + ao vivo). Igual à aba Top 10."""
+    ps = [p for p in st["picks"] if p["bettor"] == bid and p["grade"] is not None and not p.get("void") and p.get("stake", 0) > 0
+          and (before is None or (p.get("kickoff") or "") < before)]
+    h = _hist(HISTORICO.get(bid)); H = (h[4] if h[4] is not None else h[3]) if h else 0
+    hn = (h[5] or 0) if h and h[4] is not None else (round(h[0] * .35) if h else 0)
+    return (sum(_unit(p) for p in ps) + H / 100 * hn - 0.03 * 60) / (len(ps) + hn + 60) * 100, len(ps)
+
+def todos(st): return [*B, *ACCAS, *st.get("fusions", [])]
+
+def ativo_lab(f): return not f.get("aposentado")
+
+def top_pool(st, k, before=None):
+    """Os k melhores pela nota justa, sem controles, sem preço de modelo puro e sem os conselhos (para não se copiarem)."""
+    sc = []
+    for b in todos(st):
+        if b["id"] in CONTROLES or b["id"] in SEM_PRECO or b.get("tipo") == "conselho" or not ativo_lab(b): continue
+        n, ln = nota_justa(st, b["id"], before)
+        if ln >= 5 and n > 0: sc.append((n, b["id"]))
+    return [i for _, i in sorted(sc, reverse=True)[:k]]
+
+def direcao(spec):
+    """Para onde a aposta aponta: linhas diferentes no mesmo sentido contam como a mesma ideia (menos de 3,5 e menos de 4,5 cartões)."""
+    t = spec["t"]
+    if t in ("1x2", "ml", "dnb", "dc", "ah", "win_nil"): return "resultado:" + spec["sel"]
+    if t == "htft": return "resultado:" + spec["ft"]
+    if t in ("ou", "ht_ou"): return "gols:" + ("mais" if spec["over"] else "menos")
+    if t == "team_ou": return f"gols_{spec['sel']}:" + ("mais" if spec["over"] else "menos")
+    if t == "cards_ou": return "cartoes:" + ("mais" if spec["over"] else "menos")
+    if t == "corners_ou": return "escanteios:" + ("mais" if spec["over"] else "menos")
+    if t in ("corners_1x2", "corners_ah"): return "escanteios_lado:" + spec["sel"]
+    if t == "team_corners": return f"escanteios_{spec['sel']}:" + ("mais" if spec["over"] else "menos")
+    if t in ("shots_ou", "sot_ou"): return "chutes:" + ("mais" if spec["over"] else "menos")
+    return json.dumps(spec, sort_keys=True)
+
+def _dirset(st, bid, _c={}):
+    k = (id(st), bid)
+    if k not in _c: _c[k] = {(p["game"], direcao(p["spec"])) for p in st["picks"] if p["bettor"] == bid and p.get("game") and p.get("spec")}
+    return _c[k]
+
+def _grupos(st, ids):
+    """Quantas estratégias de fato independentes: quem escolhe a mesma aposta em mais de 60% das vezes conta como uma."""
+    K = {i: _dirset(st, i) for i in ids}
+    gs = []
+    for i in ids:
+        for g in gs:
+            if any(min(len(K[i]), len(K[o])) and len(K[i] & K[o]) / min(len(K[i]), len(K[o])) > .6 for o in g): g.append(i); break
+        else: gs.append([i])
+    return len(gs)
+
+def conselho_entry(nome, pool, k, linha, piso, pai=None):
+    cid = f"cons_{pool}_{k}_{linha}_{str(piso).replace('.', '')}"
+    lt = "a linha mais segura (maior chance)" if linha == "segura" else "a linha que paga mais"
+    quem = f"um dos {pool} melhores (nota justa) aposta" if k == 1 else f"pelo menos {k} estratégias independentes entre os {pool} melhores (nota justa) apontam para o mesmo lado"
+    return {"id": cid, "nome": nome, "tipo": "conselho", "pool": pool, "k": k, "linha": linha, "piso": piso, "pai": pai, "stake": "flat",
+            "origem": "Laboratório · conselho" + (f" (mutação de {pai})" if pai else ""), "mercado": "Conselho", "estrategia": (f"Copia os {pool} melhores" if k == 1 else f"Consenso de {k}+ entre os {pool} melhores"),
+            "regra": f"Só aposta quando {quem} no jogo. Se há mais de uma linha no mesmo sentido, escolhe {lt}; num jogo, fica com o lado que mais gente apoia" + (f", com odd mínima {piso:.2f}" if piso > 1 else "") + "."}
+
+def evolve(now_iso):
+    st = load(); F = st.setdefault("fusions", []); dia = now_iso[:10]; log = []
+    # 1. aposenta quem já tem amostra e a nota justa ficou negativa (fusões e conselhos)
+    for f in F:
+        if not ativo_lab(f): continue
+        n, ln = nota_justa(st, f["id"])
+        if ln >= COMPLETO_N and n < -4.0:   # pior que apostar em tudo (margem da casa)
+            f["aposentado"] = dia; log.append(f"aposentado: {f['nome']} (nota {n:+.1f}% em {ln} apostas)")
+    ativos = [f for f in F if ativo_lab(f)]
+    # 2. conselhos iniciais (uma vez)
+    ids = {f["id"] for f in F}; usados = {b["nome"] for b in todos(st)}
+    for nome, pool, k, linha, piso in [("Professor X", 10, 1, "segura", 1.0), ("Nick Fury", 10, 2, "segura", 1.0), ("Mestre Splinter", 5, 1, "segura", 1.0)]:
+        e = conselho_entry(nome, pool, k, linha, piso)
+        if e["id"] not in ids: F.append(e); ids.add(e["id"]); usados.add(nome); log.append(f"criado: {nome} — {e['regra']}")
+    # 3. mutação: o melhor conselho com amostra gera um filho mudando um número (1 por rodada, no máximo 8 conselhos ativos)
+    cons = [f for f in F if f.get("tipo") == "conselho" and ativo_lab(f)]
+    julg = sorted(((nota_justa(st, f["id"]), f) for f in cons if nota_justa(st, f["id"])[1] >= 15), key=lambda x: -x[0][0])
+    if julg and julg[0][0][0] > 0 and len(cons) < 8:
+        pai = julg[0][1]; r = random.Random(dia + pai["id"])
+        for _ in range(12):
+            m = dict(pool=pai["pool"], k=pai["k"], linha=pai["linha"], piso=pai["piso"]); campo = r.choice(list(m))
+            m[campo] = r.choice({"pool": [5, 10, 15, 20, 30], "k": [1, 2, 3], "linha": ["segura", "valor"], "piso": [1.0, 1.3, 1.5, 1.7, 2.0]}[campo])
+            nome = next((x for x in NOMES_NOVOS if x not in usados), None)
+            e = conselho_entry(nome or f"Conselho {len(cons) + 1}", m["pool"], m["k"], m["linha"], m["piso"], pai=pai["nome"])
+            if e["id"] in ids or not nome: continue
+            F.append(e); ids.add(e["id"]); usados.add(nome); log.append(f"mutação: {nome} nasce de {pai['nome']} — {e['regra']}"); break
+    # 4. fusões: pais com nota justa positiva e mercados diferentes (máx. 2 por rodada, 20 ativas)
+    pool = [i for i in top_pool(st, 8) if i in BY]
+    fus_ativas = [f for f in F if f.get("tipo") != "conselho" and ativo_lab(f)]; made = 0
+    for i, a in enumerate(pool):
+        for b in pool[i + 1:]:
+            if made >= 2 or len(fus_ativas) >= 20: break
+            if BY[a]["mercado"] == BY[b]["mercado"] or f"fus_{a}_{b}" in ids or f"fus_{b}_{a}" in ids: continue
+            f = fusion_entry(a, b); F.append(f); ids.add(f["id"]); fus_ativas.append(f); made += 1
+            log.append(f"fusão: {f['nome']} = {BY[a]['nome']} + {BY[b]['nome']}")
+    st.setdefault("lab", []); st["lab"] = ([{"dia": dia, "msg": m} for m in log] + st["lab"])[:60]
+    save(st); print("\n".join(log) or "laboratório: nada novo hoje")
+
+def fill_conselhos(st, open_games, have):
+    added = 0; pools = {}
+    for f in st.get("fusions", []):
+        if f.get("tipo") != "conselho" or not ativo_lab(f) or falido(st, f["id"]): continue
+        if f["pool"] not in pools: pools[f["pool"]] = top_pool(st, f["pool"])
+        P = set(pools[f["pool"]])
+        for g in open_games:
+            pid = f"{f['id']}|{g['id']}"
+            if pid in have: continue
+            D = collections.defaultdict(list)
+            for p in st["picks"]:
+                if p.get("game") == g["id"] and p["bettor"] in P and p.get("spec") and p.get("stake", 0) > 0: D[direcao(p["spec"])].append(p)
+            best = None
+            for d, ps in D.items():
+                if _grupos(st, sorted({p["bettor"] for p in ps})) < f["k"]: continue
+                opts = [(price(g, p["spec"]), p) for p in ps]
+                opts = [x for x in opts if x[0][1] >= f["piso"]]
+                if not opts: continue
+                pick = max(opts, key=lambda x: x[0][0] if f["linha"] == "segura" else x[0][1])
+                quem = len({p["bettor"] for p in ps})
+                if best is None or quem > best[2]: best = (pick, d, quem)
+            if not best: continue
+            (prob, odd), p0 = best[0]
+            mult, z, ativo = decide(st, f["id"], g["league"], odd); stake = stake_of(st, f, mult, ativo)
+            st["picks"].append({"id": pid, "bettor": f["id"], "game": g["id"], "day": g["day"], "kickoff": g["kickoff"], "spec": p0["spec"],
+                                "market": p0["market"], "sel": p0["sel"], "prob": prob, "odd": odd, "odd_inicial": odd, "stake": stake,
+                                "estudo": not ativo, "z": round(z, 2) if z is not None else None, "grade": None, "pts": None, "apoio": best[2]})
+            have.add(pid); added += 1
+    return added
+
 def insight_track(st):
     """Quanto os Insights teriam rendido: a cada dia, o Top 10 pela nota justa usando só o que se sabia até a véspera."""
     unit = lambda p: (p["odd"] - 1) * p["grade"] if p["grade"] > 0 else p["grade"]
@@ -1199,10 +1335,11 @@ def insight_track(st):
         dias += 1; M = collections.defaultdict(list)
         for _, b in sc:
             for p in done[b]:
-                if p["day"] == d: M[(p.get("game") or p["id"], p["market"], p["sel"])].append(p)
+                if p["day"] == d: M[(p.get("game") or p["id"], direcao(p["spec"]) if p.get("spec") else p["market"] + p["sel"])].append(p)
         for v in M.values():
-            f = min(3, len(v)); R[f][0] += 1; R[f][1] += unit(v[0])
-            k = "confiante" if any(not p.get("estudo") for p in v) else "teste"; R.setdefault(k, [0, 0.0]); R[k][0] += 1; R[k][1] += unit(v[0])
+            pk = max(v, key=lambda p: p.get("prob") or 0)   # mesma direção: fica com a linha mais segura
+            f = min(3, len({p["bettor"] for p in v})); R[f][0] += 1; R[f][1] += unit(pk)
+            k = "confiante" if any(not p.get("estudo") for p in v) else "teste"; R.setdefault(k, [0, 0.0]); R[k][0] += 1; R[k][1] += unit(pk)
     out = {str(f): {"n": n, "roi": round(u / n * 100, 1) if n else None} for f, (n, u) in R.items()}
     tn = sum(R[f][0] for f in (1, 2, 3)); tu = sum(R[f][1] for f in (1, 2, 3))
     out["todas"] = {"n": tn, "roi": round(tu / tn * 100, 1) if tn else None}; out["dias"] = dias
@@ -1221,7 +1358,7 @@ def render():
         est_lu = sum(BASE * (p["odd"] - 1) * p["grade"] if p["grade"] > 0 else BASE * p["grade"] for p in est_done)
         T = seg_table(st, b["id"]) if b["id"] not in CONTROLES else {}
         ativos = [f"{LG_NOME.get(l, l)} · {BANDS[bb]}" for (l, bb), x in sorted(T.items(), key=lambda kx: -kx[1]["z"]) if x["ativo"]]
-        board.append({"status": "controle" if b["id"] in CONTROLES else ("falido" if BANCA + lucro < FALENCIA else ("apostando" if ativos else "estudando")),
+        board.append({"status": "controle" if b["id"] in CONTROLES else ("aposentado" if b.get("aposentado") else "falido" if BANCA + lucro < FALENCIA else ("apostando" if ativos else "estudando")),
                       "ativos": ativos[:6], "diario": diario(st, b["id"]), "hist": _hist(HISTORICO.get(b["id"])), "sem_preco": b["id"] in SEM_PRECO,
                       "estudo_n": len(est_done), "estudo_lucro": round(est_lu, 2),
                       "id": b["id"], "nome": b["nome"], "origem": b["origem"], "estrategia": b["estrategia"],
@@ -1233,7 +1370,7 @@ def render():
                       "taxa": round(wins / (wins + losses) * 100) if wins + losses else None,
                       "clv_n": len([p for p in ps if p.get("clv") is not None]),
                       "clv": round(sum(p["clv"] for p in ps if p.get("clv") is not None) / max(1, len([p for p in ps if p.get("clv") is not None])) * 100, 2)})
-    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA, "track": insight_track(st),
+    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA, "track": insight_track(st), "lab": st.get("lab", []),
             "gerado_em": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
     tpl = open(os.path.join(HERE, "template.html")).read()
     open(os.path.join(HERE, "index.html"), "w").write(tpl.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False, separators=(",", ":"))))
@@ -1253,3 +1390,4 @@ if __name__ == "__main__":
     elif c == "restake": restake(sys.argv[2] if len(sys.argv) > 2 else datetime.datetime.now(datetime.timezone.utc).isoformat())
     elif c == "fuse": fuse(sys.argv[2], sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else None)
     elif c == "auto-fuse": auto_fuse()
+    elif c == "evolve": evolve(sys.argv[2] if len(sys.argv) > 2 else datetime.datetime.now(datetime.timezone.utc).isoformat())

@@ -221,6 +221,7 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
     <p class="hint">Os 10 melhores pela <b>nota por aposta</b>: quanto cada estratégia lucra a cada aposta do mesmo tamanho, juntando o teste em temporadas que ela nunca viu com os resultados ao vivo. Assim quem aposta 10% da banca não leva vantagem sobre quem aposta 1%. Os personagens de gestão de banca ficam de fora porque repetem a estratégia de outro. Em cada cartão aparecem as apostas com dinheiro para jogos que ainda não começaram e, logo abaixo, as que já terminaram, com placar e resultado. <b>Odd mínima</b>: a menor odd em que a aposta ainda vale, pelo lucro histórico do personagem naquela liga e faixa de odd. Se a casa baixar a odd abaixo dela, a vantagem acaba.</p>
     <div class="tsum" id="tsum"></div>
     <div class="tlist" id="tlist"></div>
+    <div id="tlab"></div>
     <p class="src" style="margin-top:10px">Amostra ao vivo ainda pequena: um fim de semana bom não prova uma estratégia. Por isso cada cartão mostra também o teste em temporadas que o personagem nunca viu.</p>
   </section>
   <section id="v-jogos" hidden><div class="days" id="days"></div><div class="games" id="games"></div></section>
@@ -384,7 +385,7 @@ function rankRows(){
       <ul class="plist">${ps.map(p=>pickLi(p,gname(p))).join("")||"<li>Nenhum jogo encaixou na regra ainda.</li>"}</ul></td></tr>`;
   }).join("");
 }
-function stTag(b){return b.status==="apostando"?'<span class="st on">confiante</span>':b.status==="controle"?'<span class="st ctl">régua</span>':b.status==="falido"?'<span class="st off" style="background:#7f1d1d;color:#fff">☠ faliu</span>':'<span class="st off">testando 2%</span>'}
+function stTag(b){return b.status==="apostando"?'<span class="st on">confiante</span>':b.status==="controle"?'<span class="st ctl">régua</span>':b.status==="aposentado"?'<span class="st off">aposentado</span>':b.status==="falido"?'<span class="st off" style="background:#7f1d1d;color:#fff">☠ faliu</span>':'<span class="st off">testando 2%</span>'}
 function segs(b){return b.ativos&&b.ativos.length?`<div class="segs">${b.ativos.map(a=>`<span>${esc(a)}</span>`).join("")}</div>`:""}
 function toggle(tr){open=open===tr.dataset.id?null:tr.dataset.id;rankRows()}
 $("#rank").addEventListener("click",e=>{const tr=e.target.closest("tr.bettor");if(tr)toggle(tr)});
@@ -407,10 +408,10 @@ function viewStats(b,v){
   return {n:ps.length,done:done.length,nota:done.length?u/done.length*100:null,lucro:Math.round(lucro*100)/100};
 }
 function topView(v){
-  if(v==="geral")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome)).slice(0,10);
-  if(v==="positivos")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).filter(b=>b.N.nota>0).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome));
+  if(v==="geral")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="aposentado"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome)).slice(0,10);
+  if(v==="positivos")return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="aposentado"&&b.status!=="controle"&&b.apuradas>=5&&!b.sem_preco).map(b=>({...b,N:notaDe(b)})).filter(b=>b.N.nota>0).sort((a,b)=>(b.N.nota-a.N.nota)||a.nome.localeCompare(b.nome));
   const need=v==="temporada"?5:0;
-  return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="controle"&&!b.sem_preco).map(b=>{const s=viewStats(b,v);return {...b,hist:null,_v:s,N:{nota:s.nota,ln:s.done,vivo:s.nota,ganho:null,hn:0,H:0}}})
+  return DATA.board.filter(b=>b.status!=="falido"&&b.status!=="aposentado"&&b.status!=="controle"&&!b.sem_preco).map(b=>{const s=viewStats(b,v);return {...b,hist:null,_v:s,N:{nota:s.nota,ln:s.done,vivo:s.nota,ganho:null,hn:0,H:0}}})
     .filter(b=>b._v.n>0&&b._v.done>=need).sort((a,b)=>((b.N.nota??-1e9)-(a.N.nota??-1e9))||a.nome.localeCompare(b.nome)).slice(0,10);
 }
 let day=diasVisiveis().find(d=>DATA.games.some(g=>g.day===d&&g.status!=="final"))||diasVisiveis().slice(-1)[0];
@@ -554,30 +555,38 @@ function drawTop(){
       ${bets}${doneBlock(b)}</article>`}).join("")||'<p class="tnone">Ninguém está apostando com dinheiro ainda.</p>';
 }
 drawTop();
+(function(){const L=DATA.lab||[];if(!L.length)return;$("#tlab").innerHTML=`<details class="tdone" open><summary>Laboratório · o que mudou nas últimas rodadas</summary><ul class="plist">${L.slice(0,15).map(x=>`<li><div><div class="src">${esc(x.dia)}</div>${esc(x.msg)}</div></li>`).join("")}</ul><p class="src">Toda noite o laboratório reavalia todos pela nota justa: aposenta quem, com 60 apostas ou mais, rende pior que apostar em tudo; cria fusões de pais com nota positiva; e o melhor conselho com amostra gera uma mutação, mudando um número da regra, com um nome novo.</p></details>`})();
 
 
 // insights: as próximas apostas dos 10 melhores, juntas por jogo e seleção
 function topTen(){return topView(IV)}
+function dirKey(sp){if(!sp)return "";const t=sp.t,m=sp.over!=null?(sp.over?"mais":"menos"):"";
+  if(["1x2","ml","dnb","dc","ah","win_nil"].includes(t))return "resultado:"+sp.sel; if(t==="htft")return "resultado:"+sp.ft;
+  if(t==="ou"||t==="ht_ou")return "gols:"+m; if(t==="team_ou")return "gols_"+sp.sel+":"+m; if(t==="cards_ou")return "cartoes:"+m;
+  if(t==="corners_ou")return "escanteios:"+m; if(t==="corners_1x2"||t==="corners_ah")return "escanteios_lado:"+sp.sel;
+  if(t==="team_corners")return "escanteios_"+sp.sel+":"+m; if(t==="shots_ou"||t==="sot_ou")return "chutes:"+m; return JSON.stringify(sp)}
 function drawInsights(){
   const now=Date.now(), bank=+$("#ibank").value, top=topTen(), M=new Map();
   for(const b of top){
     for(const p of DATA.picks){
       if(p.bettor!==b.id||!(p.stake>0)||p.grade!=null||new Date(p.kickoff).getTime()<=now)continue;
-      const key=(p.game||p.id)+"|"+p.market+"|"+p.sel;
-      const x=M.get(key)||{p,key,who:[],mins:[],odds:[],ps:[]};
-      x.who.push(b);x.ps.push(p);x.odds.push(p.odd);const m=oddMin(b,p);if(m)x.mins.push(m);M.set(key,x);
+      const dk=(p.game||p.id)+"|"+(p.spec?dirKey(p.spec):p.market+"|"+p.sel);
+      const x=M.get(dk)||{who:[],mins:[],ps:[]};
+      if(!x.who.includes(b))x.who.push(b);x.ps.push(p);const m=oddMin(b,p);if(m)x.mins.push(m);M.set(dk,x);
     }
   }
   // independência: personagens que historicamente escolhem quase sempre a mesma coisa contam como uma estratégia só
   const KS=new Map();
-  const keys=id=>{if(!KS.has(id))KS.set(id,new Set(DATA.picks.filter(p=>p.bettor===id&&p.game).map(p=>p.game+"|"+p.market+"|"+p.sel)));return KS.get(id)};
+  const keys=id=>{if(!KS.has(id))KS.set(id,new Set(DATA.picks.filter(p=>p.bettor===id&&p.game&&p.spec).map(p=>p.game+"|"+dirKey(p.spec))));return KS.get(id)};
   const igual=(a,b)=>{const A=keys(a.id),B=keys(b.id),m=Math.min(A.size,B.size);if(!m)return false;let c=0;for(const k of A)if(B.has(k))c++;return c/m>0.6};
   const grupos=who=>{const g=[];for(const b of who){const h=g.find(x=>x.some(o=>igual(o,b)));h?h.push(b):g.push([b])}return g.length};
   let items=[...M.values()].map(x=>{
+    x.p=x.ps.reduce((a,q)=>(q.prob??0)>(a.prob??0)?q:a); x.key=(x.p.game||x.p.id)+"|"+x.p.market+"|"+x.p.sel; x.odds=[x.p.odd];
+    x.outras=[...new Set(x.ps.filter(q=>q.sel!==x.p.sel||q.market!==x.p.market).map(q=>q.market+": "+q.sel+" @"+q.odd.toFixed(2)))];
     const nota=x.who.reduce((s,b)=>s+Math.max(0,b.N.nota??0),0)/x.who.length, n=x.who.length, ind=grupos(x.who);
     const forca=ind>=3?3:ind>=2?2:1, pct=forca;
     const odd=Math.max(...x.odds), min=x.mins.length?Math.max(...x.mins):null;
-    const rivais=new Set(DATA.picks.filter(q=>q.game&&q.game===x.p.game&&q.stake>0&&q.grade==null&&top.some(b=>b.id===q.bettor)&&!(q.market===x.p.market&&q.sel===x.p.sel)).map(q=>q.market+": "+q.sel));
+    const rivais=new Set(DATA.picks.filter(q=>q.game&&q.game===x.p.game&&q.stake>0&&q.grade==null&&top.some(b=>b.id===q.bettor)&&q.spec&&dirKey(q.spec)!==dirKey(x.p.spec)).map(q=>q.market+": "+q.sel));
     const forte=ind>=3&&nota>0&&(min==null||odd>=min)&&new Date(x.p.kickoff).getTime()-now>=3*36e5;
     const conf=x.ps.some(q=>!q.estudo);
     return {...x,nota,n,ind,forte,forca,pct,odd,min,conf,rivais:[...rivais]};
@@ -616,6 +625,7 @@ function drawInsights(){
       <div class="who"><span class="dots">${"●".repeat(i.forca)+"○".repeat(3-i.forca)}</span> ${i.forte?"<b>SINAL FORTE</b> · ":""}${i.conf?'<span class="st on">confiante</span> ':'<span class="st off">em teste</span> '}${i.n>1?i.n+" apoiam":"1 apoia"} (${i.ind} ${i.ind>1?"estratégias independentes":"estratégia independente"}): ${i.who.map(b=>esc(b.nome)+" ("+pc(Math.round(b.N.nota*10)/10)+")").join(", ")}</div>
     </div>
     <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd agora ${i.odd.toFixed(2)}${i.p.fonte==="DraftKings"?" DK":""}</div>${i.min?`<div class="tod">pegue a partir de ${i.min.toFixed(2)}</div>`:""}<button type="button" class="ireg" data-k="${esc(i.key)}" data-st="${stake}">Registrar</button></div>
+    ${i.outras.length?`<div class="src" style="grid-column:1/-1">Mesma direção, linha que paga mais: ${esc(i.outras.join("; "))}. Sugerimos a mais segura: no teste, ela rendeu mais.</div>`:""}
     ${i.rivais.length?`<div class="warn">Neste jogo os melhores também apostam em: ${esc(i.rivais.join("; "))}. Confira se as apostas combinam antes de entrar nas duas.</div>`:""}
     ${i.min&&i.odd<i.min?`<div class="warn">A odd está abaixo da mínima: pelo histórico, não vale a pena agora.</div>`:""}
     </article>`}).join("")+`<p class="src" style="margin-top:8px"><b>Confiante</b>: a liga e a faixa de odd dessa aposta deram lucro para o personagem no teste de 5 temporadas. <b>Em teste</b>: ele ainda está provando que funciona ali. Força: ●●● quando 3 ou mais estratégias independentes concordam, ●●○ quando são 2, ●○○ quando é uma só. Personagens que historicamente escolhem quase sempre a mesma coisa contam como uma estratégia. Sinal forte: 3 independentes, nota média positiva, odd acima da mínima e pelo menos 3 horas até o jogo. Tamanho: 1%, 2% ou 3% da banca conforme a força, como os personagens fazem. Odd mínima: abaixo dela o histórico do personagem naquela liga e faixa de odd deixa de dar lucro.</p>`+pastHtml;

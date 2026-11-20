@@ -8,7 +8,7 @@ Banca: todo apostador começa com R$ 1.000. Stake padrão R$ 20 (2%); alguns usa
 Odds: probabilidades 1X2 do Sportradar (as mesmas dos mercados Kalshi/Polymarket) + Poisson para gols,
 escanteios e cartões, com margem de casa de 6%. Sem odds de casa real por enquanto.
 """
-import json, math, sys, random, os, datetime, re
+import collections, json, math, sys, random, os, datetime, re
 from functools import lru_cache
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -174,11 +174,13 @@ def real_odd(g, spec):
 # ---------- calibração com dados reais (calib.json gerado no Supabase a partir de ~9.400 jogos) ----------
 CALIB = json.load(open(os.path.join(HERE, "calib.json"))) if os.path.exists(os.path.join(HERE, "calib.json")) else {}
 PROP_MARGIN = 0.93   # casas cobram ~7% em mercados de escanteio, cartão e afins
+HT_SEM_CALIB = {"ht_ou", "ht_1x2", "htft", "fh_more", "sh_more"}
 
 def calib_prob(g, spec):
     """Probabilidade calibrada (frequência real por liga e força do favorito), ou None se o mercado não tem tabela."""
     if not CALIB: return None
     t = spec["t"]; f = g["model"]["fav"]; key = None; inv = False
+    if t in HT_SEM_CALIB: return None   # tabela do 1º tempo saiu errada (25% de gol no 1º tempo; o real é ~75%): usa o modelo de Poisson
     if t == "btts": key, inv = "btts_yes", not spec["yes"]
     elif t == "ou" and spec["line"] in (0.5, 1.5, 2.5, 3.5, 4.5): key, inv = f"ou_{spec['line']}", not spec["over"]
     elif t == "oe": key, inv = "odd_goals", not spec["odd"]
@@ -202,6 +204,8 @@ def calib_prob(g, spec):
     tab = CALIB.get(g["league"], CALIB.get("todas", {}))
     if key not in tab: tab = CALIB.get("todas", {})
     if key not in tab: return None
+    if not any(tab[key]): tab = CALIB.get("todas", {})   # liga sem dados desse mercado (tabela zerada)
+    if key not in tab or not any(tab[key]): return None
     pf = g["model"]["pfav"]
     b = 0 if pf < .40 else 1 if pf < .50 else 2 if pf < .60 else 3 if pf < .70 else 4 if pf < .80 else 5
     p = min(0.98, max(0.02, tab[key][b]))
@@ -1175,6 +1179,35 @@ def _hist(h):
         return [h.get("n"), h.get("roi"), h.get("banca"), h.get("val_sem"), h.get("val_com"), h.get("val_n")]
     return h
 
+def insight_track(st):
+    """Quanto os Insights teriam rendido: a cada dia, o Top 10 pela nota justa usando só o que se sabia até a véspera."""
+    unit = lambda p: (p["odd"] - 1) * p["grade"] if p["grade"] > 0 else p["grade"]
+    done = collections.defaultdict(list)
+    for p in st["picks"]:
+        if p["grade"] is not None and not p.get("void") and p.get("stake", 0) > 0: done[p["bettor"]].append(p)
+    ids = [b["id"] for b in [*B, *ACCAS, *st.get("fusions", [])] if b["id"] not in CONTROLES and b["id"] not in SEM_PRECO]
+    def nota(bid, d):
+        ps = [p for p in done[bid] if (p.get("kickoff") or "") < d]
+        if len(ps) < 5: return None
+        h = _hist(HISTORICO.get(bid)); H = (h[4] if h[4] is not None else h[3]) if h else 0
+        hn = (h[5] or 0) if h and h[4] is not None else (round(h[0] * .35) if h else 0)
+        return (sum(unit(p) for p in ps) + H / 100 * hn - 0.03 * 60) / (len(ps) + hn + 60) * 100
+    R = {1: [0, 0.0], 2: [0, 0.0], 3: [0, 0.0]}; dias = 0
+    for d in sorted({p["day"] for ps in done.values() for p in ps})[1:]:
+        sc = sorted(((n, b) for b in ids if (n := nota(b, d)) is not None), reverse=True)[:10]
+        if not sc: continue
+        dias += 1; M = collections.defaultdict(list)
+        for _, b in sc:
+            for p in done[b]:
+                if p["day"] == d: M[(p.get("game") or p["id"], p["market"], p["sel"])].append(p)
+        for v in M.values():
+            f = min(3, len(v)); R[f][0] += 1; R[f][1] += unit(v[0])
+            k = "confiante" if any(not p.get("estudo") for p in v) else "teste"; R.setdefault(k, [0, 0.0]); R[k][0] += 1; R[k][1] += unit(v[0])
+    out = {str(f): {"n": n, "roi": round(u / n * 100, 1) if n else None} for f, (n, u) in R.items()}
+    tn = sum(R[f][0] for f in (1, 2, 3)); tu = sum(R[f][1] for f in (1, 2, 3))
+    out["todas"] = {"n": tn, "roi": round(tu / tn * 100, 1) if tn else None}; out["dias"] = dias
+    return out
+
 def render():
     st = load()
     board = []
@@ -1200,7 +1233,7 @@ def render():
                       "taxa": round(wins / (wins + losses) * 100) if wins + losses else None,
                       "clv_n": len([p for p in ps if p.get("clv") is not None]),
                       "clv": round(sum(p["clv"] for p in ps if p.get("clv") is not None) / max(1, len([p for p in ps if p.get("clv") is not None])) * 100, 2)})
-    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA,
+    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA, "track": insight_track(st),
             "gerado_em": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
     tpl = open(os.path.join(HERE, "template.html")).read()
     open(os.path.join(HERE, "index.html"), "w").write(tpl.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False, separators=(",", ":"))))

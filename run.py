@@ -13,7 +13,13 @@ def main():
     completo = True  # roda uma vez por dia (meia-noite): sempre a atualização completa
     req = urllib.request.Request(URL, data=json.dumps({"completo": completo}).encode(), method="POST",
         headers={"apikey": KEY, "Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
-    feed = json.load(urllib.request.urlopen(req, timeout=60))
+    import time
+    for tentativa in range(5):   # o Supabase às vezes devolve 500 por alguns segundos
+        try:
+            feed = json.load(urllib.request.urlopen(req, timeout=90)); break
+        except Exception as e:
+            if tentativa == 4: raise
+            print("feed falhou, tentando de novo:", e); time.sleep(30 * (tentativa + 1))
     print("feed:", len(feed["jogos"]), "jogos,", len(feed["odds"]), "odds,", len(feed["fech"]), "fechamentos")
     if completo:
         for k, f in (("calib", "calib.json"), ("policy", "policy.json"), ("historico", "historico.json"), ("forma", "forma.json")):

@@ -136,6 +136,14 @@ def grade(spec, s):
     if t in ("sh_more", "fh_more"):
         f = s["hh"] + s["ha"]; sec = s["fh"] + s["fa"] - f
         return 1 if (sec > f if t == "sh_more" else f > sec) else -1
+    if t == "win_half":
+        a, b = sg(s, spec["sel"]); h1a, h1b = (s["hh"], s["ha"]) if spec["sel"] == "home" else (s["ha"], s["hh"])
+        w = (h1a > h1b) or (a - h1a > b - h1b); return 1 if w == spec.get("yes", True) else -1
+    if t == "win_both":
+        a, b = sg(s, spec["sel"]); h1a, h1b = (s["hh"], s["ha"]) if spec["sel"] == "home" else (s["ha"], s["hh"])
+        return 1 if (h1a > h1b and a - h1a > b - h1b) == spec.get("yes", True) else -1
+    if t == "sh_ou": return ou_grade(s["fh"] + s["fa"] - s["hh"] - s["ha"], spec["line"], spec["over"])
+    if t == "res_btts": return 1 if r12(s["fh"], s["fa"]) == spec["sel"] and (s["fh"] > 0 and s["fa"] > 0) == spec["yes"] else -1
     if t == "oe": return 1 if ((s["fh"] + s["fa"]) % 2 == 1) == spec["odd"] else -1
     if t == "corners_ou": return ou_grade(s["ch"] + s["ca"], spec["line"], spec["over"])
     if t == "corners_1x2": return 1 if r12(s["ch"], s["ca"]) == spec["sel"] else -1
@@ -295,6 +303,10 @@ def label(g, spec):
         "cards_ou": lambda: ("Cartões", f"{o} {spec.get('line')}"),
         "shots_ou": lambda: ("Chutes no jogo", f"{o} {spec.get('line')}"),
         "sot_ou": lambda: ("Chutes no alvo", f"{o} {spec.get('line')}"),
+        "win_half": lambda: ("Vencer um dos tempos", f"{n(spec.get('sel'))} vence pelo menos um tempo"),
+        "win_both": lambda: ("Vencer os dois tempos", f"{n(spec.get('sel'))} vence os dois tempos"),
+        "sh_ou": lambda: ("Gols no 2º tempo", f"{o} {spec.get('line')}"),
+        "res_btts": lambda: ("Resultado e ambas marcam", f"{n(spec.get('sel'))} e ambas {'marcam' if spec.get('yes') else 'não marcam'}"),
         "goal_before": lambda: ("Minuto do 1º gol", f"Gol até os {spec.get('min')} min" if spec.get('yes') else f"Sem gol até os {spec.get('min')} min"),
     }[t]()
 
@@ -1190,6 +1202,17 @@ def _hist(h):
         return [h.get("n"), h.get("roi"), h.get("banca"), h.get("val_sem"), h.get("val_com"), h.get("val_n")]
     return h
 
+# ---------- novos (21/11): mercados que a Stake oferece e ainda não testávamos ----------
+EC = "Escanteios por time"
+bet("jinx", "Jinx", "Arcane", "Azarão sem pressão", EC, "Azarão cobra menos de 4,5 escanteios quando o favorito tem 60% ou mais de chance.", lambda g, r: S("team_corners", sel=dog(g), line=4.5, over=False) if pf(g) >= .60 else None)
+bet("vi", "Vi", "Arcane", "Favorito domina escanteios", EC, "Favorito cobra mais de 4,5 escanteios quando tem 55% ou mais de chance.", lambda g, r: S("team_corners", sel=fav(g), line=4.5, over=True) if pf(g) >= .55 else None)
+bet("ekko", "Ekko", "Arcane", "Jogo travado nos escanteios", EC, "Mandante cobra menos de 5,5 escanteios em jogo equilibrado (ninguém passa de 45%).", lambda g, r: S("team_corners", sel="home", line=5.5, over=False) if pf(g) < .45 else None)
+bet("eleven", "Eleven", "Stranger Things", "Favorito vence um tempo", "Tempos", "Favorito vence pelo menos um dos tempos, com 55% ou mais de chance de vencer.", lambda g, r: S("win_half", sel=fav(g), yes=True) if pf(g) >= .55 else None)
+bet("hopper", "Hopper", "Stranger Things", "Massacre", "Tempos", "Favorito vence os dois tempos, com 70% ou mais de chance de vencer.", lambda g, r: S("win_both", sel=fav(g), yes=True) if pf(g) >= .70 else None)
+bet("wednesday", "Wandinha", "Wandinha", "2º tempo aberto", "Gols", "Mais de 1,5 gols no 2º tempo quando o modelo espera 3 gols ou mais no jogo.", lambda g, r: S("sh_ou", line=1.5, over=True) if g["model"]["lh"] + g["model"]["la"] >= 3 else None)
+bet("enid", "Enid", "Wandinha", "2º tempo morno", "Gols", "Menos de 1,5 gols no 2º tempo quando o modelo espera menos de 2,3 gols.", lambda g, r: S("sh_ou", line=1.5, over=False) if g["model"]["lh"] + g["model"]["la"] < 2.3 else None)
+bet("dustin", "Dustin", "Stranger Things", "Favorito vence com gols dos dois", "Gols", "Favorito vence e ambas marcam, quando os dois times devem marcar (o mais fraco espera 1,1 gol ou mais) e o favorito tem 55% ou mais.", lambda g, r: S("res_btts", sel=fav(g), yes=True) if min(g["model"]["lh"], g["model"]["la"]) >= 1.1 and pf(g) >= .55 else None)
+
 # ---------- laboratório: avalia, aposenta, funde e cria personagens novos sozinho a cada rodada ----------
 NOMES_NOVOS = ["Professor X", "Nick Fury", "Mestre Splinter", "Optimus Prime", "Mufasa", "Rafiki", "Senhor Miyagi", "Mestre Shifu",
                "Geralt de Rívia", "Yennefer", "Ciri", "Kratos", "Lara Croft", "Cloud Strife", "Tifa", "Edward Elric", "Alphonse Elric",
@@ -1231,6 +1254,9 @@ def direcao(spec):
     if t == "corners_ou": return "escanteios:" + ("mais" if spec["over"] else "menos")
     if t in ("corners_1x2", "corners_ah"): return "escanteios_lado:" + spec["sel"]
     if t == "team_corners": return f"escanteios_{spec['sel']}:" + ("mais" if spec["over"] else "menos")
+    if t == "sh_ou": return "gols:" + ("mais" if spec["over"] else "menos")
+    if t in ("win_half", "win_both"): return "resultado:" + spec["sel"]
+    if t == "res_btts": return "resultado:" + spec["sel"]
     if t in ("shots_ou", "sot_ou"): return "chutes:" + ("mais" if spec["over"] else "menos")
     return json.dumps(spec, sort_keys=True)
 

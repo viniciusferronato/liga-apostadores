@@ -587,16 +587,17 @@ function drawVerdes(){
   $("#isum").innerHTML=`<div><b>${items.length}</b><span>apostas verdes nas próximas 36 h</span></div><div><b>${brl(items.slice(0,10).reduce((s,i)=>s+Math.max(1,Math.round(bank*i.pct)/100),0))}</b><span>nas 10 melhores, banca de ${brl(bank)}</span></div>`;
   if(!items.length){$("#ilist").innerHTML='<p class="tnone">Nenhuma aposta verde nas próximas 36 horas. Isso é normal: só entra aqui o que já provou lucro. Dia sem verde é dia de não apostar.</p>';return}
   let day="";
-  const card=i=>{const g=games[i.p.game],d=new Date(i.p.kickoff).toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",timeZone:"Europe/Dublin"});
+  const card=(i,gh="")=>{const g=games[i.p.game],d=new Date(i.p.kickoff).toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",timeZone:"Europe/Dublin"});
     const head=d!==day?`<div class="iday">${esc(d)}</div>`:"";day=d;const stake=Math.max(1,Math.round(bank*i.pct)/100);
-    return head+`<article class="icard f3"><div><div class="k">${new Date(i.p.kickoff).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}${g?" · "+esc(LG[g.league]||g.league):""}</div>
-      <div class="g">${esc(gname(i.p))}</div><div class="bet">${esc(i.p.market+": "+i.p.sel)}</div>
+    return head+gh+`<article class="icard f3"><div><div class="k">${new Date(i.p.kickoff).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}${g?" · "+esc(LG[g.league]||g.league):""}</div>
+      <div class="bet">${esc(i.p.market+": "+i.p.sel)}</div>${i.p.spec&&(i.p.spec.t==="corners_1x2"||i.p.spec.t==="corners_ah")?`<div class="src">Sem esse mercado na sua casa? Use "${esc(i.p.sel)} total de escanteios: mais de 4.5", que vai na mesma direção (a odd mínima não vale para ela).</div>`:""}
       <div class="who"><span class="st on">verde</span> vantagem estimada <b>+${i.e.toFixed(1)}%</b> · provada em ${i.n} apostas de 5 temporadas · ${esc(i.quem.join(", "))}</div></div>
       <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd ${i.odd.toFixed(2)}</div><div class="tod">não pegue abaixo de ${i.min.toFixed(2)}</div><button type="button" class="ireg" data-k="${esc(i.key)}" data-st="${stake}">Registrar</button></div></article>`};
-  const best=items.slice(0,10), rest=items.slice(10);
-  const list=a=>{day="";return [...a].sort((x,y)=>x.p.kickoff.localeCompare(y.p.kickoff)||y.e-x.e).map(card).join("")};
-  $("#ilist").innerHTML=`<div class="iday">As ${best.length} melhores (maior vantagem)</div>`+list(best).replace(/<div class="iday">/g,'<div class="iday" style="font-size:12px;opacity:.8">')
-    +(rest.length?`<details class="tdone"><summary>Mais ${rest.length} verdes com vantagem menor</summary>${list(rest)}</details>`:"")
+  const topG=new Set(items.slice(0,10).map(i=>i.p.game)), best=items.filter(i=>topG.has(i.p.game)), rest=items.filter(i=>!topG.has(i.p.game));
+  const list=a=>{day="";let gm="";return [...a].sort((x,y)=>x.p.kickoff.localeCompare(y.p.kickoff)||String(x.p.game).localeCompare(String(y.p.game))||y.e-x.e).map(i=>{const h=i.p.game!==gm?`<div class="iday" style="font-size:13px;margin-top:10px">⚽ ${esc(gname(i.p))}</div>`:"";gm=i.p.game;return card(i,h)}).join("")};
+  const byGame=new Map();items.forEach(i=>{const k=i.p.game;if(!byGame.has(k))byGame.set(k,[]);byGame.get(k).push(i)});
+  $("#ilist").innerHTML=`<div class="iday">Os jogos das 10 melhores apostas</div>`+list(best).replace(/<div class="iday">/g,'<div class="iday" style="font-size:12px;opacity:.8">')
+    +(rest.length?`<details class="tdone"><summary>Mais ${rest.length} verdes em outros jogos (vantagem menor)</summary>${list(rest)}</details>`:"")
     +`<p class="src" style="margin-top:8px"><b>Verde</b> = o personagem que sugere a aposta deu lucro nessa liga e faixa de odd no teste de 5 temporadas, com pelo menos 40 apostas, vantagem de 3% ou mais e sem ser sorte (z ≥ 1). Nas 10 melhores, se a soma passar de 15% da banca, todas são reduzidas na mesma proporção. As outras verdes ficam em 0,5%, só para quem quiser mais volume. O valor sugerido segue Kelly fracionado (1/4): mais vantagem, aposta maior, entre 0,5% e 3% da banca. <b>Não pegue abaixo de</b>: odd em que a aposta deixa de ter vantagem.</p>`;
 }
 function drawInsights(){

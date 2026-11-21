@@ -204,8 +204,8 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
 </nav>
 <main>
   <section id="v-insights" hidden>
-    <p class="hint">As próximas apostas dos <b>10 melhores personagens</b> (os mesmos da aba Top 10), juntas num lugar só. Por padrão aparece só o <b>top do top</b>: apostas em que o personagem está <b>confiante</b>, porque aquela liga e faixa de odd deu lucro no teste de 5 temporadas, ou em que 2 ou mais estratégias diferentes concordam. Para cada uma: o que apostar, a <b>odd mínima</b> e quanto colocar (1% a 3% da banca). Toque em <b>Registrar</b> para guardar a aposta em Minhas apostas.</p>
-    <div class="filters"><label for="ibank" class="src">Minha banca</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="top" selected>Top do top</option><option value="">Todas as apostas dos 10 melhores</option></select></div>
+    <p class="hint">Aqui fica <b>só o que já provou que funciona</b>: as <b>apostas verdes</b>. Entram apostas de qualquer personagem, desde que caiam numa liga e faixa de odd em que ele deu lucro no teste de 5 temporadas (pelo menos 40 apostas, sem ser sorte). Ao vivo, essas apostas rendem bem acima das outras. Para cada uma: o que apostar, quanto colocar e a odd mínima. Toque em <b>Registrar</b> para guardar em Minhas apostas.</p>
+    <div class="filters"><label for="ibank" class="src">Minha banca</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="verde" selected>Só as verdes (provadas)</option><option value="top">Top do top dos 10 melhores</option><option value="">Todas as apostas dos 10 melhores</option></select></div>
     <div class="track" id="itrack"></div>
     <div class="tsum" id="isum"></div>
     <div id="ilist"></div>
@@ -227,7 +227,13 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
   <section id="v-jogos" hidden><div class="days" id="days"></div><div class="games" id="games"></div></section>
   <section id="v-apostadores" hidden><div class="cards" id="cards"></div></section>
   <section id="v-minhas" hidden>
-    <p class="hint">Seu caderno de apostas: registre o que você pegou dos Insights (a odd que você conseguiu e quanto apostou) e acompanhe sua banca. O resultado entra sozinho quando o jogo termina. Fica salvo <b>só neste aparelho e navegador</b>: use "Exportar" para guardar uma cópia.</p>
+    <p class="hint">Seu caderno de apostas: registre o que você pegou dos Insights (a odd que você conseguiu e quanto apostou) e acompanhe sua banca. O resultado entra sozinho quando o jogo termina. <b>Entre com usuário e senha</b> para salvar na nuvem e ver em qualquer aparelho.</p>
+    <div class="mform" id="mlogin"><h3 id="mlt">Entrar</h3>
+      <label>Usuário<input id="lu" autocomplete="username" autocapitalize="none" placeholder="3 a 30 letras ou números"></label>
+      <label>Senha<input id="lp" type="password" autocomplete="current-password" placeholder="mínimo 6 caracteres"></label>
+      <div class="mbtns"><button type="button" id="lentrar">Entrar</button><button type="button" id="lcriar" class="ghost">Criar conta</button></div>
+      <div class="src" id="lmsg" style="grid-column:1/-1"></div></div>
+    <div class="src" id="mconta" hidden></div>
     <div class="mtiles tsum" id="msum"></div>
     <div id="mchart"></div>
     <form id="mform" class="mform" autocomplete="off">
@@ -329,7 +335,7 @@ function pickLi(p,who){return `<li><div>${esc(who)}<div class="m">${esc(p.game?p
 
 // resumo
 const settled=DATA.picks.filter(p=>p.grade!=null&&!p.void).length;
-$("#stamp").textContent="Fim de semana "+DATA.days.map(dayLbl).join(" e ")+" · horário de Dublin";
+$("#stamp").textContent="Atualiza todo dia à noite · jogos de "+dayLbl(DATA.days[0])+" a "+dayLbl(DATA.days[DATA.days.length-1])+" · horário de Dublin";
 const ranked=[...DATA.board].sort((a,b)=>(b.banca-a.banca)||((b.taxa??-1)-(a.taxa??-1))||a.nome.localeCompare(b.nome));
 const leader=settled?ranked[0]:null;
 $("#board").innerHTML=[
@@ -565,7 +571,36 @@ function dirKey(sp){if(!sp)return "";const t=sp.t,m=sp.over!=null?(sp.over?"mais
   if(t==="ou"||t==="ht_ou")return "gols:"+m; if(t==="team_ou")return "gols_"+sp.sel+":"+m; if(t==="cards_ou")return "cartoes:"+m;
   if(t==="corners_ou")return "escanteios:"+m; if(t==="corners_1x2"||t==="corners_ah")return "escanteios_lado:"+sp.sel;
   if(t==="team_corners")return "escanteios_"+sp.sel+":"+m; if(t==="shots_ou"||t==="sot_ou")return "chutes:"+m; return JSON.stringify(sp)}
+function drawVerdes(){
+  const now=Date.now(), bank=+$("#ibank").value, lim=now+36*36e5, M=new Map(), nome=Object.fromEntries(DATA.board.map(b=>[b.id,b.nome]));
+  for(const p of DATA.picks){
+    if(!p.verde||p.grade!=null||!(p.stake>0)||!p.spec)continue;const t=new Date(p.kickoff).getTime();if(t<=now||t>lim)continue;
+    const k=p.game+"|"+dirKey(p.spec), x=M.get(k)||{ps:[]};x.ps.push(p);M.set(k,x)}
+  const items=[...M.values()].map(x=>{const p=x.ps.reduce((a,q)=>(q.prob??0)>(a.prob??0)?q:a), e=Math.max(...x.ps.map(q=>q.hedge||0)), n=Math.max(...x.ps.map(q=>q.hn||0));
+    const quem=[...new Set(x.ps.map(q=>nome[q.bettor]||q.bettor))], pct=Math.min(3,Math.max(.5,Math.round(25*e/(p.odd-1))/100));
+    return {p,key:(p.game||p.id)+"|"+p.market+"|"+p.sel,odd:p.odd,e,n,quem,pct,min:p.odd/(1+e/100)}}).sort((a,b)=>b.e-a.e);
+  const top10=items.slice(0,10), tot=top10.reduce((s,i)=>s+i.pct,0); if(tot>15)top10.forEach(i=>i.pct=Math.round(i.pct*15/tot*100)/100);
+  items.slice(10).forEach(i=>i.pct=.5);
+  window._ins=new Map(items.map(i=>[i.key,i]));
+  const V=DATA.verde||{}, games=Object.fromEntries(DATA.games.map(g=>[g.id,g]));
+  $("#itrack").innerHTML=V.n?`<div class="tsum"><div><b class="${V.roi>0?"pts-pos":"pts-neg"}">${V.roi>0?"+":""}${V.roi}%</b><span>lucro por aposta ao vivo</span></div><div><b>${V.acertos}/${V.n}</b><span>acertos</span></div><div><b>${V.dias_pos}/${V.dias}</b><span>dias no lucro</span></div></div><p class="src">Resultado real de quem seguiu só as verdes. Ainda são poucos dias: um dia ruim acontece, e o que vale é a soma de muitos dias.</p>`:"";
+  $("#isum").innerHTML=`<div><b>${items.length}</b><span>apostas verdes nas próximas 36 h</span></div><div><b>${brl(items.slice(0,10).reduce((s,i)=>s+Math.max(1,Math.round(bank*i.pct)/100),0))}</b><span>nas 10 melhores, banca de ${brl(bank)}</span></div>`;
+  if(!items.length){$("#ilist").innerHTML='<p class="tnone">Nenhuma aposta verde nas próximas 36 horas. Isso é normal: só entra aqui o que já provou lucro. Dia sem verde é dia de não apostar.</p>';return}
+  let day="";
+  const card=i=>{const g=games[i.p.game],d=new Date(i.p.kickoff).toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",timeZone:"Europe/Dublin"});
+    const head=d!==day?`<div class="iday">${esc(d)}</div>`:"";day=d;const stake=Math.max(1,Math.round(bank*i.pct)/100);
+    return head+`<article class="icard f3"><div><div class="k">${new Date(i.p.kickoff).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}${g?" · "+esc(LG[g.league]||g.league):""}</div>
+      <div class="g">${esc(gname(i.p))}</div><div class="bet">${esc(i.p.market+": "+i.p.sel)}</div>
+      <div class="who"><span class="st on">verde</span> vantagem estimada <b>+${i.e.toFixed(1)}%</b> · provada em ${i.n} apostas de 5 temporadas · ${esc(i.quem.join(", "))}</div></div>
+      <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd ${i.odd.toFixed(2)}</div><div class="tod">não pegue abaixo de ${i.min.toFixed(2)}</div><button type="button" class="ireg" data-k="${esc(i.key)}" data-st="${stake}">Registrar</button></div></article>`};
+  const best=items.slice(0,10), rest=items.slice(10);
+  const list=a=>{day="";return [...a].sort((x,y)=>x.p.kickoff.localeCompare(y.p.kickoff)||y.e-x.e).map(card).join("")};
+  $("#ilist").innerHTML=`<div class="iday">As ${best.length} melhores (maior vantagem)</div>`+list(best).replace(/<div class="iday">/g,'<div class="iday" style="font-size:12px;opacity:.8">')
+    +(rest.length?`<details class="tdone"><summary>Mais ${rest.length} verdes com vantagem menor</summary>${list(rest)}</details>`:"")
+    +`<p class="src" style="margin-top:8px"><b>Verde</b> = o personagem que sugere a aposta deu lucro nessa liga e faixa de odd no teste de 5 temporadas, com pelo menos 40 apostas, vantagem de 3% ou mais e sem ser sorte (z ≥ 1). Nas 10 melhores, se a soma passar de 15% da banca, todas são reduzidas na mesma proporção. As outras verdes ficam em 0,5%, só para quem quiser mais volume. O valor sugerido segue Kelly fracionado (1/4): mais vantagem, aposta maior, entre 0,5% e 3% da banca. <b>Não pegue abaixo de</b>: odd em que a aposta deixa de ter vantagem.</p>`;
+}
 function drawInsights(){
+  if($("#iforte").value==="verde"){drawVerdes();return}
   const now=Date.now(), bank=+$("#ibank").value, top=topTen(), M=new Map();
   for(const b of top){
     for(const p of DATA.picks){
@@ -658,7 +693,7 @@ $("#ibank").addEventListener("change",drawInsights);$("#iforte").addEventListene
 const MK="liga_minhas_v1";
 function mLoad(){try{const x=JSON.parse(localStorage.getItem(MK)||"null");if(x&&Array.isArray(x.bets))return x}catch(e){}return {ini:100,bets:[]}}
 let MB=mLoad();
-function mSave(){try{localStorage.setItem(MK,JSON.stringify(MB))}catch(e){}}
+function mSave(){try{localStorage.setItem(MK,JSON.stringify(MB))}catch(e){}if(typeof TOKEN!=="undefined"&&TOKEN)rpc("liga_salvar",{p_token:TOKEN,p_dados:MB}).catch(()=>{})}
 function mAuto(b){if(!b.key)return null;const p=DATA.picks.find(q=>q.grade!=null&&((q.game||q.id)+"|"+q.market+"|"+q.sel)===b.key);return p?(p.void?0:p.grade):null}
 function mGrade(b){return b.res==="g"?1:b.res==="p"?-1:b.res==="d"?0:mAuto(b)}
 function mLucro(b){const g=mGrade(b);return g==null?null:g>0?b.valor*(b.odd-1)*g:b.valor*g}
@@ -693,6 +728,17 @@ $("#ilist").addEventListener("click",e=>{const btn=e.target.closest(".ireg");if(
   mClear();$("#mft").textContent="Registrar aposta dos Insights";$("#mjogo").value=gname(i.p);$("#maposta").value=i.p.game?i.p.market+": "+i.p.sel:i.p.sel;
   $("#modd").value=i.odd.toFixed(2);$("#mvalor").value=btn.dataset.st;$("#mkey").value=i.key;$("#mkick").value=i.p.kickoff||"";location.hash="#minhas";setTimeout(()=>$("#modd").focus(),50)});
 drawMinhas();
+// conta na nuvem (Supabase): usuário + senha; o token fica neste aparelho
+const SB="https://hfnlslnrxvzrrkqsvyxf.supabase.co/rest/v1/rpc/", SBK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmbmxzbG5yeHZ6cnJrcXN2eXhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQwNzc2MDQsImV4cCI6MjEwOTY1MzYwNH0.4423zgkeE_zhcw-SUGNx42VLtPzn3d86chcJ4z-FOOI", TK="liga_token_v1";
+async function rpc(f,b){const r=await fetch(SB+f,{method:"POST",headers:{apikey:SBK,Authorization:"Bearer "+SBK,"Content-Type":"application/json"},body:JSON.stringify(b)});const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||"erro");return j}
+let TOKEN=null;try{TOKEN=localStorage.getItem(TK)}catch(e){}
+const LERR={usuario_invalido:"Usuário: use 3 a 30 letras minúsculas, números, ponto, traço ou _.",senha_curta:"A senha precisa de pelo menos 6 caracteres.",usuario_existe:"Esse usuário já existe. Toque em Entrar.",login_invalido:"Usuário ou senha errados.",bloqueado:"Muitas tentativas erradas. Tente de novo em 15 minutos."};
+function contaUI(u){$("#mlogin").hidden=!!u;$("#mconta").hidden=!u;$("#mconta").innerHTML=u?`Conectado como <b>${esc(u)}</b> · salvo na nuvem · <button type="button" class="del" id="lsair">sair</button>`:"";if(u)$("#lsair").onclick=()=>{TOKEN=null;try{localStorage.removeItem(TK)}catch(e){}contaUI(null)}}
+function entrou(j){if(j.erro)throw new Error(j.erro);TOKEN=j.token;try{localStorage.setItem(TK,TOKEN)}catch(e){}
+  const loc=MB.bets.filter(b=>!(j.dados.bets||[]).some(x=>x.id===b.id));MB={ini:j.dados.ini||MB.ini,bets:[...(j.dados.bets||[]),...loc]};mSave();drawMinhas();contaUI(j.usuario)}
+async function login(f){$("#lmsg").textContent="...";try{entrou(await rpc(f,{p_usuario:$("#lu").value,p_senha:$("#lp").value}));$("#lmsg").textContent=""}catch(e){$("#lmsg").textContent=LERR[e.message]||"Não deu certo: "+e.message}}
+$("#lentrar").onclick=()=>login("liga_entrar");$("#lcriar").onclick=()=>login("liga_criar");
+if(TOKEN)rpc("liga_ler",{p_token:TOKEN}).then(j=>{if(j&&j.usuario)entrou({token:TOKEN,usuario:j.usuario,dados:j.dados});else{TOKEN=null;contaUI(null)}}).catch(()=>contaUI(null));else contaUI(null);
 function show(){const v=(location.hash||"#insights").slice(1);const ok=["insights","ranking","top10","jogos","apostadores","minhas"].includes(v)?v:"insights";
   for(const s of ["insights","ranking","top10","jogos","apostadores","minhas"])$("#v-"+s).hidden=s!==ok;
   document.querySelectorAll("nav a").forEach(a=>a.dataset.v===ok?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));}
@@ -700,7 +746,7 @@ window.addEventListener("hashchange",show);show();
 
 // relógio de atualização
 (function(){
-  const TRIG="trig_017AYUz3rzTkdtVwkX8gWVbP", HOURS=[0], MIN=5;
+  const TRIG="trig_017AYUz3rzTkdtVwkX8gWVbP", HOURS=[21], MIN=5;
   const gen=DATA.gerado_em?new Date(DATA.gerado_em):null;
   const dub=d=>{const p=Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Dublin",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(d).map(x=>[x.type,x.value]));return {h:+p.hour,m:+p.minute}};
   const hm=d=>d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"});

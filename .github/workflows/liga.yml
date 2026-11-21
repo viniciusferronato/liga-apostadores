@@ -1,10 +1,11 @@
 name: Atualizar Liga
 on:
   schedule:
-    # Uma vez por dia, à meia-noite (UTC = horário de Dublin no inverno).
+    # Uma vez por dia. O GitHub costuma atrasar horas o agendamento, então pedimos
+    # às 21h05 (Dublin no inverno) para tudo estar pronto até a meia-noite.
     # A segunda linha é reserva, caso o GitHub atrase ou pule a primeira.
-    - cron: "5 0 * * *"
-    - cron: "35 0 * * *"
+    - cron: "5 21 * * *"
+    - cron: "50 22 * * *"
   workflow_dispatch: {}
 permissions:
   contents: write

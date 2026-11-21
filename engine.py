@@ -888,7 +888,14 @@ def _livre(st, bid):
 def falido(st, bid):
     return bankroll(st, bid) < FALENCIA
 
-def stake_of(st, b, mult, ativo, cap=0.05, gest=None):
+def seg_edge(st, bid, league, odd, _c={}):
+    """Vantagem estimada (lucro esperado por real apostado, já descontada a sorte) e amostra do segmento liga x faixa de odd."""
+    k = (id(st), bid)
+    if k not in _c: _c[k] = seg_table(st, bid)
+    x = _c[k].get((league, band_of(odd)))
+    return (x["post"], x["n"], x["ativo"]) if x else (None, 0, False)
+
+def stake_of(st, b, mult, ativo, cap=0.05, gest=None, odd=None, edge=None):
     """Todo palpite arrisca dinheiro. Confiante: R$10–40 (até 5%). Testando: 2% da banca. Gestão de banca: a regra dele (até 10%)."""
     bid = b["id"]
     bank, livre = _livre(st, bid)
@@ -896,6 +903,9 @@ def stake_of(st, b, mult, ativo, cap=0.05, gest=None):
     kind = b.get("stake", "flat")
     if bid in CONTROLES: s = BASE
     elif kind not in ("flat", "half"): s = min(gest if gest is not None else stake_for(st, b), bank * 0.10)
+    elif ativo and edge and edge > 0 and odd and odd > 1:
+        # Kelly fracionado (1/4): aposta proporcional à vantagem, entre 0,5% e o teto da banca
+        s = bank * min(cap, max(0.005, 0.25 * edge / (odd - 1))) * (0.5 if kind == "half" else 1)
     elif ativo: s = min(BASE * mult * (0.5 if kind == "half" else 1), bank * cap)
     else: s = bank * TESTE * (0.5 if kind == "half" else 1)
     return round(max(0.0, min(s, livre)), 2)
@@ -922,7 +932,7 @@ def fill(now_iso):
             if st_kind_stake is None: st_kind_stake = stake_for(st, b)
             prob, odd = price(g, spec); mk, sel = label(g, spec)
             mult, z, ativo = decide(st, b["id"], g["league"], odd)
-            stake = stake_of(st, b, mult, ativo)
+            stake = stake_of(st, b, mult, ativo, odd=odd, edge=seg_edge(st, b["id"], g["league"], odd)[0])
             st["picks"].append({"id": pid, "bettor": b["id"], "game": g["id"], "day": g["day"], "kickoff": g["kickoff"],
                                 "spec": spec, "market": mk, "sel": sel, "prob": prob, "odd": odd, "odd_inicial": odd,
                                 "stake": stake, "estudo": not ativo, "z": round(z, 2) if z is not None else None,
@@ -1308,7 +1318,7 @@ def fill_conselhos(st, open_games, have):
                 if best is None or quem > best[2]: best = (pick, d, quem)
             if not best: continue
             (prob, odd), p0 = best[0]
-            mult, z, ativo = decide(st, f["id"], g["league"], odd); stake = stake_of(st, f, mult, ativo)
+            mult, z, ativo = decide(st, f["id"], g["league"], odd); stake = stake_of(st, f, mult, ativo, odd=odd, edge=seg_edge(st, f["id"], g["league"], odd)[0])
             st["picks"].append({"id": pid, "bettor": f["id"], "game": g["id"], "day": g["day"], "kickoff": g["kickoff"], "spec": p0["spec"],
                                 "market": p0["market"], "sel": p0["sel"], "prob": prob, "odd": odd, "odd_inicial": odd, "stake": stake,
                                 "estudo": not ativo, "z": round(z, 2) if z is not None else None, "grade": None, "pts": None, "apoio": best[2]})
@@ -1345,6 +1355,41 @@ def insight_track(st):
     out["todas"] = {"n": tn, "roi": round(tu / tn * 100, 1) if tn else None}; out["dias"] = dias
     return out
 
+def hist_seg(bid, league, odd, _H={}):
+    """Só o teste de 5 temporadas (sem resultados ao vivo): (vantagem, amostra, z). Base honesta para o sinal verde."""
+    if not _H:
+        for b_, rows in POLICY.items():
+            for lg, bd, n, stk, lu in rows:
+                if stk: _H[(b_, lg, bd)] = ((lu - 0.03 * BASE * 60) / (stk + BASE * 60), n, (lu / stk) / (SDU[bd] / math.sqrt(max(1, n))))
+    return _H.get((bid, league, band_of(odd)))
+
+def verde(bid, league, odd):
+    h = hist_seg(bid, league, odd)
+    return bool(h and h[0] >= 0.03 and h[1] >= 40 and h[2] >= 1.0 and bid not in SEM_PRECO and bid not in CONTROLES)
+
+def verde_track(st):
+    """Resultado ao vivo de quem seguiu só as apostas verdes (uma por jogo e direção, a linha mais segura)."""
+    M = {}
+    for p in st["picks"]:
+        if p["grade"] is None or p.get("void") or not p.get("game") or not p.get("spec") or p.get("stake", 0) <= 0: continue
+        if not verde(p["bettor"], st["games"][p["game"]]["league"], p["odd"]): continue
+        k = (p["game"], direcao(p["spec"]))
+        if k not in M or (p.get("prob") or 0) > (M[k].get("prob") or 0): M[k] = p
+    v = list(M.values()); u = sum(_unit(p) for p in v)
+    dias = collections.defaultdict(float)
+    for p in v: dias[p["day"]] += _unit(p)
+    return {"n": len(v), "roi": round(u / len(v) * 100, 1) if v else None, "acertos": sum(1 for p in v if p["grade"] > 0),
+            "dias": len(dias), "dias_pos": sum(1 for x in dias.values() if x > 0)}
+
+def anexa_vantagem(st, picks):
+    for p in picks:
+        if p.get("grade") is None and p.get("game") and p.get("stake", 0) > 0:
+            e, n, at = seg_edge(st, p["bettor"], st["games"][p["game"]]["league"], p["odd"])
+            if e is not None: p["edge"] = round(e * 100, 1); p["edge_n"] = n
+            h = hist_seg(p["bettor"], st["games"][p["game"]]["league"], p["odd"])
+            if h: p["hedge"] = round(h[0] * 100, 1); p["hn"] = h[1]; p["hz"] = round(h[2], 2)
+            if verde(p["bettor"], st["games"][p["game"]]["league"], p["odd"]): p["verde"] = 1
+
 def render():
     st = load()
     board = []
@@ -1370,7 +1415,8 @@ def render():
                       "taxa": round(wins / (wins + losses) * 100) if wins + losses else None,
                       "clv_n": len([p for p in ps if p.get("clv") is not None]),
                       "clv": round(sum(p["clv"] for p in ps if p.get("clv") is not None) / max(1, len([p for p in ps if p.get("clv") is not None])) * 100, 2)})
-    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA, "track": insight_track(st), "lab": st.get("lab", []),
+    anexa_vantagem(st, st["picks"])
+    data = {"board": board, "games": list(st["games"].values()), "picks": st["picks"], "days": st["days"], "banca": BANCA, "track": insight_track(st), "verde": verde_track(st), "lab": st.get("lab", []),
             "gerado_em": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")}
     tpl = open(os.path.join(HERE, "template.html")).read()
     open(os.path.join(HERE, "index.html"), "w").write(tpl.replace("/*DATA*/null", json.dumps(data, ensure_ascii=False, separators=(",", ":"))))

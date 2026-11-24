@@ -49702,7 +49702,7 @@
     "pdog": 0.489,
     "gap": 0.02200000000000002
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -49717,7 +49717,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 3,
+    "fa": 2,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892778"
+   }
   },
   "espn-401892779": {
    "w": {
@@ -49752,7 +49759,7 @@
     "pdog": 0.34299999999999997,
     "gap": 0.31400000000000006
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -49767,7 +49774,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 2,
+    "fa": 5,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892779"
+   }
   },
   "espn-401910036": {
    "w": {
@@ -50087,7 +50101,7 @@
     "pdog": 0.13699999999999998,
     "gap": 0.726
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -50102,7 +50116,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 109,
+    "fa": 94,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401910044"
+   }
   },
   "espn-401910045": {
    "w": {
@@ -50137,7 +50158,7 @@
     "pdog": 0.20900000000000002,
     "gap": 0.5820000000000001
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -50152,7 +50173,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 107,
+    "fa": 123,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401910045"
+   }
   },
   "espn-401933738": {
    "w": {
@@ -377365,8 +377393,8 @@
    "stake": 18.9,
    "estudo": true,
    "z": -1.64,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.26,
    "fonte": null
   },
   {
@@ -377453,8 +377481,8 @@
    "stake": 17.01,
    "estudo": true,
    "z": -0.97,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.01,
    "fonte": null
   },
   {
@@ -377585,8 +377613,8 @@
    "stake": 14.4,
    "estudo": true,
    "z": -1.28,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.96,
    "fonte": null
   },
   {
@@ -377607,8 +377635,8 @@
    "stake": 14.4,
    "estudo": true,
    "z": -1.0,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.4,
    "fonte": null
   },
   {
@@ -377739,8 +377767,8 @@
    "stake": 26.85,
    "estudo": true,
    "z": 0.93,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -26.85,
    "fonte": null
   },
   {
@@ -377761,8 +377789,8 @@
    "stake": 26.85,
    "estudo": true,
    "z": 0.29,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.16,
    "fonte": null
   },
   {
@@ -379951,8 +379979,8 @@
    "stake": 21.02,
    "estudo": true,
    "z": 0.78,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.02,
    "apoio": 1
   },
   {
@@ -379973,8 +380001,8 @@
    "stake": 21.02,
    "estudo": true,
    "z": -1.82,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.3,
    "apoio": 1
   },
   {
@@ -380128,8 +380156,8 @@
    "stake": 21.67,
    "estudo": true,
    "z": 0.78,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.67,
    "apoio": 1
   },
   {
@@ -380150,8 +380178,8 @@
    "stake": 21.67,
    "estudo": true,
    "z": -1.82,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.62,
    "apoio": 1
   },
   {
@@ -380524,8 +380552,8 @@
    "stake": 17.57,
    "estudo": true,
    "z": 0.78,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.57,
    "apoio": 1
   },
   {
@@ -380546,8 +380574,8 @@
    "stake": 17.57,
    "estudo": true,
    "z": -1.82,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 8.61,
    "apoio": 1
   },
   {
@@ -380701,8 +380729,8 @@
    "stake": 21.28,
    "estudo": true,
    "z": 0.8,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.28,
    "apoio": 1
   },
   {
@@ -381010,8 +381038,8 @@
    "stake": 20.0,
    "estudo": true,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.0,
    "apoio": 1
   },
   {
@@ -381098,8 +381126,8 @@
    "stake": 18.3,
    "estudo": true,
    "z": -0.13,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.3,
    "fonte": null
   },
   {
@@ -381120,8 +381148,8 @@
    "stake": 18.3,
    "estudo": true,
    "z": -0.29,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.3,
    "fonte": null
   },
   {
@@ -381208,8 +381236,8 @@
    "stake": 20.07,
    "estudo": true,
    "z": 0.09,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 3.01,
    "fonte": null
   },
   {
@@ -381230,8 +381258,8 @@
    "stake": 20.07,
    "estudo": true,
    "z": 0.09,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.02,
    "fonte": null
   },
   {
@@ -381450,8 +381478,8 @@
    "stake": 21.84,
    "estudo": true,
    "z": 0.21,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 3.28,
    "fonte": null
   },
   {
@@ -381472,8 +381500,8 @@
    "stake": 21.84,
    "estudo": true,
    "z": -0.52,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.84,
    "fonte": null
   },
   {
@@ -381560,8 +381588,8 @@
    "stake": 19.0,
    "estudo": true,
    "z": -0.37,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.75,
    "fonte": null
   },
   {
@@ -381740,8 +381768,8 @@
    "stake": 17.57,
    "estudo": true,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 2.64,
    "apoio": 1
   },
   {
@@ -381762,8 +381790,8 @@
    "stake": 17.57,
    "estudo": true,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.57,
    "apoio": 1
   },
   {
@@ -381916,8 +381944,8 @@
    "stake": 20.0,
    "estudo": true,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.0,
    "apoio": 1
   },
   {
@@ -386570,9 +386598,9 @@
    "prob": 0.213,
    "odd": 4.47,
    "odd_inicial": 4.47,
-   "stake": 21.04,
+   "stake": 20.31,
    "estudo": true,
-   "z": 0.47,
+   "z": 0.32,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386592,9 +386620,9 @@
    "prob": 0.267,
    "odd": 3.58,
    "odd_inicial": 3.58,
-   "stake": 21.04,
+   "stake": 20.31,
    "estudo": true,
-   "z": 0.47,
+   "z": 0.32,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386614,9 +386642,9 @@
    "prob": 0.787,
    "odd": 1.25,
    "odd_inicial": 1.25,
-   "stake": 19.42,
+   "stake": 19.58,
    "estudo": true,
-   "z": -0.47,
+   "z": -0.32,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386680,7 +386708,7 @@
    "prob": 0.466,
    "odd": 2.08,
    "odd_inicial": 2.08,
-   "stake": 22.61,
+   "stake": 22.24,
    "estudo": true,
    "z": -0.01,
    "grade": null,
@@ -386702,9 +386730,9 @@
    "prob": 0.213,
    "odd": 4.47,
    "odd_inicial": 4.47,
-   "stake": 22.61,
+   "stake": 22.24,
    "estudo": true,
-   "z": 0.51,
+   "z": 0.32,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386724,9 +386752,9 @@
    "prob": 0.733,
    "odd": 1.34,
    "odd_inicial": 1.34,
-   "stake": 22.61,
+   "stake": 22.24,
    "estudo": true,
-   "z": -0.01,
+   "z": 0.04,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386746,7 +386774,7 @@
    "prob": 0.534,
    "odd": 1.82,
    "odd_inicial": 1.82,
-   "stake": 18.75,
+   "stake": 18.84,
    "estudo": true,
    "z": -0.06,
    "grade": null,
@@ -386768,9 +386796,9 @@
    "prob": 0.787,
    "odd": 1.25,
    "odd_inicial": 1.25,
-   "stake": 18.75,
+   "stake": 18.84,
    "estudo": true,
-   "z": -1.21,
+   "z": -1.07,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386790,7 +386818,7 @@
    "prob": 0.483,
    "odd": 2.01,
    "odd_inicial": 2.01,
-   "stake": 18.57,
+   "stake": 18.23,
    "estudo": true,
    "z": -0.38,
    "grade": null,
@@ -386812,9 +386840,9 @@
    "prob": 0.483,
    "odd": 2.01,
    "odd_inicial": 2.01,
-   "stake": 14.12,
+   "stake": 14.09,
    "estudo": true,
-   "z": -1.0,
+   "z": -1.15,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386834,9 +386862,9 @@
    "prob": 0.517,
    "odd": 1.88,
    "odd_inicial": 1.88,
-   "stake": 27.19,
+   "stake": 26.91,
    "estudo": true,
-   "z": 0.89,
+   "z": 0.67,
    "grade": null,
    "pts": null,
    "fonte": null
@@ -386883,7 +386911,8 @@
    "stake": 9.87,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_hansolo_kiki|espn-401841335|b",
@@ -386944,7 +386973,8 @@
    "stake": 8.94,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_dumbledore|espn-401841335|a",
@@ -386985,7 +387015,8 @@
    "stake": 9.9,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_dumbledore|espn-401933738|a",
@@ -387026,7 +387057,8 @@
    "stake": 9.9,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401841335|a",
@@ -387066,7 +387098,8 @@
    "stake": 12.54,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_smith_tsukishima|espn-401933738|a",
@@ -387106,7 +387139,8 @@
    "stake": 12.54,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "fus_neo_hansolo|espn-401841335|a",
@@ -387147,7 +387181,8 @@
    "stake": 9.49,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "cons_10_1_segura_10|espn-401841335",
@@ -387164,7 +387199,7 @@
    "prob": 0.3276,
    "odd": 2.93,
    "odd_inicial": 2.93,
-   "stake": 21.24,
+   "stake": 21.02,
    "estudo": true,
    "z": -1.47,
    "grade": null,
@@ -387186,7 +387221,7 @@
    "prob": 0.517,
    "odd": 1.88,
    "odd_inicial": 1.88,
-   "stake": 21.24,
+   "stake": 21.02,
    "estudo": true,
    "z": 0.13,
    "grade": null,
@@ -387208,7 +387243,7 @@
    "prob": 0.3351,
    "odd": 2.87,
    "odd_inicial": 2.87,
-   "stake": 21.24,
+   "stake": 21.02,
    "estudo": true,
    "z": 0.23,
    "grade": null,
@@ -387230,12 +387265,13 @@
    "prob": 0.453,
    "odd": 2.1,
    "odd_inicial": 2.1,
-   "stake": 21.3,
+   "stake": 20.5,
    "estudo": true,
    "z": 0.0,
    "grade": null,
    "pts": null,
-   "apoio": 2
+   "apoio": 2,
+   "fonte": "DraftKings"
   },
   {
    "id": "cons_20_1_segura_17|espn-401909314",
@@ -387252,7 +387288,7 @@
    "prob": 0.466,
    "odd": 2.08,
    "odd_inicial": 2.08,
-   "stake": 21.3,
+   "stake": 20.5,
    "estudo": true,
    "z": -1.2,
    "grade": null,
@@ -387274,7 +387310,7 @@
    "prob": 0.213,
    "odd": 4.47,
    "odd_inicial": 4.47,
-   "stake": 21.3,
+   "stake": 20.5,
    "estudo": true,
    "z": 1.78,
    "grade": null,
@@ -387296,7 +387332,7 @@
    "prob": 0.517,
    "odd": 1.88,
    "odd_inicial": 1.88,
-   "stake": 21.3,
+   "stake": 20.5,
    "estudo": true,
    "z": -1.15,
    "grade": null,
@@ -387318,7 +387354,7 @@
    "prob": 0.4076,
    "odd": 2.37,
    "odd_inicial": 2.37,
-   "stake": 21.3,
+   "stake": 20.5,
    "estudo": true,
    "z": -0.85,
    "grade": null,
@@ -387750,9 +387786,24 @@
    "a": "lupin",
    "b": "videl",
    "regra": "Só entra nos jogos em que Lupin e Videl apostariam ao mesmo tempo, e faz as duas apostas com R$ 10 cada."
+  },
+  {
+   "id": "fus_lupin_sasha",
+   "nome": "Lupsha",
+   "origem": "Fusão de Lupin e Sasha",
+   "estrategia": "Menos cartões na Serie A + Jogo resolvido, pouco cartão",
+   "mercado": "Fusão",
+   "stake": "half",
+   "a": "lupin",
+   "b": "sasha",
+   "regra": "Só entra nos jogos em que Lupin e Sasha apostariam ao mesmo tempo, e faz as duas apostas com R$ 10 cada."
   }
  ],
  "lab": [
+  {
+   "dia": "2026-11-24",
+   "msg": "fusão: Lupsha = Lupin + Sasha"
+  },
   {
    "dia": "2026-11-24",
    "msg": "aposentado: Agehan (nota -10.5% em 64 apostas)"

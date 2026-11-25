@@ -51039,7 +51039,7 @@
      [
       [
        "1",
-       2.35
+       2.4
       ],
       [
        "X",
@@ -51047,7 +51047,7 @@
       ],
       [
        "2",
-       2.95
+       2.85
       ],
       [
        "+2.5",
@@ -51059,11 +51059,11 @@
       ],
       [
        "Casa -0.5",
-       2.25
+       2.3
       ],
       [
        "Fora +0.5",
-       1.571
+       1.541
       ]
      ]
     ],
@@ -51072,7 +51072,7 @@
      [
       [
        "1",
-       2.35
+       2.4
       ],
       [
        "X",
@@ -51080,7 +51080,7 @@
       ],
       [
        "2",
-       2.95
+       2.85
       ]
      ]
     ],
@@ -51156,11 +51156,11 @@
       ],
       [
        "Fav. -0.5",
-       2.25
+       2.3
       ],
       [
        "Az. +0.5",
-       1.57
+       1.54
       ],
       [
        "Az. +1",
@@ -51266,15 +51266,15 @@
     ]
    ],
    "real": {
-    "odd_casa": 2.35,
+    "odd_casa": 2.4,
     "odd_empate": 3.4,
-    "odd_fora": 2.95,
+    "odd_fora": 2.85,
     "linha_gols": 2.5,
     "odd_over": 2,
     "odd_under": 1.769,
     "handicap_casa": -0.5,
-    "odd_hcp_casa": 2.25,
-    "odd_hcp_fora": 1.571,
+    "odd_hcp_casa": 2.3,
+    "odd_hcp_fora": 1.541,
     "abre_casa": 2.3,
     "abre_fora": 2.9,
     "espn_id": "401841319"
@@ -388995,7 +388995,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 16.94,
    "estudo": true,
@@ -389017,7 +389017,7 @@
    "market": "Resultado",
    "sel": "Corinthians vence",
    "prob": 0.3238,
-   "odd": 2.95,
+   "odd": 2.85,
    "odd_inicial": 2.95,
    "stake": 25.83,
    "estudo": true,
@@ -389039,7 +389039,7 @@
    "market": "Resultado",
    "sel": "Corinthians vence",
    "prob": 0.3238,
-   "odd": 2.95,
+   "odd": 2.85,
    "odd_inicial": 2.95,
    "stake": 22.55,
    "estudo": true,
@@ -389127,7 +389127,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 11.11,
    "estudo": true,
@@ -389149,7 +389149,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 15.59,
    "estudo": true,
@@ -389171,7 +389171,7 @@
    "market": "Resultado",
    "sel": "Corinthians vence",
    "prob": 0.3238,
-   "odd": 2.95,
+   "odd": 2.85,
    "odd_inicial": 2.95,
    "stake": 32.49,
    "estudo": true,
@@ -389193,7 +389193,7 @@
    "market": "Resultado",
    "sel": "Corinthians vence",
    "prob": 0.3238,
-   "odd": 2.95,
+   "odd": 2.85,
    "odd_inicial": 2.95,
    "stake": 36.37,
    "estudo": true,
@@ -389926,7 +389926,7 @@
    "market": "Handicap asiático",
    "sel": "Corinthians +0.5",
    "prob": 0.6029,
-   "odd": 1.57,
+   "odd": 1.54,
    "odd_inicial": 1.57,
    "stake": 17.66,
    "estudo": true,
@@ -391027,7 +391027,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 10,
    "estudo": true,
@@ -391049,7 +391049,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 114.61,
    "estudo": true,
@@ -391139,7 +391139,7 @@
    "market": "Handicap asiático",
    "sel": "Atlético-MG -0.5",
    "prob": 0.3971,
-   "odd": 2.25,
+   "odd": 2.3,
    "odd_inicial": 2.25,
    "stake": 15.88,
    "estudo": true,
@@ -391207,7 +391207,7 @@
    "market": "Resultado",
    "sel": "Atlético-MG vence",
    "prob": 0.3971,
-   "odd": 2.35,
+   "odd": 2.4,
    "odd_inicial": 2.35,
    "stake": 16.18,
    "estudo": true,
@@ -393014,12 +393014,13 @@
    "market": "Vencedor",
    "sel": "Corinthians vence",
    "prob": 0.32,
-   "odd": 2.95,
+   "odd": 2.85,
    "odd_inicial": 2.95,
    "stake": 12.29,
    "estudo": true,
    "grade": null,
-   "pts": null
+   "pts": null,
+   "fonte": "DraftKings"
   },
   {
    "id": "cons_10_1_segura_10|espn-401841319",

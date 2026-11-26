@@ -1448,7 +1448,7 @@ def revisoes(st, F, dia):
     cands = []
     for b in B:
         bid = b["id"]
-        if bid in CONTROLES or bid in SEM_PRECO or b.get("sport", "futebol") not in ("futebol", "nba", "nhl", "nfl"): continue
+        if bid in CONTROLES or bid in SEM_PRECO or falido(st, bid) or b.get("sport", "futebol") not in ("futebol", "nba", "nhl", "nfl"): continue
         cadeia = [f for f in F if f.get("tipo") == "revisao" and f["pai"] == bid]
         if any(ativo_lab(f) for f in cadeia): continue
         bank = bankroll(st, bid); n, ln = nota_justa(st, bid)

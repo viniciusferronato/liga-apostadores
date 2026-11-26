@@ -972,7 +972,7 @@ def fill(now_iso):
                                 "grade": None, "pts": None})
             have.add(pid); added += 1
     for f in st.get("fusions", []):
-        if f.get("tipo") == "conselho" or f.get("aposentado") or falido(st, f["id"]): continue
+        if f.get("tipo") in ("conselho", "revisao") or f.get("aposentado") or falido(st, f["id"]): continue
         for g in open_games:
             if sport_of(g) != "futebol": continue
             pa, pb = f"{f['id']}|{g['id']}|a", f"{f['id']}|{g['id']}|b"
@@ -1010,6 +1010,7 @@ def fill(now_iso):
                                 "sel": sel, "prob": round(p, 4), "odd": round(min(odd, 500), 2), "odd_inicial": round(min(odd, 500), 2), "stake": stake, "estudo": not ativo, "grade": None, "pts": None})
             have.add(pid); added += 1
     added += fill_conselhos(st, open_games, have)
+    added += fill_revisoes(st, open_games, have)
     save(st); print(added, "palpites novos;", len(st["picks"]), "no total")
 
 def settle(path):
@@ -1332,13 +1333,14 @@ def evolve(now_iso):
             F.append(e); ids.add(e["id"]); usados.add(nome); log.append(f"mutação: {nome} nasce de {pai['nome']} — {e['regra']}"); break
     # 4. fusões: pais com nota justa positiva e mercados diferentes (máx. 2 por rodada, 20 ativas)
     pool = [i for i in top_pool(st, 8) if i in BY]
-    fus_ativas = [f for f in F if f.get("tipo") != "conselho" and ativo_lab(f)]; made = 0
+    fus_ativas = [f for f in F if f.get("tipo") not in ("conselho", "revisao") and ativo_lab(f)]; made = 0
     for i, a in enumerate(pool):
         for b in pool[i + 1:]:
             if made >= 2 or len(fus_ativas) >= 20: break
             if BY[a]["mercado"] == BY[b]["mercado"] or f"fus_{a}_{b}" in ids or f"fus_{b}_{a}" in ids: continue
             f = fusion_entry(a, b); F.append(f); ids.add(f["id"]); fus_ativas.append(f); made += 1
             log.append(f"fusão: {f['nome']} = {BY[a]['nome']} + {BY[b]['nome']}")
+    log += revisoes(st, F, dia)
     st.setdefault("lab", []); st["lab"] = ([{"dia": dia, "msg": m} for m in log] + st["lab"])[:60]
     save(st); print("\n".join(log) or "laboratório: nada novo hoje")
 
@@ -1369,6 +1371,119 @@ def fill_conselhos(st, open_games, have):
             st["picks"].append({"id": pid, "bettor": f["id"], "game": g["id"], "day": g["day"], "kickoff": g["kickoff"], "spec": p0["spec"],
                                 "market": p0["market"], "sel": p0["sel"], "prob": prob, "odd": odd, "odd_inicial": odd, "stake": stake,
                                 "estudo": not ativo, "z": round(z, 2) if z is not None else None, "grade": None, "pts": None, "apoio": best[2]})
+            have.add(pid); added += 1
+    return added
+
+# ---------- revisão: o personagem em crise entende que a estratégia não funciona e se corrige (nasce a versão 2, 3...) ----------
+REV_BANCA = 600.0     # banca abaixo disso = crise
+REV_NOTA = -5.0       # ou nota justa abaixo disso, com amostra
+REV_MIN = 60          # só revisa com pelo menos tantas apostas já apuradas
+REV_POR_RODADA = 3
+REV_MAX_ATIVAS = 30
+_FAIXAS = "abcde"; _LIM = {"a": (1.0, 1.5), "b": (1.5, 2.0), "c": (2.0, 3.0), "d": (3.0, 5.0), "e": (5.0, 999.0)}
+
+def _sc(sub):
+    """Lucro por unidade apostada, puxado para -3% (margem da casa) até ter amostra."""
+    return (sum(_unit(p) for p in sub) - 0.03 * 60) / (len(sub) + 60)
+
+def _passa(p, fl, pgames):
+    if not (fl.get("odd_min", 0) <= p["odd"] < fl.get("odd_max", 999)): return False
+    if fl.get("sem_ligas") and p["_lg"] in fl["sem_ligas"]: return False
+    if fl.get("parceiro") and p["game"] not in pgames: return False
+    return True
+
+def diagnostico(st, bid, ja):
+    """Onde ele perde? Procura (1) a faixa de odd onde a estratégia dele funciona, (2) ligas onde ele só perde e (3) um parceiro entre os melhores
+    cuja concordância melhora o resultado. Só vale se o filtro também passa no último terço do histórico (que não foi usado para escolher)."""
+    ps = [p for p in st["picks"] if p["bettor"] == bid and p.get("grade") is not None and not p.get("void") and p.get("spec") and p.get("game") in st["games"]]
+    if len(ps) < REV_MIN: return None
+    for p in ps: p["_lg"] = st["games"][p["game"]]["league"]
+    ps.sort(key=lambda p: p.get("kickoff") or "")
+    try:
+        base = _sc(ps); fl = {}; cur = ps; why = []
+        best = None
+        for i in range(5):
+            for j in range(i, 5):
+                if i == 0 and j == 4: continue
+                sub = [p for p in ps if i <= _FAIXAS.index(band_of(p["odd"])) <= j]
+                if len(sub) >= 20 and (best is None or _sc(sub) > best[0]): best = (_sc(sub), i, j, sub)
+        if best and best[0] > base + 0.02:
+            fl["odd_min"], fl["odd_max"] = _LIM[_FAIXAS[best[1]]][0], _LIM[_FAIXAS[best[2]]][1]; cur = best[3]
+            why.append(f"odd entre {fl['odd_min']:.2f} e {min(fl['odd_max'], 99):.2f}" if fl["odd_max"] < 999 else f"odd acima de {fl['odd_min']:.2f}")
+        L = collections.defaultdict(list)
+        for p in cur: L[p["_lg"]].append(p)
+        ruins = [l for l, v in L.items() if len(v) >= 12 and sum(_unit(p) for p in v) / len(v) < -0.15]
+        if ruins and len(cur) - sum(len(L[l]) for l in ruins) >= 25:
+            fl["sem_ligas"] = sorted(ruins); cur = [p for p in cur if p["_lg"] not in ruins]
+            why.append("fora de " + ", ".join(LG_NOME.get(l, l) for l in sorted(ruins)))
+        pb = None
+        for cand in top_pool(st, 8):
+            if cand == bid or cand not in BY or BY[cand]["mercado"] == BY[bid]["mercado"] or BY[cand].get("sport", "futebol") != BY[bid].get("sport", "futebol"): continue
+            gs = {p["game"] for p in st["picks"] if p["bettor"] == cand and p.get("spec")}
+            sub = [p for p in cur if p["game"] in gs]
+            if len(sub) >= 20 and (pb is None or _sc(sub) > pb[0]): pb = (_sc(sub), cand, gs, sub)
+        pgames = set()
+        if pb and pb[0] > _sc(cur) + 0.02:
+            fl["parceiro"] = pb[1]; pgames = pb[2]; cur = pb[3]; why.append(f"só quando {BY[pb[1]]['nome']} também aposta")
+        if not fl: return None
+        # teste no último terço (fora da amostra usada para escolher)
+        ho = ps[int(len(ps) * 0.67):]; hs = [p for p in ho if _passa(p, fl, pgames)]
+        if len(hs) < 5 or sum(_unit(p) for p in hs) / len(hs) < sum(_unit(p) for p in ho) / len(ho): return None
+        key = json.dumps(fl, sort_keys=True)
+        if key in ja: return None
+        return fl, why, len(cur), round(sum(_unit(p) for p in cur) / len(cur) * 100, 1)
+    finally:
+        for p in ps: p.pop("_lg", None)
+
+def revisao_entry(pai, v, fl, why):
+    b = BY[pai]
+    return {"id": f"rev_{pai}_v{v}", "nome": f"{b['nome']} v{v}", "tipo": "revisao", "pai": pai, "filtros": fl, "versao": v, "stake": "flat",
+            "origem": f"Revisão de {b['nome']} (v{v})", "mercado": "Revisão", "estrategia": f"{b['estrategia']} · corrigida",
+            "regra": f"{b['regra']} Revisão: " + "; ".join(why) + "."}
+
+def revisoes(st, F, dia):
+    """Quem está em crise (banca abaixo de R$ 600 ou nota justa ruim) estuda onde erra, aprende com os melhores e nasce de novo, melhorado. A versão antiga segue jogando."""
+    log = []; feitos = 0
+    if len([f for f in F if f.get("tipo") == "revisao" and ativo_lab(f)]) >= REV_MAX_ATIVAS: return log
+    cands = []
+    for b in B:
+        bid = b["id"]
+        if bid in CONTROLES or bid in SEM_PRECO or b.get("sport", "futebol") not in ("futebol", "nba", "nhl", "nfl"): continue
+        cadeia = [f for f in F if f.get("tipo") == "revisao" and f["pai"] == bid]
+        if any(ativo_lab(f) for f in cadeia): continue
+        bank = bankroll(st, bid); n, ln = nota_justa(st, bid)
+        if ln >= REV_MIN and (bank < REV_BANCA or n < REV_NOTA): cands.append((n, bid, len(cadeia)))
+    for n, bid, nc in sorted(cands):
+        if feitos >= REV_POR_RODADA: break
+        ja = {json.dumps(f["filtros"], sort_keys=True) for f in F if f.get("tipo") == "revisao" and f["pai"] == bid}
+        d = diagnostico(st, bid, ja)
+        if not d: continue
+        fl, why, nn, roi = d
+        e = revisao_entry(bid, nc + 2, fl, why)
+        if any(x["id"] == e["id"] for x in F): continue
+        F.append(e); feitos += 1
+        log.append(f"revisão: {BY[bid]['nome']} em crise (nota {n:+.1f}%) vira {e['nome']} — " + "; ".join(why) + f". No passado essa regra teria dado {roi:+.1f}% por aposta em {nn} apostas; agora treina com 2% da banca.")
+    return log
+
+def fill_revisoes(st, open_games, have):
+    added = 0
+    for f in st.get("fusions", []):
+        if f.get("tipo") != "revisao" or not ativo_lab(f) or falido(st, f["id"]) or f["pai"] not in BY: continue
+        b = BY[f["pai"]]; fl = f["filtros"]
+        for g in open_games:
+            if sport_of(g) != b.get("sport", "futebol"): continue
+            pid = f"{f['id']}|{g['id']}"
+            if pid in have: continue
+            spec = b["rule"](g, random.Random(f"{b['id']}|{g['id']}"))
+            if not spec: continue
+            prob, odd = price(g, spec)
+            if not (fl.get("odd_min", 0) <= odd < fl.get("odd_max", 999)) or g["league"] in fl.get("sem_ligas", []): continue
+            if fl.get("parceiro") and fl["parceiro"] in BY and not BY[fl["parceiro"]]["rule"](g, random.Random(f"{fl['parceiro']}|{g['id']}")): continue
+            mk, sel = label(g, spec)
+            mult, z, ativo = decide(st, f["id"], g["league"], odd)
+            stake = stake_of(st, f, mult, ativo, odd=odd, edge=seg_edge(st, f["id"], g["league"], odd)[0])
+            st["picks"].append({"id": pid, "bettor": f["id"], "game": g["id"], "day": g["day"], "kickoff": g["kickoff"], "spec": spec, "market": mk, "sel": sel,
+                                "prob": prob, "odd": odd, "odd_inicial": odd, "stake": stake, "estudo": not ativo, "z": round(z, 2) if z is not None else None, "grade": None, "pts": None})
             have.add(pid); added += 1
     return added
 

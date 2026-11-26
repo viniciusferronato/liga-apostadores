@@ -27,6 +27,8 @@ LEAGUES = {
     "brasileirao": {"nome": "Brasileirão", "gols": 2.35, "esc": 9.8, "cart": 5.0, "times": 20},
     "primeira": {"nome": "Portugal",   "gols": 2.55, "esc": 9.6, "cart": 4.8, "times": 18},
     "eredivisie": {"nome": "Eredivisie", "gols": 3.10, "esc": 9.6, "cart": 3.6, "times": 18},
+    "champions_league": {"nome": "Champions League", "gols": 2.95, "esc": 9.8, "cart": 4.0, "times": 36},
+    "europa_league": {"nome": "Europa League", "gols": 2.75, "esc": 9.6, "cart": 4.2, "times": 36},
     "nba": {"nome": "NBA", "sport": "nba", "times": 30},
     "nhl": {"nome": "NHL", "sport": "nhl", "times": 32},
     "nfl": {"nome": "NFL", "sport": "nfl", "times": 32},
@@ -712,7 +714,7 @@ SEM_PRECO = {"roronoa_ace", "kaneda", "lain", "spike", "light", "near", "mello",
 CONTROLES = {"homer", "patrick"}
 BANDS = {"a": "odd até 1,50", "b": "odd 1,50–2,00", "c": "odd 2,00–3,00", "d": "odd 3,00–5,00", "e": "odd 5,00+"}
 SDU = {"a": .55, "b": .87, "c": 1.18, "d": 1.67, "e": 2.45}
-LG_NOME = {"nba": "NBA", "nhl": "NHL", "nfl": "NFL", "la_liga": "La Liga", "serie_a": "Serie A", "ligue_1": "Ligue 1", "bundesliga": "Bundesliga", "epl": "Premier League", "mls": "MLS", "brasileirao": "Brasileirão", "primeira": "Portugal", "eredivisie": "Eredivisie", "multi": "Múltiplas"}
+LG_NOME = {"nba": "NBA", "nhl": "NHL", "nfl": "NFL", "la_liga": "La Liga", "serie_a": "Serie A", "ligue_1": "Ligue 1", "bundesliga": "Bundesliga", "epl": "Premier League", "mls": "MLS", "brasileirao": "Brasileirão", "primeira": "Portugal", "eredivisie": "Eredivisie", "champions_league": "Champions League", "europa_league": "Europa League", "multi": "Múltiplas"}
 
 def band_of(odd):
     return "a" if odd < 1.5 else "b" if odd < 2 else "c" if odd < 3 else "d" if odd < 5 else "e"

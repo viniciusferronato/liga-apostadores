@@ -316,7 +316,7 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const games=Object.fromEntries(DATA.games.map(g=>[g.id,g]));
 const byB=Object.fromEntries(DATA.board.map(b=>[b.id,b]));
-const LG={la_liga:"La Liga",serie_a:"Serie A",ligue_1:"Ligue 1",mls:"MLS",bundesliga:"Bundesliga",epl:"Premier League",brasileirao:"Brasileirão",primeira:"Portugal",eredivisie:"Eredivisie",champions_league:"Champions League",nba:"NBA 🏀",nhl:"NHL 🏒",nfl:"NFL 🏈"};
+const LG={la_liga:"La Liga",serie_a:"Serie A",ligue_1:"Ligue 1",mls:"MLS",bundesliga:"Bundesliga",epl:"Premier League",brasileirao:"Brasileirão",primeira:"Portugal",eredivisie:"Eredivisie",champions_league:"Champions League",europa_league:"Europa League",nba:"NBA 🏀",nhl:"NHL 🏒",nfl:"NFL 🏈"};
 const brl=n=>"R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
 const sgn=n=>(n>0?"+":n<0?"−":"")+brl(Math.abs(n)).replace("R$ ","R$ ");
 const dayLbl=d=>{const [y,m,dd]=d.split("-");return new Date(Date.UTC(+y,+m-1,+dd,12)).toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",timeZone:"UTC"})};

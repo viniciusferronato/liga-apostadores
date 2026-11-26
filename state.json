@@ -50218,7 +50218,7 @@
     "esc_share": 0.547,
     "cart": 4.27
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "DraftKings (odd real)",
@@ -50465,7 +50465,29 @@
     "abre_fora": 3,
     "espn_id": "401933738"
    },
-   "feat": null
+   "feat": null,
+   "result": {
+    "status": "final",
+    "fh": 2,
+    "fa": 1,
+    "hh": 2,
+    "ha": 0,
+    "ch": 7,
+    "ca": 5,
+    "cards": 7,
+    "stats": {
+     "away": {
+      "shots_total": 9,
+      "ball_possession": 63.2,
+      "shots_on_target": 5
+     },
+     "home": {
+      "shots_total": 11,
+      "ball_possession": 36.8,
+      "shots_on_target": 5
+     }
+    }
+   }
   },
   "espn-401841335": {
    "w": {
@@ -50922,7 +50944,7 @@
     "pdog": 0.267,
     "gap": 0.46599999999999997
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -50937,7 +50959,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 101,
+    "fa": 120,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401909316"
+   }
   },
   "espn-401892780": {
    "w": {
@@ -51032,7 +51061,7 @@
     "esc_share": 0.526,
     "cart": 5.33
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "DraftKings (odd real)",
@@ -51279,7 +51308,30 @@
     "abre_fora": 2.9,
     "espn_id": "401841319"
    },
-   "feat": null
+   "feat": null,
+   "result": {
+    "status": "final",
+    "fh": 1,
+    "fa": 1,
+    "hh": 0,
+    "ha": 0,
+    "ch": 14,
+    "ca": 0,
+    "cards": 5,
+    "g1": 90,
+    "stats": {
+     "away": {
+      "shots_total": 15,
+      "ball_possession": 47.8,
+      "shots_on_target": 3
+     },
+     "home": {
+      "shots_total": 23,
+      "ball_possession": 52.2,
+      "shots_on_target": 4
+     }
+    }
+   }
   },
   "espn-401873079": {
    "w": {
@@ -51364,7 +51416,7 @@
     "pdog": 0.457,
     "gap": 0.08599999999999991
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51379,7 +51431,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 5,
+    "fa": 3,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892784"
+   }
   },
   "espn-401909317": {
    "w": {
@@ -51414,7 +51473,7 @@
     "pdog": 0.485,
     "gap": 0.030000000000000027
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51429,7 +51488,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 111,
+    "fa": 104,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401909317"
+   }
   },
   "espn-401909318": {
    "w": {
@@ -51464,7 +51530,7 @@
     "pdog": 0.405,
     "gap": 0.18999999999999995
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51479,7 +51545,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 105,
+    "fa": 107,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401909318"
+   }
   },
   "espn-401909319": {
    "w": {
@@ -51514,7 +51587,7 @@
     "pdog": 0.405,
     "gap": 0.18999999999999995
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51529,7 +51602,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 121,
+    "fa": 102,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401909319"
+   }
   },
   "espn-401909320": {
    "w": {
@@ -51714,7 +51794,7 @@
     "pdog": 0.40700000000000003,
     "gap": 0.18599999999999994
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51729,7 +51809,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 2,
+    "fa": 4,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892781"
+   }
   },
   "espn-401892786": {
    "w": {
@@ -51764,7 +51851,7 @@
     "pdog": 0.40700000000000003,
     "gap": 0.18599999999999994
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51779,7 +51866,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 3,
+    "fa": 6,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892786"
+   }
   },
   "espn-401892787": {
    "w": {
@@ -51814,7 +51908,7 @@
     "pdog": 0.40700000000000003,
     "gap": 0.18599999999999994
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51829,7 +51923,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 7,
+    "fa": 3,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892787"
+   }
   },
   "espn-401892788": {
    "w": {
@@ -51864,7 +51965,7 @@
     "pdog": 0.41700000000000004,
     "gap": 0.16599999999999993
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -51879,7 +51980,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 2,
+    "fa": 3,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892788"
+   }
   },
   "espn-401892789": {
    "w": {
@@ -52164,7 +52272,7 @@
     "pdog": 0.449,
     "gap": 0.10200000000000004
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -52179,7 +52287,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 5,
+    "fa": 1,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892782"
+   }
   },
   "espn-401892783": {
    "w": {
@@ -52214,7 +52329,7 @@
     "pdog": 0.457,
     "gap": 0.08599999999999991
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -52229,7 +52344,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 1,
+    "fa": 3,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892783"
+   }
   },
   "espn-401892785": {
    "w": {
@@ -52264,7 +52386,7 @@
     "pdog": 0.478,
     "gap": 0.04400000000000004
    },
-   "status": "scheduled",
+   "status": "final",
    "odds": [
     [
      "Vencedor",
@@ -52279,7 +52401,14 @@
       ]
      ]
     ]
-   ]
+   ],
+   "result": {
+    "status": "final",
+    "fh": 3,
+    "fa": 2,
+    "fonte": "ESPN via Supabase",
+    "espn_id": "401892785"
+   }
   },
   "espn-401892791": {
    "w": {
@@ -52476,6 +52605,441 @@
       [
        "San Jose Sharks",
        2.26
+      ]
+     ]
+    ]
+   ]
+  },
+  "espn-401841329": {
+   "w": {
+    "away": 11.1,
+    "draw": 18.9,
+    "home": 70.0
+   },
+   "id": "espn-401841329",
+   "away": "REMO",
+   "home": "SAO",
+   "league": "brasileirao",
+   "espn_id": "401841329",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "away_ppg": 1.35,
+   "home_ppg": 1.35,
+   "away_name": "Remo",
+   "away_rank": 10,
+   "home_name": "São Paulo",
+   "home_rank": 10,
+   "day": "2026-11-26",
+   "model": {
+    "lh": 1.95,
+    "la": 0.6,
+    "w": [
+     0.7,
+     0.18899999999999997,
+     0.111
+    ],
+    "fav": "home",
+    "dog": "away",
+    "pfav": 0.7,
+    "pdog": 0.111,
+    "gap": 0.589,
+    "esc": 10.74,
+    "esc_share": 0.688,
+    "cart": 4.87
+   },
+   "status": "scheduled",
+   "odds": [
+    [
+     "DraftKings (odd real)",
+     [
+      [
+       "1",
+       1.351
+      ],
+      [
+       "X",
+       5.0
+      ],
+      [
+       "2",
+       8.5
+      ],
+      [
+       "+2.5",
+       1.645
+      ],
+      [
+       "-2.5",
+       2.15
+      ],
+      [
+       "Casa -1.5",
+       1.952
+      ],
+      [
+       "Fora +1.5",
+       1.741
+      ]
+     ]
+    ],
+    [
+     "Resultado",
+     [
+      [
+       "1",
+       1.35
+      ],
+      [
+       "X",
+       5.0
+      ],
+      [
+       "2",
+       8.5
+      ]
+     ]
+    ],
+    [
+     "Dupla chance",
+     [
+      [
+       "1X",
+       1.11
+      ],
+      [
+       "X2",
+       3.14
+      ],
+      [
+       "Empate anula fav.",
+       1.14
+      ]
+     ]
+    ],
+    [
+     "Gols",
+     [
+      [
+       "+1.5",
+       1.24
+      ],
+      [
+       "-1.5",
+       4.67
+      ],
+      [
+       "+2.5",
+       1.65
+      ],
+      [
+       "-2.5",
+       2.15
+      ],
+      [
+       "+3.5",
+       3.85
+      ],
+      [
+       "-3.5",
+       1.3
+      ]
+     ]
+    ],
+    [
+     "Ambas marcam",
+     [
+      [
+       "Sim",
+       2.43
+      ],
+      [
+       "Não",
+       1.6
+      ]
+     ]
+    ],
+    [
+     "Handicap",
+     [
+      [
+       "Fav. -1.5",
+       1.95
+      ],
+      [
+       "Fav. -1",
+       1.66
+      ],
+      [
+       "Fav. -0.5",
+       1.41
+      ],
+      [
+       "Az. +0.5",
+       3.14
+      ],
+      [
+       "Az. +1",
+       2.34
+      ],
+      [
+       "Az. +1.5",
+       1.74
+      ]
+     ]
+    ],
+    [
+     "Gols do mandante",
+     [
+      [
+       "+0.5",
+       1.1
+      ],
+      [
+       "+1.5",
+       1.41
+      ],
+      [
+       "+2.5",
+       2.69
+      ]
+     ]
+    ],
+    [
+     "Gols do visitante",
+     [
+      [
+       "+0.5",
+       2.17
+      ],
+      [
+       "+1.5",
+       8.65
+      ],
+      [
+       "+2.5",
+       40.73
+      ]
+     ]
+    ],
+    [
+     "Escanteios",
+     [
+      [
+       "+8.5",
+       1.42
+      ],
+      [
+       "-8.5",
+       3.06
+      ],
+      [
+       "+9.5",
+       1.69
+      ],
+      [
+       "-9.5",
+       2.25
+      ],
+      [
+       "+10.5",
+       2.14
+      ],
+      [
+       "-10.5",
+       1.76
+      ],
+      [
+       "+11.5",
+       2.68
+      ],
+      [
+       "-11.5",
+       1.51
+      ]
+     ]
+    ],
+    [
+     "Cartões",
+     [
+      [
+       "+3.5",
+       2.1
+      ],
+      [
+       "-3.5",
+       1.78
+      ],
+      [
+       "+4.5",
+       3.14
+      ],
+      [
+       "-4.5",
+       1.4
+      ]
+     ]
+    ]
+   ],
+   "real": {
+    "odd_casa": 1.351,
+    "odd_empate": 5,
+    "odd_fora": 8.5,
+    "linha_gols": 2.5,
+    "odd_over": 1.645,
+    "odd_under": 2.15,
+    "handicap_casa": -1.5,
+    "odd_hcp_casa": 1.952,
+    "odd_hcp_fora": 1.741,
+    "abre_casa": 1.435,
+    "abre_fora": 6.5,
+    "espn_id": "401841329"
+   },
+   "feat": null
+  },
+  "espn-401873082": {
+   "w": {
+    "away": 42.7,
+    "draw": 0,
+    "home": 57.3
+   },
+   "id": "espn-401873082",
+   "away": "Kan",
+   "home": "Buf",
+   "league": "nfl",
+   "espn_id": "401873082",
+   "kickoff": "2026-11-27T01:20:00+00:00",
+   "away_ppg": 1,
+   "home_ppg": 1,
+   "away_name": "Kansas City Chiefs",
+   "away_rank": 16,
+   "home_name": "Buffalo Bills",
+   "home_rank": 16,
+   "day": "2026-11-27",
+   "model": {
+    "lh": 0,
+    "la": 0,
+    "w": [
+     0.573,
+     0,
+     0.42700000000000005
+    ],
+    "fav": "home",
+    "dog": "away",
+    "pfav": 0.573,
+    "pdog": 0.42700000000000005,
+    "gap": 0.1459999999999999
+   },
+   "status": "scheduled",
+   "odds": [
+    [
+     "Vencedor",
+     [
+      [
+       "Buffalo Bills",
+       1.7
+      ],
+      [
+       "Kansas City Chiefs",
+       2.26
+      ]
+     ]
+    ]
+   ]
+  },
+  "espn-401873081": {
+   "w": {
+    "away": 52.4,
+    "draw": 0,
+    "home": 47.6
+   },
+   "id": "espn-401873081",
+   "away": "Chi",
+   "home": "Det",
+   "league": "nfl",
+   "espn_id": "401873081",
+   "kickoff": "2026-11-26T18:00:00+00:00",
+   "away_ppg": 1,
+   "home_ppg": 1,
+   "away_name": "Chicago Bears",
+   "away_rank": 16,
+   "home_name": "Detroit Lions",
+   "home_rank": 16,
+   "day": "2026-11-26",
+   "model": {
+    "lh": 0,
+    "la": 0,
+    "w": [
+     0.47600000000000003,
+     0,
+     0.524
+    ],
+    "fav": "away",
+    "dog": "home",
+    "pfav": 0.524,
+    "pdog": 0.47600000000000003,
+    "gap": 0.04799999999999999
+   },
+   "status": "scheduled",
+   "odds": [
+    [
+     "Vencedor",
+     [
+      [
+       "Detroit Lions",
+       2.03
+      ],
+      [
+       "Chicago Bears",
+       1.85
+      ]
+     ]
+    ]
+   ]
+  },
+  "espn-401873080": {
+   "w": {
+    "away": 20.4,
+    "draw": 0,
+    "home": 79.6
+   },
+   "id": "espn-401873080",
+   "away": "Phi",
+   "home": "Dal",
+   "league": "nfl",
+   "espn_id": "401873080",
+   "kickoff": "2026-11-26T21:30:00+00:00",
+   "away_ppg": 1,
+   "home_ppg": 1,
+   "away_name": "Philadelphia Eagles",
+   "away_rank": 16,
+   "home_name": "Dallas Cowboys",
+   "home_rank": 16,
+   "day": "2026-11-26",
+   "model": {
+    "lh": 0,
+    "la": 0,
+    "w": [
+     0.796,
+     0,
+     0.20400000000000001
+    ],
+    "fav": "home",
+    "dog": "away",
+    "pfav": 0.796,
+    "pdog": 0.20400000000000001,
+    "gap": 0.5920000000000001
+   },
+   "status": "scheduled",
+   "odds": [
+    [
+     "Vencedor",
+     [
+      [
+       "Dallas Cowboys",
+       1.24
+      ],
+      [
+       "Philadelphia Eagles",
+       4.67
       ]
      ]
     ]
@@ -383590,8 +384154,8 @@
    "stake": 17.28,
    "estudo": true,
    "z": 1.1,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 19.01,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -383638,8 +384202,8 @@
    "stake": 24.62,
    "estudo": true,
    "z": 0.52,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -24.62,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -383686,8 +384250,8 @@
    "stake": 21.5,
    "estudo": true,
    "z": -0.55,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.5,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -383710,8 +384274,8 @@
    "stake": 16.08,
    "estudo": true,
    "z": -1.34,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.08,
    "fonte": "DraftKings",
    "close": 3.6,
    "clv": -0.0417
@@ -383782,8 +384346,8 @@
    "stake": 10.59,
    "estudo": true,
    "z": 0.46,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.65,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -383806,8 +384370,8 @@
    "stake": 15.59,
    "estudo": true,
    "z": 0.67,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.15,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -383854,8 +384418,8 @@
    "stake": 33.15,
    "estudo": true,
    "z": 1.01,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -33.15,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -383902,8 +384466,8 @@
    "stake": 36.37,
    "estudo": true,
    "z": 1.07,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -36.37,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -383948,8 +384512,8 @@
    "stake": 17.15,
    "estudo": true,
    "z": -0.58,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 7.03,
    "fonte": null
   },
   {
@@ -383992,8 +384556,8 @@
    "stake": 17.25,
    "estudo": true,
    "z": -1.73,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.25,
    "fonte": null
   },
   {
@@ -384036,8 +384600,8 @@
    "stake": 19.8,
    "estudo": true,
    "z": -1.26,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.8,
    "fonte": null
   },
   {
@@ -384080,8 +384644,8 @@
    "stake": 11.94,
    "estudo": true,
    "z": -0.65,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.9,
    "fonte": null
   },
   {
@@ -384146,8 +384710,8 @@
    "stake": 16.94,
    "estudo": true,
    "z": 0.92,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.01,
    "fonte": null
   },
   {
@@ -384190,8 +384754,8 @@
    "stake": 17.1,
    "estudo": true,
    "z": 0.42,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.12,
    "fonte": null
   },
   {
@@ -384234,8 +384798,8 @@
    "stake": 31.18,
    "estudo": true,
    "z": -0.63,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -31.18,
    "fonte": null
   },
   {
@@ -384282,8 +384846,8 @@
    "stake": 15.22,
    "estudo": true,
    "z": -0.36,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.81,
    "fonte": "DraftKings",
    "close": 1.69,
    "clv": 0.0118
@@ -384332,8 +384896,8 @@
    "stake": 20.69,
    "estudo": true,
    "z": 0.06,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.69,
    "fonte": "DraftKings",
    "close": 2.15,
    "clv": -0.0233
@@ -384380,8 +384944,8 @@
    "stake": 19.74,
    "estudo": true,
    "z": 0.41,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.33,
    "fonte": "calibrada"
   },
   {
@@ -384426,8 +384990,8 @@
    "stake": 14.8,
    "estudo": true,
    "z": -1.03,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.8,
    "fonte": "calibrada"
   },
   {
@@ -384472,8 +385036,8 @@
    "stake": 28.13,
    "estudo": true,
    "z": -0.32,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -28.13,
    "fonte": "calibrada"
   },
   {
@@ -384518,8 +385082,8 @@
    "stake": 20.9,
    "estudo": true,
    "z": -0.17,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.4,
    "fonte": "calibrada"
   },
   {
@@ -384564,8 +385128,8 @@
    "stake": 17.26,
    "estudo": true,
    "z": -0.45,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 3.11,
    "fonte": "calibrada"
   },
   {
@@ -384612,8 +385176,8 @@
    "stake": 25.55,
    "estudo": true,
    "z": -0.12,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 18.14,
    "fonte": "DraftKings",
    "close": 1.69,
    "clv": 0.0118
@@ -384660,8 +385224,8 @@
    "stake": 19.93,
    "estudo": true,
    "z": 0.41,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.38,
    "fonte": "calibrada"
   },
   {
@@ -384706,8 +385270,8 @@
    "stake": 19.92,
    "estudo": true,
    "z": -0.17,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 8.96,
    "fonte": "calibrada"
   },
   {
@@ -384752,8 +385316,8 @@
    "stake": 18.97,
    "estudo": true,
    "z": -0.74,
-   "grade": null,
-   "pts": null,
+   "grade": 1.0,
+   "pts": 13.09,
    "fonte": null
   },
   {
@@ -384798,8 +385362,8 @@
    "stake": 18.15,
    "estudo": true,
    "z": 0.02,
-   "grade": null,
-   "pts": null,
+   "grade": 0.5,
+   "pts": 10.62,
    "fonte": null
   },
   {
@@ -384844,8 +385408,8 @@
    "stake": 17.07,
    "estudo": true,
    "z": 0.59,
-   "grade": null,
-   "pts": null,
+   "grade": -0.5,
+   "pts": -8.54,
    "fonte": null
   },
   {
@@ -384892,8 +385456,8 @@
    "stake": 20.95,
    "estudo": true,
    "z": 0.63,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.95,
    "fonte": "DraftKings",
    "close": 2.15,
    "clv": -0.0233
@@ -384917,8 +385481,8 @@
    "stake": 19.07,
    "estudo": true,
    "z": -0.36,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.54,
    "fonte": "DraftKings",
    "close": 1.69,
    "clv": 0.0118
@@ -384941,8 +385505,8 @@
    "stake": 20.75,
    "estudo": true,
    "z": 1.1,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 22.83,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -384987,8 +385551,8 @@
    "stake": 16.39,
    "estudo": true,
    "z": -1.4,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.65,
    "fonte": "calibrada"
   },
   {
@@ -385031,8 +385595,8 @@
    "stake": 20.62,
    "estudo": true,
    "z": 1.14,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.62,
    "fonte": "calibrada"
   },
   {
@@ -385075,8 +385639,8 @@
    "stake": 16.55,
    "estudo": true,
    "z": -1.4,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.76,
    "fonte": "calibrada"
   },
   {
@@ -385119,8 +385683,8 @@
    "stake": 19.94,
    "estudo": true,
    "z": -1.29,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.96,
    "fonte": "calibrada"
   },
   {
@@ -385169,8 +385733,8 @@
    "stake": 15.44,
    "estudo": true,
    "z": -0.99,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -15.44,
    "fonte": null
   },
   {
@@ -385219,8 +385783,8 @@
    "stake": 14.93,
    "estudo": true,
    "z": -0.04,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.93,
    "fonte": null
   },
   {
@@ -385269,8 +385833,8 @@
    "stake": 16.61,
    "estudo": true,
    "z": -0.99,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.61,
    "fonte": null
   },
   {
@@ -385319,8 +385883,8 @@
    "stake": 11.26,
    "estudo": true,
    "z": -1.78,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 106.07,
    "fonte": null
   },
   {
@@ -385365,8 +385929,8 @@
    "stake": 17.77,
    "estudo": true,
    "z": 0.23,
-   "grade": null,
-   "pts": null,
+   "grade": 1.0,
+   "pts": 16.35,
    "fonte": null
   },
   {
@@ -385411,8 +385975,8 @@
    "stake": 19.49,
    "estudo": true,
    "z": -0.69,
-   "grade": null,
-   "pts": null,
+   "grade": -1.0,
+   "pts": -19.49,
    "fonte": null
   },
   {
@@ -385457,8 +386021,8 @@
    "stake": 17.4,
    "estudo": true,
    "z": -1.8,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.4,
    "fonte": "DraftKings"
   },
   {
@@ -385503,8 +386067,8 @@
    "stake": 18.64,
    "estudo": true,
    "z": -1.13,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": null
   },
   {
@@ -385549,8 +386113,8 @@
    "stake": 19.94,
    "estudo": true,
    "z": -2.03,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.18,
    "fonte": null
   },
   {
@@ -385597,8 +386161,8 @@
    "stake": 18.24,
    "estudo": true,
    "z": -0.13,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.69,
    "fonte": "calibrada"
   },
   {
@@ -385645,8 +386209,8 @@
    "stake": 19.38,
    "estudo": true,
    "z": 0.07,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.26,
    "fonte": "calibrada"
   },
   {
@@ -385693,8 +386257,8 @@
    "stake": 18.79,
    "estudo": true,
    "z": -0.94,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 7.14,
    "fonte": "calibrada"
   },
   {
@@ -385741,8 +386305,8 @@
    "stake": 17.65,
    "estudo": true,
    "z": 1.15,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.65,
    "fonte": "calibrada"
   },
   {
@@ -385789,8 +386353,8 @@
    "stake": 17.51,
    "estudo": true,
    "z": -0.07,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.28,
    "fonte": "calibrada"
   },
   {
@@ -385837,8 +386401,8 @@
    "stake": 17.13,
    "estudo": true,
    "z": -0.36,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 16.62,
    "fonte": "calibrada"
   },
   {
@@ -385885,8 +386449,8 @@
    "stake": 20.17,
    "estudo": true,
    "z": -0.15,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 7.66,
    "fonte": "calibrada"
   },
   {
@@ -385933,8 +386497,8 @@
    "stake": 23.64,
    "estudo": true,
    "z": 0.22,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -23.64,
    "fonte": "calibrada"
   },
   {
@@ -385981,8 +386545,8 @@
    "stake": 15.7,
    "estudo": true,
    "z": 0.73,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -15.7,
    "fonte": "calibrada"
   },
   {
@@ -386027,8 +386591,8 @@
    "stake": 22.53,
    "estudo": true,
    "z": -0.73,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.01,
    "fonte": null
   },
   {
@@ -386073,8 +386637,8 @@
    "stake": 13.31,
    "estudo": true,
    "z": 0.3,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.31,
    "fonte": null
   },
   {
@@ -386119,8 +386683,8 @@
    "stake": 17.89,
    "estudo": true,
    "z": 0.84,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.89,
    "fonte": null
   },
   {
@@ -386165,8 +386729,8 @@
    "stake": 17.08,
    "estudo": true,
    "z": -1.83,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 30.74,
    "fonte": null
   },
   {
@@ -386209,8 +386773,8 @@
    "stake": 15.41,
    "estudo": true,
    "z": -0.36,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -15.41,
    "fonte": null
   },
   {
@@ -386253,8 +386817,8 @@
    "stake": 14.65,
    "estudo": true,
    "z": 0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 27.4,
    "fonte": null
   },
   {
@@ -386299,8 +386863,8 @@
    "stake": 32.18,
    "estudo": true,
    "z": 1.38,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -32.18,
    "fonte": null
   },
   {
@@ -386341,8 +386905,8 @@
    "stake": 19.6,
    "estudo": true,
    "z": 0.12,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.6,
    "fonte": null
   },
   {
@@ -386383,8 +386947,8 @@
    "stake": 12.36,
    "estudo": true,
    "z": -0.94,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 25.83,
    "fonte": null
   },
   {
@@ -386429,8 +386993,8 @@
    "stake": 18.93,
    "estudo": true,
    "z": -1.1,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.23,
    "fonte": "calibrada"
   },
   {
@@ -386475,8 +387039,8 @@
    "stake": 24.03,
    "estudo": true,
    "z": 0.03,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.46,
    "fonte": "calibrada"
   },
   {
@@ -386521,8 +387085,8 @@
    "stake": 18.9,
    "estudo": true,
    "z": -0.91,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 27.03,
    "fonte": "calibrada"
   },
   {
@@ -386567,8 +387131,8 @@
    "stake": 17.99,
    "estudo": true,
    "z": 0.03,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 40.84,
    "fonte": "calibrada"
   },
   {
@@ -386613,8 +387177,8 @@
    "stake": 17.78,
    "estudo": true,
    "z": 0.64,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.78,
    "fonte": "calibrada"
   },
   {
@@ -386659,8 +387223,8 @@
    "stake": 17.37,
    "estudo": true,
    "z": 0.28,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.37,
    "fonte": "calibrada"
   },
   {
@@ -386705,8 +387269,8 @@
    "stake": 18.69,
    "estudo": true,
    "z": -0.2,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.69,
    "fonte": "calibrada"
   },
   {
@@ -386751,8 +387315,8 @@
    "stake": 16.45,
    "estudo": true,
    "z": 0.32,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.45,
    "fonte": "calibrada"
   },
   {
@@ -386795,8 +387359,8 @@
    "stake": 21.97,
    "estudo": true,
    "z": -0.26,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.36,
    "fonte": "calibrada"
   },
   {
@@ -386839,8 +387403,8 @@
    "stake": 11.04,
    "estudo": true,
    "z": -0.23,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -11.04,
    "fonte": "calibrada"
   },
   {
@@ -386883,8 +387447,8 @@
    "stake": 32.51,
    "estudo": true,
    "z": 0.18,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 25.68,
    "fonte": "calibrada"
   },
   {
@@ -386931,8 +387495,8 @@
    "stake": 28.59,
    "estudo": true,
    "z": 0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 34.59,
    "fonte": "calibrada"
   },
   {
@@ -386979,8 +387543,8 @@
    "stake": 19.73,
    "estudo": true,
    "z": 1.18,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.43,
    "fonte": "calibrada"
   },
   {
@@ -387025,8 +387589,8 @@
    "stake": 14.57,
    "estudo": true,
    "z": -0.89,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 19.82,
    "fonte": "calibrada"
   },
   {
@@ -387071,8 +387635,8 @@
    "stake": 18.69,
    "estudo": true,
    "z": -0.99,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.34,
    "fonte": "calibrada"
   },
   {
@@ -387117,8 +387681,8 @@
    "stake": 12.56,
    "estudo": true,
    "z": -0.03,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 33.28,
    "fonte": "calibrada"
   },
   {
@@ -387163,8 +387727,8 @@
    "stake": 17.36,
    "estudo": true,
    "z": 0.96,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.36,
    "fonte": "calibrada"
   },
   {
@@ -387209,8 +387773,8 @@
    "stake": 20.69,
    "estudo": true,
    "z": 0.58,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.69,
    "fonte": "calibrada"
   },
   {
@@ -387255,8 +387819,8 @@
    "stake": 18.68,
    "estudo": true,
    "z": -1.33,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.33,
    "fonte": "calibrada"
   },
   {
@@ -387299,8 +387863,8 @@
    "stake": 17.52,
    "estudo": true,
    "z": 0.06,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 16.29,
    "fonte": "calibrada"
   },
   {
@@ -387343,8 +387907,8 @@
    "stake": 18.36,
    "estudo": true,
    "z": 0.09,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.36,
    "fonte": "calibrada"
   },
   {
@@ -387389,8 +387953,8 @@
    "stake": 16.08,
    "estudo": true,
    "z": -0.93,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": null
   },
   {
@@ -387435,8 +387999,8 @@
    "stake": 14.34,
    "estudo": true,
    "z": -1.31,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.91,
    "fonte": "calibrada"
   },
   {
@@ -387481,8 +388045,8 @@
    "stake": 14.27,
    "estudo": true,
    "z": -1.79,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.27,
    "fonte": "calibrada"
   },
   {
@@ -387527,8 +388091,8 @@
    "stake": 15.31,
    "estudo": true,
    "z": 0.77,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -15.31,
    "fonte": "calibrada"
   },
   {
@@ -387574,8 +388138,8 @@
    "stake": 20.0,
    "estudo": false,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.0,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -387624,8 +388188,8 @@
    "stake": 20.0,
    "estudo": false,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.0,
    "fonte": "DraftKings",
    "close": 2.15,
    "clv": -0.0233
@@ -387672,8 +388236,8 @@
    "stake": 10,
    "estudo": true,
    "z": 1.1,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.0,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -387720,8 +388284,8 @@
    "stake": 127.35,
    "estudo": true,
    "z": 1.1,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 140.09,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -387768,8 +388332,8 @@
    "stake": 20.0,
    "estudo": true,
    "z": 0.41,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.4,
    "fonte": "calibrada"
   },
   {
@@ -387812,8 +388376,8 @@
    "stake": 10,
    "estudo": true,
    "z": -0.58,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.1,
    "fonte": null
   },
   {
@@ -387856,8 +388420,8 @@
    "stake": 50,
    "estudo": true,
    "z": -1.4,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 32.5,
    "fonte": "calibrada"
   },
   {
@@ -387903,8 +388467,8 @@
    "stake": 15.88,
    "estudo": true,
    "z": 0.15,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 16.67,
    "fonte": "DraftKings"
   },
   {
@@ -387951,8 +388515,8 @@
    "stake": 26.18,
    "estudo": true,
    "z": 0.22,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -26.18,
    "fonte": "DraftKings",
    "close": 2.15,
    "clv": -0.0233
@@ -387976,8 +388540,8 @@
    "stake": 19.4,
    "estudo": true,
    "z": -0.83,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.77,
    "fonte": "DraftKings",
    "close": 1.69,
    "clv": 0.0118
@@ -388025,8 +388589,8 @@
    "stake": 16.18,
    "estudo": true,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.8,
    "fonte": "DraftKings",
    "close": 1.87,
    "clv": 0.123
@@ -388073,8 +388637,8 @@
    "stake": 10.76,
    "estudo": true,
    "z": -1.8,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -10.76,
    "fonte": "DraftKings",
    "close": 3.7,
    "clv": -0.1486
@@ -388121,9 +388685,10 @@
    "stake": 17.14,
    "estudo": true,
    "z": -1.56,
-   "grade": null,
-   "pts": null,
-   "fonte": null
+   "grade": 0,
+   "pts": 0.0,
+   "fonte": null,
+   "void": true
   },
   {
    "id": "lain|espn-401841335",
@@ -388190,8 +388755,8 @@
    "stake": 25.23,
    "estudo": true,
    "z": 0.9,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 23.21,
    "fonte": null
   },
   {
@@ -388234,8 +388799,8 @@
    "stake": 20.31,
    "estudo": true,
    "z": 0.32,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 52.4,
    "fonte": null
   },
   {
@@ -388278,8 +388843,8 @@
    "stake": 19.59,
    "estudo": true,
    "z": -0.65,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.59,
    "fonte": null
   },
   {
@@ -388366,8 +388931,8 @@
    "stake": 22.24,
    "estudo": true,
    "z": 0.04,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -22.24,
    "fonte": null
   },
   {
@@ -388500,8 +389065,8 @@
    "stake": 18.79,
    "estudo": true,
    "z": -1.15,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.79,
    "fonte": null
   },
   {
@@ -388652,8 +389217,8 @@
    "odd_inicial": 2.87,
    "stake": 9.9,
    "estudo": true,
-   "grade": null,
-   "pts": null
+   "grade": 1,
+   "pts": 18.51
   },
   {
    "id": "fus_smith_dumbledore|espn-401933738|b",
@@ -388673,8 +389238,8 @@
    "odd_inicial": 2.1,
    "stake": 9.9,
    "estudo": true,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -9.9,
    "fonte": "DraftKings",
    "close": 2.15,
    "clv": -0.0233
@@ -388737,8 +389302,8 @@
    "odd_inicial": 2.87,
    "stake": 12.54,
    "estudo": true,
-   "grade": null,
-   "pts": null
+   "grade": 1,
+   "pts": 23.45
   },
   {
    "id": "fus_smith_tsukishima|espn-401933738|b",
@@ -388757,8 +389322,8 @@
    "odd_inicial": 3.15,
    "stake": 12.54,
    "estudo": true,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -12.54,
    "fonte": "DraftKings"
   },
   {
@@ -388867,8 +389432,8 @@
    "stake": 21.02,
    "estudo": true,
    "z": 0.23,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 39.31,
    "apoio": 1
   },
   {
@@ -388978,8 +389543,8 @@
    "stake": 20.5,
    "estudo": true,
    "z": -0.85,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.5,
    "apoio": 2
   },
   {
@@ -389000,9 +389565,11 @@
    "stake": 16.94,
    "estudo": true,
    "z": -1.43,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -16.94,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "naruto|espn-401841319",
@@ -389022,9 +389589,11 @@
    "stake": 25.83,
    "estudo": true,
    "z": 1.27,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -25.83,
+   "fonte": "DraftKings",
+   "close": 2.7,
+   "clv": 0.0926
   },
   {
    "id": "sasuke|espn-401841319",
@@ -389044,9 +389613,11 @@
    "stake": 22.55,
    "estudo": true,
    "z": 1.27,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -22.55,
+   "fonte": "DraftKings",
+   "close": 2.7,
+   "clv": 0.0926
   },
   {
    "id": "shikamaru|espn-401841319",
@@ -389066,9 +389637,11 @@
    "stake": 16.08,
    "estudo": true,
    "z": -0.18,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 38.59,
+   "fonte": "DraftKings",
+   "close": 3.25,
+   "clv": 0.0462
   },
   {
    "id": "hinata|espn-401841319",
@@ -389088,9 +389661,11 @@
    "stake": 16.89,
    "estudo": true,
    "z": -1.04,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 40.54,
+   "fonte": "DraftKings",
+   "close": 3.25,
+   "clv": 0.0462
   },
   {
    "id": "tsunade|espn-401841319",
@@ -389110,9 +389685,11 @@
    "stake": 18.32,
    "estudo": true,
    "z": 0.2,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 43.97,
+   "fonte": "DraftKings",
+   "close": 3.25,
+   "clv": 0.0462
   },
   {
    "id": "rocky|espn-401841319",
@@ -389132,9 +389709,11 @@
    "stake": 11.11,
    "estudo": true,
    "z": 0.08,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -11.11,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "apollo|espn-401841319",
@@ -389154,9 +389733,11 @@
    "stake": 15.59,
    "estudo": true,
    "z": -0.61,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -15.59,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "indiana|espn-401841319",
@@ -389176,9 +389757,11 @@
    "stake": 32.49,
    "estudo": true,
    "z": -0.78,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -32.49,
+   "fonte": "DraftKings",
+   "close": 2.7,
+   "clv": 0.0926
   },
   {
    "id": "jesse|espn-401841319",
@@ -389198,9 +389781,11 @@
    "stake": 36.37,
    "estudo": true,
    "z": 0.57,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -36.37,
+   "fonte": "DraftKings",
+   "close": 2.7,
+   "clv": 0.0926
   },
   {
    "id": "lisa|espn-401841319",
@@ -389220,8 +389805,8 @@
    "stake": 16.81,
    "estudo": true,
    "z": -1.28,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 7.56,
    "fonte": null
   },
   {
@@ -389242,8 +389827,8 @@
    "stake": 17.51,
    "estudo": true,
    "z": 1.48,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.86,
    "fonte": null
   },
   {
@@ -389264,8 +389849,8 @@
    "stake": 20.1,
    "estudo": true,
    "z": 0.83,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.46,
    "fonte": null
   },
   {
@@ -389286,8 +389871,8 @@
    "stake": 12.12,
    "estudo": true,
    "z": -1.28,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.45,
    "fonte": null
   },
   {
@@ -389308,8 +389893,8 @@
    "stake": 16.6,
    "estudo": true,
    "z": -1.02,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": null
   },
   {
@@ -389330,8 +389915,8 @@
    "stake": 17.62,
    "estudo": true,
    "z": -0.1,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": null
   },
   {
@@ -389352,8 +389937,8 @@
    "stake": 30.55,
    "estudo": true,
    "z": 0.07,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": null
   },
   {
@@ -389375,9 +389960,11 @@
    "stake": 15.43,
    "estudo": true,
    "z": -0.85,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -15.43,
+   "fonte": "DraftKings",
+   "close": 2.1,
+   "clv": -0.0476
   },
   {
    "id": "zoro|espn-401841319",
@@ -389398,9 +389985,11 @@
    "stake": 20.28,
    "estudo": true,
    "z": 1.21,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 15.62,
+   "fonte": "DraftKings",
+   "close": 1.667,
+   "clv": 0.0618
   },
   {
    "id": "tanjiro|espn-401841319",
@@ -389421,8 +390010,8 @@
    "stake": 19.93,
    "estudo": true,
    "z": -0.59,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.37,
    "fonte": "calibrada"
   },
   {
@@ -389444,8 +390033,8 @@
    "stake": 14.51,
    "estudo": true,
    "z": 0.92,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.51,
    "fonte": "calibrada"
   },
   {
@@ -389467,8 +390056,8 @@
    "stake": 27.57,
    "estudo": true,
    "z": 0.33,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -27.57,
    "fonte": "calibrada"
   },
   {
@@ -389490,8 +390079,8 @@
    "stake": 21.0,
    "estudo": true,
    "z": 0.57,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.62,
    "fonte": "calibrada"
   },
   {
@@ -389513,8 +390102,8 @@
    "stake": 17.29,
    "estudo": true,
    "z": -0.33,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 1.38,
    "fonte": "calibrada"
   },
   {
@@ -389536,9 +390125,11 @@
    "stake": 25.04,
    "estudo": true,
    "z": 0.16,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 19.28,
+   "fonte": "DraftKings",
+   "close": 1.667,
+   "clv": 0.0618
   },
   {
    "id": "robin|espn-401841319",
@@ -389559,8 +390150,8 @@
    "stake": 20.12,
    "estudo": true,
    "z": -0.59,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.46,
    "fonte": "calibrada"
   },
   {
@@ -389582,8 +390173,8 @@
    "stake": 20.0,
    "estudo": true,
    "z": 0.57,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.4,
    "fonte": "calibrada"
   },
   {
@@ -389605,8 +390196,8 @@
    "stake": 19.35,
    "estudo": true,
    "z": -0.17,
-   "grade": null,
-   "pts": null,
+   "grade": -0.5,
+   "pts": -9.68,
    "fonte": null
   },
   {
@@ -389628,8 +390219,8 @@
    "stake": 18.46,
    "estudo": true,
    "z": -0.65,
-   "grade": null,
-   "pts": null,
+   "grade": -1.0,
+   "pts": -18.46,
    "fonte": null
   },
   {
@@ -389651,8 +390242,8 @@
    "stake": 16.9,
    "estudo": true,
    "z": 0.26,
-   "grade": null,
-   "pts": null,
+   "grade": 1.0,
+   "pts": 8.62,
    "fonte": null
   },
   {
@@ -389674,9 +390265,11 @@
    "stake": 20.53,
    "estudo": true,
    "z": 1.22,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 15.81,
+   "fonte": "DraftKings",
+   "close": 1.667,
+   "clv": 0.0618
   },
   {
    "id": "sanji|espn-401841319",
@@ -389696,8 +390289,8 @@
    "stake": 16.06,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 15.58,
    "fonte": "calibrada"
   },
   {
@@ -389718,8 +390311,8 @@
    "stake": 20.99,
    "estudo": true,
    "z": 0.02,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.99,
    "fonte": "calibrada"
   },
   {
@@ -389740,8 +390333,8 @@
    "stake": 16.84,
    "estudo": true,
    "z": 0.62,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.84,
    "fonte": "calibrada"
   },
   {
@@ -389762,8 +390355,8 @@
    "stake": 19.54,
    "estudo": true,
    "z": -0.55,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 18.95,
    "fonte": "calibrada"
   },
   {
@@ -389787,8 +390380,8 @@
    "stake": 15.13,
    "estudo": true,
    "z": -0.11,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 94.26,
    "fonte": null
   },
   {
@@ -389812,8 +390405,8 @@
    "stake": 14.63,
    "estudo": true,
    "z": 0.91,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.63,
    "fonte": null
   },
   {
@@ -389837,8 +390430,8 @@
    "stake": 16.28,
    "estudo": true,
    "z": -0.0,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 101.42,
    "fonte": null
   },
   {
@@ -389862,8 +390455,8 @@
    "stake": 11.04,
    "estudo": true,
    "z": 0.51,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -11.04,
    "fonte": null
   },
   {
@@ -389885,8 +390478,8 @@
    "stake": 17.41,
    "estudo": true,
    "z": -0.42,
-   "grade": null,
-   "pts": null,
+   "grade": -0.5,
+   "pts": -8.71,
    "fonte": null
   },
   {
@@ -389908,8 +390501,8 @@
    "stake": 19.89,
    "estudo": true,
    "z": 0.56,
-   "grade": null,
-   "pts": null,
+   "grade": 0.5,
+   "pts": 8.06,
    "fonte": null
   },
   {
@@ -389931,8 +390524,8 @@
    "stake": 17.66,
    "estudo": true,
    "z": 1.81,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.54,
    "fonte": "DraftKings"
   },
   {
@@ -389954,8 +390547,8 @@
    "stake": 18.78,
    "estudo": true,
    "z": 1.42,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.07,
    "fonte": null
   },
   {
@@ -389977,8 +390570,8 @@
    "stake": 20.04,
    "estudo": true,
    "z": 1.69,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.01,
    "fonte": null
   },
   {
@@ -390001,8 +390594,8 @@
    "stake": 17.88,
    "estudo": true,
    "z": -2.14,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.88,
    "fonte": "calibrada"
   },
   {
@@ -390025,8 +390618,8 @@
    "stake": 18.99,
    "estudo": true,
    "z": -1.36,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.13,
    "fonte": "calibrada"
   },
   {
@@ -390049,8 +390642,8 @@
    "stake": 19.0,
    "estudo": true,
    "z": 1.07,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.83,
    "fonte": "calibrada"
   },
   {
@@ -390073,8 +390666,8 @@
    "stake": 17.3,
    "estudo": true,
    "z": -1.24,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.3,
    "fonte": "calibrada"
   },
   {
@@ -390097,8 +390690,8 @@
    "stake": 17.16,
    "estudo": true,
    "z": -1.06,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 5.15,
    "fonte": "calibrada"
   },
   {
@@ -390121,8 +390714,8 @@
    "stake": 18.12,
    "estudo": true,
    "z": -1.6,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.12,
    "fonte": "calibrada"
   },
   {
@@ -390145,8 +390738,8 @@
    "stake": 19.77,
    "estudo": true,
    "z": 0.89,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.27,
    "fonte": "calibrada"
   },
   {
@@ -390169,8 +390762,8 @@
    "stake": 23.17,
    "estudo": true,
    "z": 0.85,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -23.17,
    "fonte": "calibrada"
   },
   {
@@ -390193,8 +390786,8 @@
    "stake": 16.71,
    "estudo": true,
    "z": -0.97,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.71,
    "fonte": "calibrada"
   },
   {
@@ -390216,8 +390809,8 @@
    "stake": 22.75,
    "estudo": true,
    "z": 0.53,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -22.75,
    "fonte": null
   },
   {
@@ -390239,8 +390832,8 @@
    "stake": 13.05,
    "estudo": true,
    "z": -0.11,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 23.1,
    "fonte": null
   },
   {
@@ -390262,8 +390855,8 @@
    "stake": 17.54,
    "estudo": true,
    "z": 0.31,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 6.67,
    "fonte": null
   },
   {
@@ -390285,8 +390878,8 @@
    "stake": 17.88,
    "estudo": true,
    "z": -0.01,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.88,
    "fonte": null
   },
   {
@@ -390307,8 +390900,8 @@
    "stake": 15.11,
    "estudo": true,
    "z": -0.78,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.23,
    "fonte": null
   },
   {
@@ -390329,8 +390922,8 @@
    "stake": 14.36,
    "estudo": true,
    "z": -1.2,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -14.36,
    "fonte": null
   },
   {
@@ -390352,8 +390945,8 @@
    "stake": 31.54,
    "estudo": true,
    "z": -0.18,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -31.54,
    "fonte": null
   },
   {
@@ -390373,8 +390966,8 @@
    "stake": 19.21,
    "estudo": true,
    "z": 0.18,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 25.17,
    "fonte": null
   },
   {
@@ -390394,8 +390987,8 @@
    "stake": 12.89,
    "estudo": true,
    "z": -0.85,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -12.89,
    "fonte": null
   },
   {
@@ -390417,8 +391010,8 @@
    "stake": 19.27,
    "estudo": true,
    "z": 1.14,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.54,
    "fonte": "calibrada"
   },
   {
@@ -390440,8 +391033,8 @@
    "stake": 24.3,
    "estudo": true,
    "z": 1.5,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.61,
    "fonte": "calibrada"
   },
   {
@@ -390463,8 +391056,8 @@
    "stake": 19.44,
    "estudo": true,
    "z": 1.43,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 27.8,
    "fonte": "calibrada"
   },
   {
@@ -390486,8 +391079,8 @@
    "stake": 18.8,
    "estudo": true,
    "z": 1.17,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 42.68,
    "fonte": "calibrada"
   },
   {
@@ -390509,8 +391102,8 @@
    "stake": 17.43,
    "estudo": true,
    "z": -1.58,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.43,
    "fonte": "calibrada"
   },
   {
@@ -390532,8 +391125,8 @@
    "stake": 17.02,
    "estudo": true,
    "z": -0.08,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.02,
    "fonte": "calibrada"
   },
   {
@@ -390555,8 +391148,8 @@
    "stake": 18.31,
    "estudo": true,
    "z": -1.83,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.31,
    "fonte": "calibrada"
   },
   {
@@ -390578,8 +391171,8 @@
    "stake": 16.75,
    "estudo": true,
    "z": 1.14,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -16.75,
    "fonte": "calibrada"
   },
   {
@@ -390600,8 +391193,8 @@
    "stake": 22.32,
    "estudo": true,
    "z": 1.95,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.63,
    "fonte": "calibrada"
   },
   {
@@ -390622,8 +391215,8 @@
    "stake": 10.82,
    "estudo": true,
    "z": -2.08,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -10.82,
    "fonte": "calibrada"
   },
   {
@@ -390644,8 +391237,8 @@
    "stake": 31.86,
    "estudo": true,
    "z": 1.63,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 25.17,
    "fonte": "calibrada"
   },
   {
@@ -390668,8 +391261,8 @@
    "stake": 29.29,
    "estudo": true,
    "z": 1.2,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 35.44,
    "fonte": "calibrada"
   },
   {
@@ -390692,8 +391285,8 @@
    "stake": 19.98,
    "estudo": true,
    "z": -0.75,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.98,
    "fonte": "calibrada"
   },
   {
@@ -390715,8 +391308,8 @@
    "stake": 14.28,
    "estudo": true,
    "z": 0.96,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 19.56,
    "fonte": "calibrada"
   },
   {
@@ -390738,8 +391331,8 @@
    "stake": 18.94,
    "estudo": true,
    "z": 1.65,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.5,
    "fonte": "calibrada"
   },
   {
@@ -390761,8 +391354,8 @@
    "stake": 12.3,
    "estudo": true,
    "z": 1.75,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -12.3,
    "fonte": "calibrada"
   },
   {
@@ -390784,8 +391377,8 @@
    "stake": 17.01,
    "estudo": true,
    "z": -1.81,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.01,
    "fonte": "calibrada"
   },
   {
@@ -390807,8 +391400,8 @@
    "stake": 20.95,
    "estudo": true,
    "z": -1.16,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.95,
    "fonte": "calibrada"
   },
   {
@@ -390830,8 +391423,8 @@
    "stake": 18.93,
    "estudo": true,
    "z": 0.8,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.49,
    "fonte": "calibrada"
   },
   {
@@ -390852,8 +391445,8 @@
    "stake": 17.83,
    "estudo": true,
    "z": 0.58,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.83,
    "fonte": "calibrada"
   },
   {
@@ -390874,8 +391467,8 @@
    "stake": 17.99,
    "estudo": true,
    "z": -0.78,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 17.45,
    "fonte": "calibrada"
   },
   {
@@ -390896,8 +391489,8 @@
    "stake": 16.2,
    "estudo": true,
    "z": -1.28,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 7.29,
    "fonte": null
   },
   {
@@ -390919,9 +391512,11 @@
    "stake": 14.05,
    "estudo": true,
    "z": -1.06,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -14.05,
+   "fonte": "DraftKings",
+   "close": 2.1,
+   "clv": -0.0476
   },
   {
    "id": "fred|espn-401841319",
@@ -390942,8 +391537,8 @@
    "stake": 13.98,
    "estudo": true,
    "z": -1.63,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.98,
    "fonte": null
   },
   {
@@ -390964,8 +391559,8 @@
    "stake": 15.5,
    "estudo": true,
    "z": -0.71,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.61,
    "fonte": null
   },
   {
@@ -390987,9 +391582,11 @@
    "stake": 20.0,
    "estudo": false,
    "z": null,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 15.4,
+   "fonte": "DraftKings",
+   "close": 1.667,
+   "clv": 0.0618
   },
   {
    "id": "patrick|espn-401841319",
@@ -391010,8 +391607,8 @@
    "stake": 20.0,
    "estudo": false,
    "z": null,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.0,
    "fonte": "calibrada"
   },
   {
@@ -391032,9 +391629,11 @@
    "stake": 10,
    "estudo": true,
    "z": -1.43,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -10,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "donald|espn-401841319",
@@ -391054,9 +391653,11 @@
    "stake": 114.61,
    "estudo": true,
    "z": -1.43,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -114.61,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "pateta|espn-401841319",
@@ -391077,8 +391678,8 @@
    "stake": 20.0,
    "estudo": true,
    "z": -0.59,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 9.4,
    "fonte": "calibrada"
   },
   {
@@ -391099,8 +391700,8 @@
    "stake": 10,
    "estudo": true,
    "z": -1.28,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 4.5,
    "fonte": null
   },
   {
@@ -391121,8 +391722,8 @@
    "stake": 50,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 48.5,
    "fonte": "calibrada"
   },
   {
@@ -391144,8 +391745,8 @@
    "stake": 15.88,
    "estudo": true,
    "z": -0.66,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -15.88,
    "fonte": "DraftKings"
   },
   {
@@ -391167,9 +391768,11 @@
    "stake": 19.48,
    "estudo": true,
    "z": -0.85,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -19.48,
+   "fonte": "DraftKings",
+   "close": 2.1,
+   "clv": -0.0476
   },
   {
    "id": "endou|espn-401841319",
@@ -391190,9 +391793,11 @@
    "stake": 23.68,
    "estudo": true,
    "z": 1.21,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 18.23,
+   "fonte": "DraftKings",
+   "close": 1.667,
+   "clv": 0.0618
   },
   {
    "id": "misaki|espn-401841319",
@@ -391212,9 +391817,11 @@
    "stake": 16.18,
    "estudo": true,
    "z": -1.2,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": -1,
+   "pts": -16.18,
+   "fonte": "DraftKings",
+   "close": 2.65,
+   "clv": -0.1132
   },
   {
    "id": "ishizaki|espn-401841319",
@@ -391234,9 +391841,11 @@
    "stake": 11.29,
    "estudo": true,
    "z": -0.73,
-   "grade": null,
-   "pts": null,
-   "fonte": "DraftKings"
+   "grade": 1,
+   "pts": 27.1,
+   "fonte": "DraftKings",
+   "close": 3.25,
+   "clv": 0.0462
   },
   {
    "id": "kaneda|espn-401841319",
@@ -391257,8 +391866,8 @@
    "stake": 17.44,
    "estudo": true,
    "z": -0.36,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.44,
    "fonte": null
   },
   {
@@ -391280,8 +391889,8 @@
    "stake": 19.17,
    "estudo": true,
    "z": -0.56,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 18.98,
    "fonte": null
   },
   {
@@ -391303,8 +391912,8 @@
    "stake": 25.68,
    "estudo": true,
    "z": 1.12,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -25.68,
    "fonte": null
   },
   {
@@ -391369,8 +391978,8 @@
    "stake": 19.59,
    "estudo": true,
    "z": 0.15,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.59,
    "fonte": null
   },
   {
@@ -391391,8 +392000,8 @@
    "stake": 19.59,
    "estudo": true,
    "z": 0.15,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.54,
    "fonte": null
   },
   {
@@ -391479,8 +392088,8 @@
    "stake": 18.44,
    "estudo": true,
    "z": -0.61,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.44,
    "fonte": null
   },
   {
@@ -391501,8 +392110,8 @@
    "stake": 18.44,
    "estudo": true,
    "z": -0.61,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 25.45,
    "fonte": null
   },
   {
@@ -391523,8 +392132,8 @@
    "stake": 18.44,
    "estudo": true,
    "z": -0.61,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.44,
    "fonte": null
   },
   {
@@ -391611,8 +392220,8 @@
    "stake": 21.35,
    "estudo": true,
    "z": 1.38,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 19.0,
    "fonte": null
   },
   {
@@ -391633,8 +392242,8 @@
    "stake": 21.35,
    "estudo": true,
    "z": 1.38,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -21.35,
    "fonte": null
   },
   {
@@ -391655,8 +392264,8 @@
    "stake": 21.35,
    "estudo": true,
    "z": 1.38,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 13.66,
    "fonte": null
   },
   {
@@ -391831,8 +392440,8 @@
    "stake": 18.71,
    "estudo": true,
    "z": -0.25,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.71,
    "fonte": null
   },
   {
@@ -391853,8 +392462,8 @@
    "stake": 18.71,
    "estudo": true,
    "z": -0.25,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.71,
    "fonte": null
   },
   {
@@ -391875,8 +392484,8 @@
    "stake": 18.71,
    "estudo": true,
    "z": -0.25,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.16,
    "fonte": null
   },
   {
@@ -391897,8 +392506,8 @@
    "stake": 18.71,
    "estudo": true,
    "z": -0.25,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 12.54,
    "fonte": null
   },
   {
@@ -391919,8 +392528,8 @@
    "stake": 18.71,
    "estudo": true,
    "z": -0.25,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 14.41,
    "fonte": null
   },
   {
@@ -392051,8 +392660,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392073,8 +392682,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 24.47,
    "fonte": null
   },
   {
@@ -392095,8 +392704,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 24.47,
    "fonte": null
   },
   {
@@ -392117,8 +392726,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392139,8 +392748,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392161,8 +392770,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392183,8 +392792,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392205,8 +392814,8 @@
    "stake": 17.86,
    "estudo": true,
    "z": -0.5,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -17.86,
    "fonte": null
   },
   {
@@ -392315,8 +392924,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.91,
    "fonte": null
   },
   {
@@ -392337,8 +392946,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.81,
    "fonte": null
   },
   {
@@ -392359,8 +392968,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.81,
    "fonte": null
   },
   {
@@ -392381,8 +392990,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 8.98,
    "fonte": null
   },
   {
@@ -392403,8 +393012,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.81,
    "fonte": null
   },
   {
@@ -392425,8 +393034,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 10.63,
    "fonte": null
   },
   {
@@ -392447,8 +393056,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -13.81,
    "fonte": null
   },
   {
@@ -392469,8 +393078,8 @@
    "stake": 13.81,
    "estudo": true,
    "z": -1.3,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 11.88,
    "fonte": null
   },
   {
@@ -392623,8 +393232,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -27.39,
    "fonte": null
   },
   {
@@ -392645,8 +393254,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 37.52,
    "fonte": null
   },
   {
@@ -392667,8 +393276,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 37.52,
    "fonte": null
   },
   {
@@ -392689,8 +393298,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -27.39,
    "fonte": null
   },
   {
@@ -392711,8 +393320,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.84,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 18.35,
    "fonte": null
   },
   {
@@ -392733,8 +393342,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -27.39,
    "fonte": null
   },
   {
@@ -392755,8 +393364,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.84,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 21.64,
    "fonte": null
   },
   {
@@ -392777,8 +393386,8 @@
    "stake": 27.39,
    "estudo": true,
    "z": 0.74,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -27.39,
    "fonte": null
   },
   {
@@ -392977,8 +393586,8 @@
    "stake": 18.79,
    "estudo": true,
    "z": -0.28,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -18.79,
    "fonte": null
   },
   {
@@ -392998,8 +393607,8 @@
    "odd_inicial": 3.23,
    "stake": 12.29,
    "estudo": true,
-   "grade": null,
-   "pts": null
+   "grade": -1,
+   "pts": -12.29
   },
   {
    "id": "fus_smith_tsukishima|espn-401841319|b",
@@ -393018,8 +393627,8 @@
    "odd_inicial": 2.95,
    "stake": 12.29,
    "estudo": true,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "fonte": "DraftKings"
   },
   {
@@ -393041,8 +393650,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -1.69,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.97,
    "apoio": 1
   },
   {
@@ -393063,8 +393672,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.97,
    "apoio": 1
   },
   {
@@ -393085,8 +393694,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 28.73,
    "apoio": 1
   },
   {
@@ -393107,8 +393716,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 28.73,
    "apoio": 1
   },
   {
@@ -393129,8 +393738,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.97,
    "apoio": 1
   },
   {
@@ -393151,8 +393760,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": 0.07,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 14.05,
    "apoio": 1
   },
   {
@@ -393173,8 +393782,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.97,
    "apoio": 1
   },
   {
@@ -393195,8 +393804,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": 0.07,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 16.57,
    "apoio": 1
   },
   {
@@ -393217,8 +393826,8 @@
    "stake": 20.97,
    "estudo": true,
    "z": -0.39,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -20.97,
    "apoio": 1
   },
   {
@@ -393371,8 +393980,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": -0.6,
-   "grade": null,
-   "pts": null,
+   "grade": 0,
+   "pts": 0.0,
    "apoio": 2
   },
   {
@@ -393393,8 +394002,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.63,
    "apoio": 1
   },
   {
@@ -393415,8 +394024,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 26.89,
    "apoio": 1
   },
   {
@@ -393437,8 +394046,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 26.89,
    "apoio": 1
   },
   {
@@ -393459,8 +394068,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.63,
    "apoio": 1
   },
   {
@@ -393481,8 +394090,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.63,
    "apoio": 1
   },
   {
@@ -393503,8 +394112,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": -0.74,
-   "grade": null,
-   "pts": null,
+   "grade": 1,
+   "pts": 15.51,
    "apoio": 1
   },
   {
@@ -393525,8 +394134,8 @@
    "stake": 19.63,
    "estudo": true,
    "z": 0.27,
-   "grade": null,
-   "pts": null,
+   "grade": -1,
+   "pts": -19.63,
    "apoio": 1
   },
   {
@@ -393660,6 +394269,3188 @@
    "grade": null,
    "pts": null,
    "apoio": 1
+  },
+  {
+   "id": "goku|espn-401841329",
+   "bettor": "goku",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 16.98,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "vegeta|espn-401841329",
+   "bettor": "vegeta",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 19.88,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "piccolo|espn-401841329",
+   "bettor": "piccolo",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 19.0,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "rocklee|espn-401841329",
+   "bettor": "rocklee",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Remo vence",
+   "prob": 0.1049,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 20.28,
+   "estudo": true,
+   "z": 0.62,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "rocky|espn-401841329",
+   "bettor": "rocky",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 11.12,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "apollo|espn-401841329",
+   "bettor": "apollo",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 15.62,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "indiana|espn-401841329",
+   "bettor": "indiana",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Remo vence",
+   "prob": 0.1049,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 31.18,
+   "estudo": true,
+   "z": 1.1,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "jesse|espn-401841329",
+   "bettor": "jesse",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Remo vence",
+   "prob": 0.1049,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 34.91,
+   "estudo": true,
+   "z": 1.1,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "lisa|espn-401841329",
+   "bettor": "lisa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dc",
+    "sel": "home"
+   },
+   "market": "Dupla chance",
+   "sel": "São Paulo ou empate",
+   "prob": 0.8951,
+   "odd": 1.11,
+   "odd_inicial": 1.11,
+   "stake": 17.1,
+   "estudo": true,
+   "z": -1.02,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "bart|espn-401841329",
+   "bettor": "bart",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dc",
+    "sel": "away"
+   },
+   "market": "Dupla chance",
+   "sel": "Remo ou empate",
+   "prob": 0.3048,
+   "odd": 3.14,
+   "odd_inicial": 3.14,
+   "stake": 17.38,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "maggie|espn-401841329",
+   "bettor": "maggie",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dc",
+    "sel": "home"
+   },
+   "market": "Dupla chance",
+   "sel": "São Paulo ou empate",
+   "prob": 0.8951,
+   "odd": 1.11,
+   "odd_inicial": 1.11,
+   "stake": 12.33,
+   "estudo": true,
+   "z": -0.98,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "yoda|espn-401841329",
+   "bettor": "yoda",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dnb",
+    "sel": "home"
+   },
+   "market": "Empate anula",
+   "sel": "São Paulo",
+   "prob": 0.8689,
+   "odd": 1.14,
+   "odd_inicial": 1.14,
+   "stake": 16.82,
+   "estudo": true,
+   "z": -1.1,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "simba|espn-401841329",
+   "bettor": "simba",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dnb",
+    "sel": "home"
+   },
+   "market": "Empate anula",
+   "sel": "São Paulo",
+   "prob": 0.8689,
+   "odd": 1.14,
+   "odd_inicial": 1.14,
+   "stake": 17.84,
+   "estudo": true,
+   "z": -1.66,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "obiwan|espn-401841329",
+   "bettor": "obiwan",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dnb",
+    "sel": "away"
+   },
+   "market": "Empate anula",
+   "sel": "Remo",
+   "prob": 0.1311,
+   "odd": 7.23,
+   "odd_inicial": 7.23,
+   "stake": 29.93,
+   "estudo": true,
+   "z": -0.41,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "luffy|espn-401841329",
+   "bettor": "luffy",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 2.5",
+   "prob": 0.4689,
+   "odd": 1.65,
+   "odd_inicial": 1.65,
+   "stake": 15.34,
+   "estudo": true,
+   "z": -1.17,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "zoro|espn-401841329",
+   "bettor": "zoro",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 20.18,
+   "estudo": true,
+   "z": 0.2,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "tanjiro|espn-401841329",
+   "bettor": "tanjiro",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 1.5",
+   "prob": 0.798,
+   "odd": 1.24,
+   "odd_inicial": 1.24,
+   "stake": 20.22,
+   "estudo": true,
+   "z": -0.35,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "giyu|espn-401841329",
+   "bettor": "giyu",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 1.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 1.5",
+   "prob": 0.202,
+   "odd": 4.67,
+   "odd_inicial": 4.67,
+   "stake": 13.92,
+   "estudo": true,
+   "z": -0.38,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "inosuke|espn-401841329",
+   "bettor": "inosuke",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 4.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 4.5",
+   "prob": 0.1675,
+   "odd": 5.62,
+   "odd_inicial": 5.62,
+   "stake": 26.45,
+   "estudo": true,
+   "z": 0.21,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "nezuko|espn-401841329",
+   "bettor": "nezuko",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 3.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 3.5",
+   "prob": 0.7537,
+   "odd": 1.3,
+   "odd_inicial": 1.3,
+   "stake": 21.28,
+   "estudo": true,
+   "z": 0.66,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "muzan|espn-401841329",
+   "bettor": "muzan",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 4.5",
+   "prob": 0.8325,
+   "odd": 1.19,
+   "odd_inicial": 1.19,
+   "stake": 17.38,
+   "estudo": true,
+   "z": -0.29,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "nami|espn-401841329",
+   "bettor": "nami",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 25.79,
+   "estudo": true,
+   "z": -0.54,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "robin|espn-401841329",
+   "bettor": "robin",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 1.5",
+   "prob": 0.798,
+   "odd": 1.24,
+   "odd_inicial": 1.24,
+   "stake": 20.42,
+   "estudo": true,
+   "z": -0.35,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "franky|espn-401841329",
+   "bettor": "franky",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 3.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 3.5",
+   "prob": 0.7537,
+   "odd": 1.3,
+   "odd_inicial": 1.3,
+   "stake": 20.27,
+   "estudo": true,
+   "z": 0.66,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "bulma|espn-401841329",
+   "bettor": "bulma",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.25,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 2.25",
+   "prob": 0.537,
+   "odd": 1.81,
+   "odd_inicial": 1.81,
+   "stake": 19.42,
+   "estudo": true,
+   "z": -0.43,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "brook|espn-401841329",
+   "bettor": "brook",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.75,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 2.75",
+   "prob": 0.4046,
+   "odd": 2.38,
+   "odd_inicial": 2.38,
+   "stake": 18.3,
+   "estudo": true,
+   "z": -0.84,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "chopper|espn-401841329",
+   "bettor": "chopper",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.75,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.75",
+   "prob": 0.5954,
+   "odd": 1.64,
+   "odd_inicial": 1.64,
+   "stake": 16.9,
+   "estudo": true,
+   "z": 0.41,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "hulk|espn-401841329",
+   "bettor": "hulk",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 2.5",
+   "prob": 0.4689,
+   "odd": 1.65,
+   "odd_inicial": 1.65,
+   "stake": 21.17,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "sanji|espn-401841329",
+   "bettor": "sanji",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": true
+   },
+   "market": "Ambas marcam",
+   "sel": "Sim",
+   "prob": 0.3941,
+   "odd": 2.43,
+   "odd_inicial": 2.43,
+   "stake": 16.59,
+   "estudo": true,
+   "z": 0.01,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "usopp|espn-401841329",
+   "bettor": "usopp",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": false
+   },
+   "market": "Ambas marcam",
+   "sel": "Não",
+   "prob": 0.6059,
+   "odd": 1.6,
+   "odd_inicial": 1.6,
+   "stake": 20.16,
+   "estudo": true,
+   "z": -0.27,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "lawliet|espn-401841329",
+   "bettor": "lawliet",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": false
+   },
+   "market": "Ambas marcam",
+   "sel": "Não",
+   "prob": 0.6059,
+   "odd": 1.6,
+   "odd_inicial": 1.6,
+   "stake": 16.72,
+   "estudo": true,
+   "z": 0.32,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "ryuk|espn-401841329",
+   "bettor": "ryuk",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": false
+   },
+   "market": "Ambas marcam",
+   "sel": "Não",
+   "prob": 0.6059,
+   "odd": 1.6,
+   "odd_inicial": 1.6,
+   "stake": 18.63,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "light|espn-401841329",
+   "bettor": "light",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cs",
+    "score": [
+     1,
+     0
+    ]
+   },
+   "market": "Placar exato",
+   "sel": "1 x 0",
+   "prob": 0.1523,
+   "odd": 6.23,
+   "odd_inicial": 6.23,
+   "stake": 16.71,
+   "estudo": true,
+   "z": 0.53,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "near|espn-401841329",
+   "bettor": "near",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cs",
+    "score": [
+     2,
+     0
+    ]
+   },
+   "market": "Placar exato",
+   "sel": "2 x 0",
+   "prob": 0.1485,
+   "odd": 6.39,
+   "odd_inicial": 6.39,
+   "stake": 14.04,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "mello|espn-401841329",
+   "bettor": "mello",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cs",
+    "score": [
+     1,
+     1
+    ]
+   },
+   "market": "Placar exato",
+   "sel": "1 x 1",
+   "prob": 0.0914,
+   "odd": 10.35,
+   "odd_inicial": 10.35,
+   "stake": 17.97,
+   "estudo": true,
+   "z": 0.63,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "rem|espn-401841329",
+   "bettor": "rem",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cs",
+    "score": [
+     2,
+     1
+    ]
+   },
+   "market": "Placar exato",
+   "sel": "2 x 1",
+   "prob": 0.0891,
+   "odd": 10.61,
+   "odd_inicial": 10.61,
+   "stake": 12.94,
+   "estudo": true,
+   "z": 0.39,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "itachi|espn-401841329",
+   "bettor": "itachi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -1.5
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -1.5",
+   "prob": 0.4346,
+   "odd": 1.95,
+   "odd_inicial": 1.95,
+   "stake": 18.95,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "genos|espn-401841329",
+   "bettor": "genos",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -1.0
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -1.0",
+   "prob": 0.5878,
+   "odd": 1.66,
+   "odd_inicial": 1.66,
+   "stake": 20.03,
+   "estudo": true,
+   "z": 0.41,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "tony|espn-401841329",
+   "bettor": "tony",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -0.75
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -0.75",
+   "prob": 0.6495,
+   "odd": 1.51,
+   "odd_inicial": 1.51,
+   "stake": 20.74,
+   "estudo": true,
+   "z": -0.21,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "bang|espn-401841329",
+   "bettor": "bang",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -0.25
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -0.25",
+   "prob": 0.7724,
+   "odd": 1.28,
+   "odd_inicial": 1.28,
+   "stake": 17.57,
+   "estudo": true,
+   "z": 0.77,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "sonic|espn-401841329",
+   "bettor": "sonic",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 0.25
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +0.25",
+   "prob": 0.2276,
+   "odd": 4.19,
+   "odd_inicial": 4.19,
+   "stake": 19.66,
+   "estudo": true,
+   "z": -0.24,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "garou|espn-401841329",
+   "bettor": "garou",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 0.5
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +0.5",
+   "prob": 0.3048,
+   "odd": 3.14,
+   "odd_inicial": 3.14,
+   "stake": 17.5,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "kakashi|espn-401841329",
+   "bettor": "kakashi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 1.0
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +1.0",
+   "prob": 0.4122,
+   "odd": 2.34,
+   "odd_inicial": 2.34,
+   "stake": 18.88,
+   "estudo": true,
+   "z": -0.85,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "king|espn-401841329",
+   "bettor": "king",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 1.5
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +1.5",
+   "prob": 0.5654,
+   "odd": 1.74,
+   "odd_inicial": 1.74,
+   "stake": 20.23,
+   "estudo": true,
+   "z": -0.17,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "fubuki|espn-401841329",
+   "bettor": "fubuki",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 2.0
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +2.0",
+   "prob": 0.7207,
+   "odd": 1.36,
+   "odd_inicial": 1.36,
+   "stake": 19.95,
+   "estudo": true,
+   "z": 0.61,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "mario|espn-401841329",
+   "bettor": "mario",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "home",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "São Paulo: Mais de 1.5",
+   "prob": 0.6946,
+   "odd": 1.41,
+   "odd_inicial": 1.41,
+   "stake": 17.87,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "luigi|espn-401841329",
+   "bettor": "luigi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "home",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "São Paulo: Mais de 0.5",
+   "prob": 0.9064,
+   "odd": 1.1,
+   "odd_inicial": 1.1,
+   "stake": 19.18,
+   "estudo": true,
+   "z": -1.2,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "peach|espn-401841329",
+   "bettor": "peach",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "home",
+    "line": 2.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "São Paulo: Mais de 2.5",
+   "prob": 0.3547,
+   "odd": 2.69,
+   "odd_inicial": 2.69,
+   "stake": 22.01,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "pikachu|espn-401841329",
+   "bettor": "pikachu",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Mais de 0.5",
+   "prob": 0.4433,
+   "odd": 2.17,
+   "odd_inicial": 2.17,
+   "stake": 19.36,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "bowser|espn-401841329",
+   "bettor": "bowser",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 0.5,
+    "over": false
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Menos de 0.5",
+   "prob": 0.5567,
+   "odd": 1.74,
+   "odd_inicial": 1.74,
+   "stake": 16.6,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "yoshi|espn-401841329",
+   "bettor": "yoshi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 1.5,
+    "over": false
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Menos de 1.5",
+   "prob": 0.8916,
+   "odd": 1.11,
+   "odd_inicial": 1.11,
+   "stake": 17.45,
+   "estudo": true,
+   "z": -0.89,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "toad|espn-401841329",
+   "bettor": "toad",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "home",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "São Paulo: Mais de 1.5",
+   "prob": 0.6946,
+   "odd": 1.41,
+   "odd_inicial": 1.41,
+   "stake": 18.09,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "wario|espn-401841329",
+   "bettor": "wario",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Mais de 0.5",
+   "prob": 0.4433,
+   "odd": 2.17,
+   "odd_inicial": 2.17,
+   "stake": 20.15,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "daisy|espn-401841329",
+   "bettor": "daisy",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Mais de 1.5",
+   "prob": 0.1084,
+   "odd": 8.65,
+   "odd_inicial": 8.65,
+   "stake": 22.23,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "batman|espn-401841329",
+   "bettor": "batman",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "win_nil",
+    "sel": "home"
+   },
+   "market": "Vence sem sofrer gol",
+   "sel": "São Paulo",
+   "prob": 0.5123,
+   "odd": 1.89,
+   "odd_inicial": 1.89,
+   "stake": 18.72,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "alfred|espn-401841329",
+   "bettor": "alfred",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 0.5,
+    "over": false
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Menos de 0.5",
+   "prob": 0.5567,
+   "odd": 1.74,
+   "odd_inicial": 1.74,
+   "stake": 16.07,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "neo|espn-401841329",
+   "bettor": "neo",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 0.5",
+   "prob": 0.6826,
+   "odd": 1.44,
+   "odd_inicial": 1.44,
+   "stake": 22.48,
+   "estudo": true,
+   "z": -0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "trinity|espn-401841329",
+   "bettor": "trinity",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": false
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Menos de 0.5",
+   "prob": 0.3174,
+   "odd": 3.02,
+   "odd_inicial": 3.02,
+   "stake": 13.24,
+   "estudo": true,
+   "z": 0.06,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "morpheus|espn-401841329",
+   "bettor": "morpheus",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 1.5,
+    "over": false
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Menos de 1.5",
+   "prob": 0.6817,
+   "odd": 1.44,
+   "odd_inicial": 1.44,
+   "stake": 17.31,
+   "estudo": true,
+   "z": 0.47,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "haku|espn-401841329",
+   "bettor": "haku",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 1.5",
+   "prob": 0.3183,
+   "odd": 3.01,
+   "odd_inicial": 3.01,
+   "stake": 18.14,
+   "estudo": true,
+   "z": -0.19,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "totoro|espn-401841329",
+   "bettor": "totoro",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_1x2",
+    "sel": "draw"
+   },
+   "market": "Resultado 1º tempo",
+   "sel": "Empate",
+   "prob": 0.3972,
+   "odd": 2.43,
+   "odd_inicial": 2.43,
+   "stake": 15.14,
+   "estudo": true,
+   "z": -0.51,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "smith|espn-401841329",
+   "bettor": "smith",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_1x2",
+    "sel": "home"
+   },
+   "market": "Resultado 1º tempo",
+   "sel": "São Paulo vence",
+   "prob": 0.4928,
+   "odd": 1.97,
+   "odd_inicial": 1.97,
+   "stake": 14.62,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "vader|espn-401841329",
+   "bettor": "vader",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "htft",
+    "ht": "home",
+    "ft": "home"
+   },
+   "market": "Intervalo/Final",
+   "sel": "São Paulo / São Paulo",
+   "prob": 0.4551,
+   "odd": 2.13,
+   "odd_inicial": 2.13,
+   "stake": 19.92,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "kiki|espn-401841329",
+   "bettor": "kiki",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "htft",
+    "ht": "draw",
+    "ft": "home"
+   },
+   "market": "Intervalo/Final",
+   "sel": "Empate / São Paulo",
+   "prob": 0.2168,
+   "odd": 4.4,
+   "odd_inicial": 4.4,
+   "stake": 30.26,
+   "estudo": true,
+   "z": 0.59,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "ash|espn-401841329",
+   "bettor": "ash",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "sh_more"
+   },
+   "market": "Tempo com mais gols",
+   "sel": "2º tempo",
+   "prob": 0.4279,
+   "odd": 2.26,
+   "odd_inicial": 2.26,
+   "stake": 19.32,
+   "estudo": true,
+   "z": 0.45,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "chihiro|espn-401841329",
+   "bettor": "chihiro",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "fh_more"
+   },
+   "market": "Tempo com mais gols",
+   "sel": "1º tempo",
+   "prob": 0.3078,
+   "odd": 3.11,
+   "odd_inicial": 3.11,
+   "stake": 13.15,
+   "estudo": true,
+   "z": -0.98,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "gon|espn-401841329",
+   "bettor": "gon",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 9.5,
+    "over": true
+   },
+   "market": "Escanteios",
+   "sel": "Mais de 9.5",
+   "prob": 0.5725,
+   "odd": 1.69,
+   "odd_inicial": 1.69,
+   "stake": 19.97,
+   "estudo": true,
+   "z": 1.36,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "kurapika|espn-401841329",
+   "bettor": "kurapika",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 8.5,
+    "over": true
+   },
+   "market": "Escanteios",
+   "sel": "Mais de 8.5",
+   "prob": 0.6886,
+   "odd": 1.42,
+   "odd_inicial": 1.42,
+   "stake": 24.84,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "leorio|espn-401841329",
+   "bettor": "leorio",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 10.5,
+    "over": true
+   },
+   "market": "Escanteios",
+   "sel": "Mais de 10.5",
+   "prob": 0.4496,
+   "odd": 2.14,
+   "odd_inicial": 2.14,
+   "stake": 20.54,
+   "estudo": true,
+   "z": 1.69,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "hisoka|espn-401841329",
+   "bettor": "hisoka",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 11.5,
+    "over": true
+   },
+   "market": "Escanteios",
+   "sel": "Mais de 11.5",
+   "prob": 0.3564,
+   "odd": 2.68,
+   "odd_inicial": 2.68,
+   "stake": 20.47,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "killua|espn-401841329",
+   "bettor": "killua",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 10.5,
+    "over": false
+   },
+   "market": "Escanteios",
+   "sel": "Menos de 10.5",
+   "prob": 0.5504,
+   "odd": 1.76,
+   "odd_inicial": 1.76,
+   "stake": 16.72,
+   "estudo": true,
+   "z": -1.81,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "netero|espn-401841329",
+   "bettor": "netero",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 9.5,
+    "over": false
+   },
+   "market": "Escanteios",
+   "sel": "Menos de 9.5",
+   "prob": 0.4275,
+   "odd": 2.25,
+   "odd_inicial": 2.25,
+   "stake": 16.34,
+   "estudo": true,
+   "z": -1.41,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "meruem|espn-401841329",
+   "bettor": "meruem",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 11.5,
+    "over": false
+   },
+   "market": "Escanteios",
+   "sel": "Menos de 11.5",
+   "prob": 0.6436,
+   "odd": 1.51,
+   "odd_inicial": 1.51,
+   "stake": 17.57,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "alluka|espn-401841329",
+   "bettor": "alluka",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 9.5,
+    "over": true
+   },
+   "market": "Escanteios",
+   "sel": "Mais de 9.5",
+   "prob": 0.5725,
+   "odd": 1.69,
+   "odd_inicial": 1.69,
+   "stake": 16.09,
+   "estudo": true,
+   "z": 0.82,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "mikasa|espn-401841329",
+   "bettor": "mikasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_1x2",
+    "sel": "home"
+   },
+   "market": "Mais escanteios",
+   "sel": "São Paulo",
+   "prob": 0.7884,
+   "odd": 1.25,
+   "odd_inicial": 1.25,
+   "stake": 23.02,
+   "estudo": true,
+   "z": -1.84,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "armin|espn-401841329",
+   "bettor": "armin",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_1x2",
+    "sel": "away"
+   },
+   "market": "Mais escanteios",
+   "sel": "Remo",
+   "prob": 0.1423,
+   "odd": 6.61,
+   "odd_inicial": 6.61,
+   "stake": 10.38,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "erwin|espn-401841329",
+   "bettor": "erwin",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_1x2",
+    "sel": "home"
+   },
+   "market": "Mais escanteios",
+   "sel": "São Paulo",
+   "prob": 0.7884,
+   "odd": 1.25,
+   "odd_inicial": 1.25,
+   "stake": 32.88,
+   "estudo": true,
+   "z": -1.71,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "hange|espn-401841329",
+   "bettor": "hange",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ah",
+    "sel": "home",
+    "line": -2.5
+   },
+   "market": "Handicap de escanteios",
+   "sel": "São Paulo -2.5",
+   "prob": 0.6176,
+   "odd": 1.58,
+   "odd_inicial": 1.58,
+   "stake": 22.96,
+   "estudo": true,
+   "z": -0.65,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "reiner|espn-401841329",
+   "bettor": "reiner",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_corners",
+    "sel": "home",
+    "line": 5.5,
+    "over": true
+   },
+   "market": "Escanteios do time",
+   "sel": "São Paulo: Mais de 5.5",
+   "prob": 0.663,
+   "odd": 1.47,
+   "odd_inicial": 1.47,
+   "stake": 30.69,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "annie|espn-401841329",
+   "bettor": "annie",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_corners",
+    "sel": "away",
+    "line": 3.5,
+    "over": true
+   },
+   "market": "Escanteios do time",
+   "sel": "Remo: Mais de 3.5",
+   "prob": 0.3978,
+   "odd": 2.41,
+   "odd_inicial": 2.41,
+   "stake": 19.83,
+   "estudo": true,
+   "z": 2.1,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "levi|espn-401841329",
+   "bettor": "levi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 4.5,
+    "over": true
+   },
+   "market": "Cartões",
+   "sel": "Mais de 4.5",
+   "prob": 0.3028,
+   "odd": 3.14,
+   "odd_inicial": 3.14,
+   "stake": 15.07,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "zeke|espn-401841329",
+   "bettor": "zeke",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 3.5,
+    "over": true
+   },
+   "market": "Cartões",
+   "sel": "Mais de 3.5",
+   "prob": 0.4575,
+   "odd": 2.1,
+   "odd_inicial": 2.1,
+   "stake": 19.43,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "connie|espn-401841329",
+   "bettor": "connie",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 5.5,
+    "over": true
+   },
+   "market": "Cartões",
+   "sel": "Mais de 5.5",
+   "prob": 0.1827,
+   "odd": 5.16,
+   "odd_inicial": 5.16,
+   "stake": 12.72,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "historia|espn-401841329",
+   "bettor": "historia",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 3.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 3.5",
+   "prob": 0.5425,
+   "odd": 1.78,
+   "odd_inicial": 1.78,
+   "stake": 16.33,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "jean|espn-401841329",
+   "bettor": "jean",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 4.5",
+   "prob": 0.6972,
+   "odd": 1.4,
+   "odd_inicial": 1.4,
+   "stake": 20.11,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "sasha|espn-401841329",
+   "bettor": "sasha",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 4.5",
+   "prob": 0.6972,
+   "odd": 1.4,
+   "odd_inicial": 1.4,
+   "stake": 20.85,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "tom|espn-401841329",
+   "bettor": "tom",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "oe",
+    "odd": true
+   },
+   "market": "Gols par/ímpar",
+   "sel": "Ímpar",
+   "prob": 0.532,
+   "odd": 1.82,
+   "odd_inicial": 1.82,
+   "stake": 17.8,
+   "estudo": true,
+   "z": 0.27,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "jerry|espn-401841329",
+   "bettor": "jerry",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "oe",
+    "odd": false
+   },
+   "market": "Gols par/ímpar",
+   "sel": "Par",
+   "prob": 0.468,
+   "odd": 2.06,
+   "odd_inicial": 2.06,
+   "stake": 17.97,
+   "estudo": true,
+   "z": -0.37,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "scooby|espn-401841329",
+   "bettor": "scooby",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 3.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 3.5",
+   "prob": 0.7537,
+   "odd": 1.3,
+   "odd_inicial": 1.3,
+   "stake": 16.34,
+   "estudo": true,
+   "z": -1.01,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "salsicha|espn-401841329",
+   "bettor": "salsicha",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -1.5
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -1.5",
+   "prob": 0.4346,
+   "odd": 1.95,
+   "odd_inicial": 1.95,
+   "stake": 14.05,
+   "estudo": true,
+   "z": -0.57,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "fred|espn-401841329",
+   "bettor": "fred",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 1.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 1.5",
+   "prob": 0.202,
+   "odd": 4.67,
+   "odd_inicial": 4.67,
+   "stake": 13.42,
+   "estudo": true,
+   "z": -1.73,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "velma|espn-401841329",
+   "bettor": "velma",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": false
+   },
+   "market": "Ambas marcam",
+   "sel": "Não",
+   "prob": 0.6059,
+   "odd": 1.6,
+   "odd_inicial": 1.6,
+   "stake": 15.39,
+   "estudo": true,
+   "z": -0.5,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "homer|espn-401841329",
+   "bettor": "homer",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "corners_ou",
+    "line": 9.5,
+    "over": false
+   },
+   "market": "Escanteios",
+   "sel": "Menos de 9.5",
+   "prob": 0.4275,
+   "odd": 2.25,
+   "odd_inicial": 2.25,
+   "stake": 20.0,
+   "estudo": false,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "patrick|espn-401841329",
+   "bettor": "patrick",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Remo vence",
+   "prob": 0.1049,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 20.0,
+   "estudo": false,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "patinhas|espn-401841329",
+   "bettor": "patinhas",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 10,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "donald|espn-401841329",
+   "bettor": "donald",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 117.16,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "pateta|espn-401841329",
+   "bettor": "pateta",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Total de gols",
+   "sel": "Mais de 1.5",
+   "prob": 0.798,
+   "odd": 1.24,
+   "odd_inicial": 1.24,
+   "stake": 20.0,
+   "estudo": true,
+   "z": -0.35,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "mickey|espn-401841329",
+   "bettor": "mickey",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "dc",
+    "sel": "home"
+   },
+   "market": "Dupla chance",
+   "sel": "São Paulo ou empate",
+   "prob": 0.8951,
+   "odd": 1.11,
+   "odd_inicial": 1.11,
+   "stake": 10,
+   "estudo": true,
+   "z": -1.02,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "bobesponja|espn-401841329",
+   "bettor": "bobesponja",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "btts",
+    "yes": true
+   },
+   "market": "Ambas marcam",
+   "sel": "Sim",
+   "prob": 0.3941,
+   "odd": 2.43,
+   "odd_inicial": 2.43,
+   "stake": 50,
+   "estudo": true,
+   "z": 0.01,
+   "grade": null,
+   "pts": null,
+   "fonte": "calibrada"
+  },
+  {
+   "id": "jiraiya|espn-401841329",
+   "bettor": "jiraiya",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "away"
+   },
+   "market": "Resultado",
+   "sel": "Remo vence",
+   "prob": 0.1049,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 14.81,
+   "estudo": true,
+   "z": -0.58,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "hermione|espn-401841329",
+   "bettor": "hermione",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "away",
+    "line": 1.5
+   },
+   "market": "Handicap asiático",
+   "sel": "Remo +1.5",
+   "prob": 0.5654,
+   "odd": 1.74,
+   "odd_inicial": 1.74,
+   "stake": 18.92,
+   "estudo": true,
+   "z": -0.17,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "dumbledore|espn-401841329",
+   "bettor": "dumbledore",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 25.14,
+   "estudo": true,
+   "z": 0.22,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "wakabayashi|espn-401841329",
+   "bettor": "wakabayashi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "home"
+   },
+   "market": "Resultado",
+   "sel": "São Paulo vence",
+   "prob": 0.6952,
+   "odd": 1.35,
+   "odd_inicial": 1.35,
+   "stake": 20.15,
+   "estudo": true,
+   "z": 0.78,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "ishizaki|espn-401841329",
+   "bettor": "ishizaki",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "1x2",
+    "sel": "draw"
+   },
+   "market": "Resultado",
+   "sel": "Empate",
+   "prob": 0.1999,
+   "odd": 5.0,
+   "odd_inicial": 5.0,
+   "stake": 11.62,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "tsubasa|espn-401841329",
+   "bettor": "tsubasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 19.96,
+   "estudo": true,
+   "z": -1.33,
+   "grade": null,
+   "pts": null,
+   "fonte": "DraftKings"
+  },
+  {
+   "id": "kaneda|espn-401841329",
+   "bettor": "kaneda",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "goal_before",
+    "min": 30,
+    "yes": true
+   },
+   "market": "Minuto do 1º gol",
+   "sel": "Gol até os 30 min",
+   "prob": 0.5425,
+   "odd": 1.79,
+   "odd_inicial": 1.79,
+   "stake": 17.09,
+   "estudo": true,
+   "z": -0.64,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "spike|espn-401841329",
+   "bettor": "spike",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "goal_before",
+    "min": 20,
+    "yes": true
+   },
+   "market": "Minuto do 1º gol",
+   "sel": "Gol até os 20 min",
+   "prob": 0.4063,
+   "odd": 2.37,
+   "odd_inicial": 2.37,
+   "stake": 19.86,
+   "estudo": true,
+   "z": -0.85,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "deku|espn-401841329",
+   "bettor": "deku",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "sot_ou",
+    "line": 8.5,
+    "over": true
+   },
+   "market": "Chutes no alvo",
+   "sel": "Mais de 8.5",
+   "prob": 0.5165,
+   "odd": 1.87,
+   "odd_inicial": 1.87,
+   "stake": 25.63,
+   "estudo": true,
+   "z": 0.79,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "sena|espn-401873081",
+   "bettor": "sena",
+   "game": "espn-401873081",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T18:00:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Detroit Lions vence",
+   "prob": 0.476,
+   "odd": 2.03,
+   "odd_inicial": 2.03,
+   "stake": 20.87,
+   "estudo": true,
+   "z": 0.54,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "sena|espn-401873082",
+   "bettor": "sena",
+   "game": "espn-401873082",
+   "day": "2026-11-27",
+   "kickoff": "2026-11-27T01:20:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "away"
+   },
+   "market": "Vencedor",
+   "sel": "Kansas City Chiefs vence",
+   "prob": 0.427,
+   "odd": 2.26,
+   "odd_inicial": 2.26,
+   "stake": 20.87,
+   "estudo": true,
+   "z": 0.54,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "hiruma|espn-401873080",
+   "bettor": "hiruma",
+   "game": "espn-401873080",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T21:30:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Dallas Cowboys vence",
+   "prob": 0.796,
+   "odd": 1.24,
+   "odd_inicial": 1.24,
+   "stake": 20.65,
+   "estudo": true,
+   "z": 0.82,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "shin|espn-401873082",
+   "bettor": "shin",
+   "game": "espn-401873082",
+   "day": "2026-11-27",
+   "kickoff": "2026-11-27T01:20:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Buffalo Bills vence",
+   "prob": 0.573,
+   "odd": 1.7,
+   "odd_inicial": 1.7,
+   "stake": 18.83,
+   "estudo": true,
+   "z": -0.74,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "kurita|espn-401873081",
+   "bettor": "kurita",
+   "game": "espn-401873081",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T18:00:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Detroit Lions vence",
+   "prob": 0.476,
+   "odd": 2.03,
+   "odd_inicial": 2.03,
+   "stake": 19.58,
+   "estudo": true,
+   "z": 0.23,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "kurita|espn-401873080",
+   "bettor": "kurita",
+   "game": "espn-401873080",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T21:30:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Dallas Cowboys vence",
+   "prob": 0.796,
+   "odd": 1.24,
+   "odd_inicial": 1.24,
+   "stake": 19.58,
+   "estudo": true,
+   "z": 1.01,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "kurita|espn-401873082",
+   "bettor": "kurita",
+   "game": "espn-401873082",
+   "day": "2026-11-27",
+   "kickoff": "2026-11-27T01:20:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "home"
+   },
+   "market": "Vencedor",
+   "sel": "Buffalo Bills vence",
+   "prob": 0.573,
+   "odd": 1.7,
+   "odd_inicial": 1.7,
+   "stake": 19.58,
+   "estudo": true,
+   "z": -0.92,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "agon|espn-401873080",
+   "bettor": "agon",
+   "game": "espn-401873080",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T21:30:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "away"
+   },
+   "market": "Vencedor",
+   "sel": "Philadelphia Eagles vence",
+   "prob": 0.204,
+   "odd": 4.67,
+   "odd_inicial": 4.67,
+   "stake": 16.32,
+   "estudo": true,
+   "z": -0.82,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "jinx|espn-401841329",
+   "bettor": "jinx",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_corners",
+    "sel": "away",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Escanteios do time",
+   "sel": "Remo: Menos de 4.5",
+   "prob": 0.7533,
+   "odd": 1.31,
+   "odd_inicial": 1.31,
+   "stake": 19.68,
+   "estudo": true,
+   "z": 1.05,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "vi|espn-401841329",
+   "bettor": "vi",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_corners",
+    "sel": "home",
+    "line": 4.5,
+    "over": true
+   },
+   "market": "Escanteios do time",
+   "sel": "São Paulo: Mais de 4.5",
+   "prob": 0.8596,
+   "odd": 1.15,
+   "odd_inicial": 1.15,
+   "stake": 19.88,
+   "estudo": true,
+   "z": 0.02,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "eleven|espn-401841329",
+   "bettor": "eleven",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "win_half",
+    "sel": "home",
+    "yes": true
+   },
+   "market": "Vencer um dos tempos",
+   "sel": "São Paulo vence pelo menos um tempo",
+   "prob": 0.7696,
+   "odd": 1.28,
+   "odd_inicial": 1.28,
+   "stake": 18.94,
+   "estudo": true,
+   "z": -0.69,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "hopper|espn-401841329",
+   "bettor": "hopper",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "win_both",
+    "sel": "home",
+    "yes": true
+   },
+   "market": "Vencer os dois tempos",
+   "sel": "São Paulo vence os dois tempos",
+   "prob": 0.2689,
+   "odd": 3.56,
+   "odd_inicial": 3.56,
+   "stake": 18.4,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "fonte": null
+  },
+  {
+   "id": "fus_tsubasa_kiki|espn-401841329|a",
+   "bettor": "fus_tsubasa_kiki",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 8.49,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_kiki|espn-401841329|b",
+   "bettor": "fus_tsubasa_kiki",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "htft",
+    "ht": "draw",
+    "ft": "home"
+   },
+   "market": "Intervalo/Final",
+   "sel": "Empate / São Paulo",
+   "prob": 0.2168,
+   "odd": 4.4,
+   "odd_inicial": 4.4,
+   "stake": 8.49,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_tony|espn-401841329|a",
+   "bettor": "fus_tsubasa_tony",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 9.62,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_tony|espn-401841329|b",
+   "bettor": "fus_tsubasa_tony",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ah",
+    "sel": "home",
+    "line": -0.75
+   },
+   "market": "Handicap asiático",
+   "sel": "São Paulo -0.75",
+   "prob": 0.6495,
+   "odd": 1.51,
+   "odd_inicial": 1.51,
+   "stake": 9.62,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_daisy|espn-401841329|a",
+   "bettor": "fus_tsubasa_daisy",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 8.6,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_daisy|espn-401841329|b",
+   "bettor": "fus_tsubasa_daisy",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "away",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "Remo: Mais de 1.5",
+   "prob": 0.1084,
+   "odd": 8.65,
+   "odd_inicial": 8.65,
+   "stake": 8.6,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_rem|espn-401841329|a",
+   "bettor": "fus_tsubasa_rem",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 9.53,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_rem|espn-401841329|b",
+   "bettor": "fus_tsubasa_rem",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cs",
+    "score": [
+     2,
+     1
+    ]
+   },
+   "market": "Placar exato",
+   "sel": "2 x 1",
+   "prob": 0.0891,
+   "odd": 10.61,
+   "odd_inicial": 10.61,
+   "stake": 9.53,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_mario|espn-401841329|a",
+   "bettor": "fus_tsubasa_mario",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 8.9,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_tsubasa_mario|espn-401841329|b",
+   "bettor": "fus_tsubasa_mario",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "team_ou",
+    "sel": "home",
+    "line": 1.5,
+    "over": true
+   },
+   "market": "Gols do time",
+   "sel": "São Paulo: Mais de 1.5",
+   "prob": 0.6946,
+   "odd": 1.41,
+   "odd_inicial": 1.41,
+   "stake": 8.9,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_tsubasa|espn-401841329|a",
+   "bettor": "fus_smith_tsubasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_1x2",
+    "sel": "home"
+   },
+   "market": "Resultado 1º tempo",
+   "sel": "São Paulo vence",
+   "prob": 0.4928,
+   "odd": 1.97,
+   "odd_inicial": 1.97,
+   "stake": 9.06,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_tsubasa|espn-401841329|b",
+   "bettor": "fus_smith_tsubasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 9.06,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_dumbledore|espn-401841329|a",
+   "bettor": "fus_smith_dumbledore",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_1x2",
+    "sel": "home"
+   },
+   "market": "Resultado 1º tempo",
+   "sel": "São Paulo vence",
+   "prob": 0.4928,
+   "odd": 1.97,
+   "odd_inicial": 1.97,
+   "stake": 9.79,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_dumbledore|espn-401841329|b",
+   "bettor": "fus_smith_dumbledore",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 9.79,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_tsukishima|espn-401841329|a",
+   "bettor": "fus_smith_tsukishima",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_1x2",
+    "sel": "home"
+   },
+   "market": "Resultado 1º tempo",
+   "sel": "São Paulo vence",
+   "prob": 0.4928,
+   "odd": 1.97,
+   "odd_inicial": 1.97,
+   "stake": 12.27,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_smith_tsukishima|espn-401841329|b",
+   "bettor": "fus_smith_tsukishima",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ml",
+    "sel": "away"
+   },
+   "market": "Vencedor",
+   "sel": "Remo vence",
+   "prob": 0.111,
+   "odd": 8.5,
+   "odd_inicial": 8.5,
+   "stake": 12.27,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401841329|a",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ht_ou",
+    "line": 0.5,
+    "over": true
+   },
+   "market": "Gols no 1º tempo",
+   "sel": "Mais de 0.5",
+   "prob": 0.6826,
+   "odd": 1.44,
+   "odd_inicial": 1.44,
+   "stake": 9.52,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "fus_neo_tsubasa|espn-401841329|b",
+   "bettor": "fus_neo_tsubasa",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "ou",
+    "line": 2.5,
+    "over": false
+   },
+   "market": "Total de gols",
+   "sel": "Menos de 2.5",
+   "prob": 0.5311,
+   "odd": 2.15,
+   "odd_inicial": 2.15,
+   "stake": 9.52,
+   "estudo": true,
+   "grade": null,
+   "pts": null
+  },
+  {
+   "id": "cons_10_1_segura_10|espn-401841329",
+   "bettor": "cons_10_1_segura_10",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 4.5",
+   "prob": 0.6972,
+   "odd": 1.4,
+   "odd_inicial": 1.4,
+   "stake": 21.42,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "apoio": 2
+  },
+  {
+   "id": "cons_5_1_segura_10|espn-401841329",
+   "bettor": "cons_5_1_segura_10",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 4.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 4.5",
+   "prob": 0.6972,
+   "odd": 1.4,
+   "odd_inicial": 1.4,
+   "stake": 20.8,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "apoio": 1
+  },
+  {
+   "id": "cons_20_1_segura_17|espn-401841329",
+   "bettor": "cons_20_1_segura_17",
+   "game": "espn-401841329",
+   "day": "2026-11-26",
+   "kickoff": "2026-11-26T23:00:00+00:00",
+   "spec": {
+    "t": "cards_ou",
+    "line": 3.5,
+    "over": false
+   },
+   "market": "Cartões",
+   "sel": "Menos de 3.5",
+   "prob": 0.5425,
+   "odd": 1.78,
+   "odd_inicial": 1.78,
+   "stake": 19.03,
+   "estudo": true,
+   "z": null,
+   "grade": null,
+   "pts": null,
+   "apoio": 3
   }
  ],
  "days": [
@@ -393680,7 +397471,8 @@
   "2026-11-23",
   "2026-11-24",
   "2026-11-25",
-  "2026-11-26"
+  "2026-11-26",
+  "2026-11-27"
  ],
  "fusions": [
   {

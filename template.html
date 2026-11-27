@@ -205,10 +205,12 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
 <main>
   <section id="v-insights" hidden>
     <p class="hint">Aqui fica <b>só o que já provou que funciona</b>: as <b>apostas verdes</b>. Entram apostas de qualquer personagem, desde que caiam numa liga e faixa de odd em que ele deu lucro no teste de 5 temporadas (pelo menos 40 apostas, sem ser sorte). Ao vivo, essas apostas rendem bem acima das outras. Para cada uma: o que apostar, quanto colocar e a odd mínima. Toque em <b>Registrar</b> para guardar em Minhas apostas.</p>
-    <div class="filters"><label for="ibank" class="src">Minha banca</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="verde" selected>Só as verdes (provadas)</option><option value="top">Top do top dos 10 melhores</option><option value="">Todas as apostas dos 10 melhores</option></select></div>
+    <div class="filters"><label for="ibank" class="src">Minha banca</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="idia" class="src">Dia</label><select id="idia"></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="verde" selected>Só as verdes (provadas)</option><option value="top">Top do top dos 10 melhores</option><option value="">Todas as apostas dos 10 melhores</option></select></div>
     <div class="track" id="itrack"></div>
     <div class="tsum" id="isum"></div>
-    <div style="margin:8px 0"><button type="button" class="ireg" id="iexp" style="padding:9px 14px;font-size:13px">Copiar verdes para o Claude (Chrome)</button> <span class="src" id="iexpmsg"></span><textarea id="iexptxt" readonly style="display:none;width:100%;height:140px;margin-top:6px;font:12px var(--mono)"></textarea></div>
+    <div style="margin:8px 0"><button type="button" class="ireg" id="iexp" style="padding:9px 14px;font-size:13px">Copiar verdes para o Claude (Chrome)</button> <span class="src" id="iexpmsg"></span><textarea id="iexptxt" readonly style="display:none;width:100%;height:140px;margin-top:6px;font:12px var(--mono)"></textarea>
+    <details style="margin-top:8px"><summary class="src">Colar a resposta do Claude com as odds da Stake</summary><textarea id="istk" placeholder="Cole aqui a resposta inteira do Claude (o bloco JSON no final)" style="width:100%;height:90px;margin-top:6px;font:12px var(--mono)"></textarea><button type="button" class="ireg" id="istkgo" style="padding:8px 12px">Aplicar odds da Stake</button> <span class="src" id="istkmsg"></span></details>
+    <div id="istat" class="src" style="margin-top:6px"></div></div>
     <div id="ilist"></div>
   </section>
   <section id="v-ranking" hidden>
@@ -572,6 +574,15 @@ function dirKey(sp){if(!sp)return "";const t=sp.t,m=sp.over!=null?(sp.over?"mais
   if(t==="ou"||t==="ht_ou")return "gols:"+m; if(t==="team_ou")return "gols_"+sp.sel+":"+m; if(t==="cards_ou")return "cartoes:"+m;
   if(t==="corners_ou")return "escanteios:"+m; if(t==="corners_1x2"||t==="corners_ah")return "escanteios_lado:"+sp.sel;
   if(t==="team_corners")return "escanteios_"+sp.sel+":"+m; if(t==="shots_ou"||t==="sot_ou")return "chutes:"+m; return JSON.stringify(sp)}
+function stkTag(i){const s=(MB.stake||{})[i.key];if(!s)return "";if(s.odd==null)return '<div class="src">Stake: sem mercado</div>';
+  return s.odd>=i.min?`<div class="pts-pos">Stake: ${(+s.odd).toFixed(2)} ✅ vale</div>`:`<div class="pts-neg">Stake: ${(+s.odd).toFixed(2)} ❌ abaixo</div>`}
+function stkStats(){const S=MB.stake||{},rows=[];let sem=0,aba=0;
+  for(const [k,s] of Object.entries(S)){const p=DATA.picks.find(q=>q.grade!=null&&!q.void&&((q.game||q.id)+"|"+q.market+"|"+q.sel)===k);if(!p)continue;
+    if(s.odd==null){sem++;continue}if(s.min&&s.odd<s.min){aba++;continue}rows.push({g:p.grade,o:+s.odd,m:p.odd_inicial||p.odd})}
+  const tot=rows.length+sem+aba;if(!tot){$("#istat").textContent="";return}
+  const r=f=>rows.length?Math.round(rows.reduce((a,x)=>a+f(x),0)/rows.length*1000)/10:null, u=(x,o)=>x.g>0?(o-1)*x.g:x.g;
+  const a=r(x=>u(x,x.o)),b=r(x=>u(x,x.m)), f=v=>v==null?"–":(v>0?"+":"")+v+"%";
+  $("#istat").innerHTML=`<b>Na Stake de verdade</b> (apostas já apuradas): ${tot} conferidas · ${sem} sem mercado · ${aba} abaixo da odd mínima · <b>${rows.length} valeram</b>${rows.length?`. Lucro por aposta com a odd da Stake: <b>${f(a)}</b> (com a odd do modelo seria ${f(b)}).`:"."}`}
 function drawVerdes(){
   const now=Date.now(), bank=+$("#ibank").value, lim=now+36*36e5, M=new Map(), nome=Object.fromEntries(DATA.board.map(b=>[b.id,b.nome]));
   for(const p of DATA.picks){
@@ -580,9 +591,14 @@ function drawVerdes(){
   const items=[...M.values()].map(x=>{const p=x.ps.reduce((a,q)=>(q.prob??0)>(a.prob??0)?q:a), e=Math.max(...x.ps.map(q=>q.hedge||0)), n=Math.max(...x.ps.map(q=>q.hn||0));
     const quem=[...new Set(x.ps.map(q=>nome[q.bettor]||q.bettor))], pct=Math.min(3,Math.max(.5,Math.round(25*e/(p.odd-1))/100));
     return {p,key:(p.game||p.id)+"|"+p.market+"|"+p.sel,odd:p.odd,e,n,quem,pct,min:p.odd/(1+e/100)}}).sort((a,b)=>b.e-a.e);
+  window._insAll=new Map(items.map(i=>[i.key,i]));
+  const dk=i=>new Date(i.p.kickoff).toLocaleDateString("sv-SE",{timeZone:"Europe/Dublin"}), dias=[...new Set(items.map(dk))].sort(), sel=$("#idia");
+  const prev=sel.value;sel.innerHTML=dias.map(d=>`<option value="${d}">${new Date(d+"T12:00:00").toLocaleDateString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit"})}</option>`).join("")+(dias.length>1?'<option value="*">todos</option>':"");
+  sel.value=dias.includes(prev)||prev==="*"?prev:(dias[0]||"");
+  const alvo=sel.value;if(alvo&&alvo!=="*")items.splice(0,items.length,...items.filter(i=>dk(i)===alvo));
   const top10=items.slice(0,10), tot=top10.reduce((s,i)=>s+i.pct,0); if(tot>15)top10.forEach(i=>i.pct=Math.round(i.pct*15/tot*100)/100);
   items.slice(10).forEach(i=>i.pct=.5);
-  window._ins=new Map(items.map(i=>[i.key,i]));
+  window._ins=new Map(items.map(i=>[i.key,i]));stkStats();
   const V=DATA.verde||{}, games=Object.fromEntries(DATA.games.map(g=>[g.id,g]));
   $("#itrack").innerHTML=V.n?`<div class="tsum"><div><b class="${V.roi>0?"pts-pos":"pts-neg"}">${V.roi>0?"+":""}${V.roi}%</b><span>lucro por aposta ao vivo</span></div><div><b>${V.acertos}/${V.n}</b><span>acertos</span></div><div><b>${V.dias_pos}/${V.dias}</b><span>dias no lucro</span></div></div><p class="src">Resultado real de quem seguiu só as verdes. Ainda são poucos dias: um dia ruim acontece, e o que vale é a soma de muitos dias.</p>`:"";
   $("#isum").innerHTML=`<div><b>${items.length}</b><span>apostas verdes nas próximas 36 h</span></div><div><b>${brl(items.slice(0,10).reduce((s,i)=>s+Math.max(1,Math.round(bank*i.pct)/100),0))}</b><span>nas 10 melhores, banca de ${brl(bank)}</span></div>`;
@@ -593,7 +609,7 @@ function drawVerdes(){
     return head+gh+`<article class="icard f3"><div><div class="k">${new Date(i.p.kickoff).toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"})}${g?" · "+esc(LG[g.league]||g.league):""}</div>
       <div class="bet">${esc(i.p.market+": "+i.p.sel)}</div>${i.p.spec&&(i.p.spec.t==="corners_1x2"||i.p.spec.t==="corners_ah")?`<div class="src">Sem esse mercado na sua casa? Use "${esc(i.p.sel)} total de escanteios: mais de 4.5", que vai na mesma direção (a odd mínima não vale para ela).</div>`:""}
       <div class="who"><span class="st on">verde</span> vantagem estimada <b>+${i.e.toFixed(1)}%</b> · provada em ${i.n} apostas de 5 temporadas · ${esc(i.quem.join(", "))}</div></div>
-      <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd ${i.odd.toFixed(2)}</div><div class="tod">não pegue abaixo de ${i.min.toFixed(2)}</div><button type="button" class="ireg" data-k="${esc(i.key)}" data-st="${stake}">Registrar</button></div></article>`};
+      <div class="r"><b>${brl(stake)}</b>${i.pct}% da banca<div>odd ${i.odd.toFixed(2)}</div>${stkTag(i)}<div class="tod">não pegue abaixo de ${i.min.toFixed(2)}</div><button type="button" class="ireg" data-k="${esc(i.key)}" data-st="${stake}">Registrar</button></div></article>`};
   const topG=new Set(items.slice(0,10).map(i=>i.p.game)), best=items.filter(i=>topG.has(i.p.game)), rest=items.filter(i=>!topG.has(i.p.game));
   const list=a=>{day="";let gm="";return [...a].sort((x,y)=>x.p.kickoff.localeCompare(y.p.kickoff)||String(x.p.game).localeCompare(String(y.p.game))||y.e-x.e).map(i=>{const h=i.p.game!==gm?`<div class="iday" style="font-size:13px;margin-top:10px">⚽ ${esc(gname(i.p))}</div>`:"";gm=i.p.game;return card(i,h)}).join("")};
   const byGame=new Map();items.forEach(i=>{const k=i.p.game;if(!byGame.has(k))byGame.set(k,[]);byGame.get(k).push(i)});
@@ -667,7 +683,7 @@ function drawInsights(){
     ${i.min&&i.odd<i.min?`<div class="warn">A odd está abaixo da mínima: pelo histórico, não vale a pena agora.</div>`:""}
     </article>`}).join("")+`<p class="src" style="margin-top:8px"><b>Confiante</b>: a liga e a faixa de odd dessa aposta deram lucro para o personagem no teste de 5 temporadas. <b>Em teste</b>: ele ainda está provando que funciona ali. Força: ●●● quando 3 ou mais estratégias independentes concordam, ●●○ quando são 2, ●○○ quando é uma só. Personagens que historicamente escolhem quase sempre a mesma coisa contam como uma estratégia. Sinal forte: 3 independentes, nota média positiva, odd acima da mínima e pelo menos 3 horas até o jogo. Tamanho: 1%, 2% ou 3% da banca conforme a força, como os personagens fazem. Odd mínima: abaixo dela o histórico do personagem naquela liga e faixa de odd deixa de dar lucro.</p>`+pastHtml;
 }
-$("#ibank").addEventListener("change",drawInsights);$("#iforte").addEventListener("change",drawInsights);drawInsights();
+$("#idia").addEventListener("change",drawInsights);$("#ibank").addEventListener("change",drawInsights);$("#iforte").addEventListener("change",drawInsights);
 
 // setas para ordenar qualquer tabela (clique no título da coluna); a ordem escolhida se mantém quando a tabela é redesenhada
 (function(){
@@ -693,7 +709,7 @@ $("#ibank").addEventListener("change",drawInsights);$("#iforte").addEventListene
 })();
 // minhas apostas: caderno pessoal, salvo neste navegador
 const MK="liga_minhas_v1";
-function mLoad(){try{const x=JSON.parse(localStorage.getItem(MK)||"null");if(x&&Array.isArray(x.bets))return x}catch(e){}return {ini:100,bets:[]}}
+function mLoad(){try{const x=JSON.parse(localStorage.getItem(MK)||"null");if(x&&Array.isArray(x.bets)){x.stake=x.stake||{};return x}}catch(e){}return {ini:100,bets:[],stake:{}}}
 let MB=mLoad();
 function mSave(){try{localStorage.setItem(MK,JSON.stringify(MB))}catch(e){}if(typeof TOKEN!=="undefined"&&TOKEN)rpc("liga_salvar",{p_token:TOKEN,p_dados:MB}).catch(()=>{})}
 function mAuto(b){if(!b.key)return null;const p=DATA.picks.find(q=>q.grade!=null&&((q.game||q.id)+"|"+q.market+"|"+q.sel)===b.key);return p?(p.void?0:p.grade):null}
@@ -732,17 +748,25 @@ function exportVerdes(){
   if(!L.length)return "";
   const hora=k=>new Date(k).toLocaleString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"});
   const rows=L.map((i,n)=>{const g=games[i.p.game], stake=Math.max(1,Math.round(bank*i.pct)/100);
-    return `${n+1}. ${g?g.home_name+" x "+g.away_name:i.p.market} · ${g?(LG[g.league]||g.league):""} · ${hora(i.p.kickoff)} (Dublin)\n   Aposta: ${i.p.market}: ${i.p.sel}\n   Odd do nosso modelo: ${i.odd.toFixed(2)} · ODD MÍNIMA para valer: ${i.min.toFixed(2)} · vantagem estimada +${i.e.toFixed(1)}% · valor sugerido R$ ${stake.toFixed(2)} (${i.pct}% de banca de R$ ${bank})`}).join("\n");
-  return `Tarefa: conferir odds da Stake para as apostas "verdes" da Liga dos Apostadores.\n\nRegras:\n- Só LEIA odds. NÃO faça login, NÃO coloque nenhuma aposta, NÃO clique em nada que confirme aposta.\n- Para cada aposta abaixo, abra o jogo na Stake (esportes → futebol/ligas), ache exatamente esse mercado e linha e leia a odd atual.\n- Se a Stake não tiver o jogo ou o mercado, diga "sem mercado".\n- Compare com a ODD MÍNIMA: abaixo dela a aposta perde a vantagem e NÃO deve ser feita.\n\nResponda em tabela: jogo | aposta | odd na Stake | odd mínima | ✅ vale / ❌ abaixo / ⚪ sem mercado | valor sugerido. No fim, liste só as que valem.\n\nApostas verdes (geradas ${new Date().toLocaleString("pt-BR",{timeZone:"Europe/Dublin"})}, horário de Dublin):\n${rows}`;
+    return `${n+1}. ${g?g.home_name+" x "+g.away_name:i.p.market} · ${g?(LG[g.league]||g.league):""} · ${hora(i.p.kickoff)} (Dublin)\n   Aposta: ${i.p.market}: ${i.p.sel}\n   Odd do nosso modelo: ${i.odd.toFixed(2)} · ODD MÍNIMA para valer: ${i.min.toFixed(2)} · vantagem estimada +${i.e.toFixed(1)}% · valor sugerido R$ ${stake.toFixed(2)} (${i.pct}% de banca de R$ ${bank})\n   ref: ${i.key}`}).join("\n");
+  return `Tarefa: conferir odds da Stake para as apostas "verdes" da Liga dos Apostadores.\n\nRegras:\n- Só LEIA odds. NÃO faça login, NÃO coloque nenhuma aposta, NÃO clique em nada que confirme aposta.\n- Para cada aposta abaixo, abra o jogo na Stake (esportes → futebol/ligas), ache exatamente esse mercado e linha e leia a odd atual.\n- Se a Stake não tiver o jogo ou o mercado, diga "sem mercado".\n- Compare com a ODD MÍNIMA: abaixo dela a aposta perde a vantagem e NÃO deve ser feita.\n\nResponda em tabela: jogo | aposta | odd na Stake | odd mínima | ✅ vale / ❌ abaixo / ⚪ sem mercado | valor sugerido. Depois liste só as que valem.\n\nPor último, escreva um bloco de código JSON com uma linha por aposta, usando EXATAMENTE o texto de "ref" de cada uma e odd null quando não houver mercado. Exemplo: [{"ref":"...","odd":1.85},{"ref":"...","odd":null}]\n\nApostas verdes (geradas ${new Date().toLocaleString("pt-BR",{timeZone:"Europe/Dublin"})}, horário de Dublin):\n${rows}`;
 }
 $("#iexp").addEventListener("click",async()=>{const t=exportVerdes(), m=$("#iexpmsg"), ta=$("#iexptxt");
   if(!t){m.textContent="Nenhuma verde para exportar agora.";return}
   try{await navigator.clipboard.writeText(t);m.textContent="Copiado. Cole na conversa do Claude no Chrome.";ta.style.display="none"}
   catch(_){ta.value=t;ta.style.display="block";ta.select();m.textContent="Copie o texto abaixo e cole no Claude."}});
+
+$("#istkgo").addEventListener("click",()=>{const m=$("#istkmsg"),t=$("#istk").value;let arr=null;
+  for(const mm of t.matchAll(/\[\s*\{[\s\S]*?\}\s*\]/g)){try{const a=JSON.parse(mm[0]);if(Array.isArray(a)&&a.some(x=>x&&x.ref))arr=a}catch(_){}}
+  if(!arr){m.textContent="Não achei o bloco JSON na resposta. Peça ao Claude para mandar só o JSON no final.";return}
+  MB.stake=MB.stake||{};let n=0;
+  for(const x of arr){if(!x||!x.ref)continue;const it=(window._insAll||new Map()).get(x.ref),o=x.odd==null||x.odd===""?null:+String(x.odd).replace(",",".");
+    if(o!=null&&!(o>1))continue;MB.stake[x.ref]={odd:o,min:it?Math.round(it.min*100)/100:(MB.stake[x.ref]||{}).min,at:new Date().toISOString()};n++}
+  mSave();m.textContent=n+" odds aplicadas.";$("#istk").value="";drawInsights()});
 $("#ilist").addEventListener("click",e=>{const btn=e.target.closest(".ireg");if(!btn)return;const i=window._ins&&window._ins.get(btn.dataset.k);if(!i)return;
   mClear();$("#mft").textContent="Registrar aposta dos Insights";$("#mjogo").value=gname(i.p);$("#maposta").value=i.p.game?i.p.market+": "+i.p.sel:i.p.sel;
-  $("#modd").value=i.odd.toFixed(2);$("#mvalor").value=btn.dataset.st;$("#mkey").value=i.key;$("#mkick").value=i.p.kickoff||"";location.hash="#minhas";setTimeout(()=>$("#modd").focus(),50)});
-drawMinhas();
+  $("#modd").value=(((MB.stake||{})[i.key]||{}).odd||i.odd).toFixed(2);$("#mvalor").value=btn.dataset.st;$("#mkey").value=i.key;$("#mkick").value=i.p.kickoff||"";location.hash="#minhas";setTimeout(()=>$("#modd").focus(),50)});
+drawInsights();drawMinhas();
 // conta na nuvem (Supabase): usuário + senha; o token fica neste aparelho
 const SB="https://hfnlslnrxvzrrkqsvyxf.supabase.co/rest/v1/rpc/", SBK="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhmbmxzbG5yeHZ6cnJrcXN2eXhmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQwNzc2MDQsImV4cCI6MjEwOTY1MzYwNH0.4423zgkeE_zhcw-SUGNx42VLtPzn3d86chcJ4z-FOOI", TK="liga_token_v1";
 async function rpc(f,b){const r=await fetch(SB+f,{method:"POST",headers:{apikey:SBK,Authorization:"Bearer "+SBK,"Content-Type":"application/json"},body:JSON.stringify(b)});const j=await r.json().catch(()=>null);if(!r.ok)throw new Error((j&&j.message)||"erro");return j}

@@ -208,6 +208,7 @@ tr.detail td>*{max-width:calc(100vw - 58px)}
     <div class="filters"><label for="ibank" class="src">Minha banca</label><select id="ibank"><option>50</option><option selected>100</option><option>200</option><option>500</option><option>1000</option></select><label for="iforte" class="src">Mostrar</label><select id="iforte"><option value="verde" selected>Só as verdes (provadas)</option><option value="top">Top do top dos 10 melhores</option><option value="">Todas as apostas dos 10 melhores</option></select></div>
     <div class="track" id="itrack"></div>
     <div class="tsum" id="isum"></div>
+    <div style="margin:8px 0"><button type="button" class="ireg" id="iexp" style="padding:9px 14px;font-size:13px">Copiar verdes para o Claude (Chrome)</button> <span class="src" id="iexpmsg"></span><textarea id="iexptxt" readonly style="display:none;width:100%;height:140px;margin-top:6px;font:12px var(--mono)"></textarea></div>
     <div id="ilist"></div>
   </section>
   <section id="v-ranking" hidden>
@@ -725,6 +726,19 @@ $("#mlist").addEventListener("change",e=>{const id=e.target.dataset.id;if(!id)re
 $("#mlist").addEventListener("click",e=>{const id=e.target.dataset.del;if(!id)return;MB.bets=MB.bets.filter(x=>x.id!==id);mSave();drawMinhas()});
 $("#mexp").addEventListener("click",()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(MB,null,1)],{type:"application/json"}));a.download="minhas-apostas.json";a.click()});
 $("#mimp").addEventListener("change",async e=>{const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(x&&Array.isArray(x.bets)){MB=x;mSave();drawMinhas()}}catch(err){}e.target.value=""});
+
+function exportVerdes(){
+  const L=[...(window._ins||new Map()).values()].sort((a,b)=>a.p.kickoff.localeCompare(b.p.kickoff)||b.e-a.e), bank=+$("#ibank").value;
+  if(!L.length)return "";
+  const hora=k=>new Date(k).toLocaleString("pt-BR",{weekday:"short",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"Europe/Dublin"});
+  const rows=L.map((i,n)=>{const g=games[i.p.game], stake=Math.max(1,Math.round(bank*i.pct)/100);
+    return `${n+1}. ${g?g.home_name+" x "+g.away_name:i.p.market} · ${g?(LG[g.league]||g.league):""} · ${hora(i.p.kickoff)} (Dublin)\n   Aposta: ${i.p.market}: ${i.p.sel}\n   Odd do nosso modelo: ${i.odd.toFixed(2)} · ODD MÍNIMA para valer: ${i.min.toFixed(2)} · vantagem estimada +${i.e.toFixed(1)}% · valor sugerido R$ ${stake.toFixed(2)} (${i.pct}% de banca de R$ ${bank})`}).join("\n");
+  return `Tarefa: conferir odds da Stake para as apostas "verdes" da Liga dos Apostadores.\n\nRegras:\n- Só LEIA odds. NÃO faça login, NÃO coloque nenhuma aposta, NÃO clique em nada que confirme aposta.\n- Para cada aposta abaixo, abra o jogo na Stake (esportes → futebol/ligas), ache exatamente esse mercado e linha e leia a odd atual.\n- Se a Stake não tiver o jogo ou o mercado, diga "sem mercado".\n- Compare com a ODD MÍNIMA: abaixo dela a aposta perde a vantagem e NÃO deve ser feita.\n\nResponda em tabela: jogo | aposta | odd na Stake | odd mínima | ✅ vale / ❌ abaixo / ⚪ sem mercado | valor sugerido. No fim, liste só as que valem.\n\nApostas verdes (geradas ${new Date().toLocaleString("pt-BR",{timeZone:"Europe/Dublin"})}, horário de Dublin):\n${rows}`;
+}
+$("#iexp").addEventListener("click",async()=>{const t=exportVerdes(), m=$("#iexpmsg"), ta=$("#iexptxt");
+  if(!t){m.textContent="Nenhuma verde para exportar agora.";return}
+  try{await navigator.clipboard.writeText(t);m.textContent="Copiado. Cole na conversa do Claude no Chrome.";ta.style.display="none"}
+  catch(_){ta.value=t;ta.style.display="block";ta.select();m.textContent="Copie o texto abaixo e cole no Claude."}});
 $("#ilist").addEventListener("click",e=>{const btn=e.target.closest(".ireg");if(!btn)return;const i=window._ins&&window._ins.get(btn.dataset.k);if(!i)return;
   mClear();$("#mft").textContent="Registrar aposta dos Insights";$("#mjogo").value=gname(i.p);$("#maposta").value=i.p.game?i.p.market+": "+i.p.sel:i.p.sel;
   $("#modd").value=i.odd.toFixed(2);$("#mvalor").value=btn.dataset.st;$("#mkey").value=i.key;$("#mkick").value=i.p.kickoff||"";location.hash="#minhas";setTimeout(()=>$("#modd").focus(),50)});
